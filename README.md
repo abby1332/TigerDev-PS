@@ -4,7 +4,7 @@ The repository for hosting and working on the files related to the game PS for t
 # Git Cheat Sheet <br />
 IMPORTANT: Before editing any code, make sure you switch branches! <br />
 For creating a new branch: `git checkout -b "branch name"` <br />
-For checking out to an existing branch: `git checkout "branch name" <br />
+For checking out to an existing branch: `git checkout "branch name"` <br />
 After you finish coding, update your branch: <br />
 `git add "file path"` or `git add .` (adds ALL unchanged files) <br />
 `git commit -m "Commit message here"` <br />

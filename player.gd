@@ -6,6 +6,8 @@ extends CharacterBody2D
 
 @export var climbable_wall_layer = 2
 
+@export var wall_slow_multiplier = 0.1
+
 # 0 = no wall, 1 = left wall, 2 = right wall
 var sliding_on_wall = 0
 
@@ -43,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			if(velocity.y < 0):
 				velocity.y /= 2
-			velocity += (get_gravity() / 3) * delta
+			velocity += (get_gravity() * wall_slow_multiplier) * delta
 
 	# Handle the movement/deceleration.
 	if direction and not _wall_jumping:

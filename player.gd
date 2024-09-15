@@ -9,23 +9,41 @@ extends CharacterBody2D
 @export var wall_slow_multiplier = 0.1
 @export var leaving_wall_jump_grace_period = 0.15
 
+@export var max_sliding_stamina = 50
+
 # 0 = no wall, 1 = left wall, 2 = right wall
 var sliding_on_wall = 0
+
+var sliding_stamina = max_sliding_stamina
 
 var _wall_jumping = false
 # 0 = no wall, 1 = left wall, 2 = right wall
 var _wall_jumping_from = 0
 var _leaving_wall = 0
 
+var _last_wall_clinged_to = null
+
 # Checks which side of the player is sliding on a wall.
 func sliding_on_wall_check(direction: float) -> int:
 	var space = get_world_2d().direct_space_state
 	var left_query = PhysicsRayQueryParameters2D.create(global_position, global_position - Vector2(5, 0), climbable_wall_layer)
-	if len(space.intersect_ray(left_query)) != 0 and direction < 0:
-		return 1
+	var left_intersect = space.intersect_ray(left_query)
+	if not left_intersect.is_empty():
+		# Reset stamina if we fall off one wall then cling onto another
+		if _last_wall_clinged_to != left_intersect["collider"]:
+			sliding_stamina = max_sliding_stamina
+		if direction < 0 and sliding_stamina > 0:
+			_last_wall_clinged_to = left_intersect["collider"]
+			return 1
 	var right_query = PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(5, 0), climbable_wall_layer)
-	if len(space.intersect_ray(right_query)) != 0 and direction > 0:
-		return 2
+	var right_intersect = space.intersect_ray(right_query)
+	if not right_intersect.is_empty():
+		# Reset stamina if we fall off one wall then cling onto another
+		if _last_wall_clinged_to != right_intersect["collider"]:
+			sliding_stamina = max_sliding_stamina
+		if direction > 0 and sliding_stamina > 0:
+			_last_wall_clinged_to = right_intersect["collider"]
+			return 2
 	if sliding_on_wall != 0:
 		_leaving_wall = sliding_on_wall
 		var leaving_wall_timer = Timer.new()
@@ -45,7 +63,6 @@ func _reset_leaving_wall() -> void:
 	_leaving_wall = 0
 
 func _physics_process(delta: float) -> void:
-	
 	# Get input movement direction.
 	var direction := Input.get_axis("left", "right")
 	
@@ -61,6 +78,11 @@ func _physics_process(delta: float) -> void:
 				velocity += get_gravity() * delta
 			else:
 				velocity += (get_gravity() * wall_slow_multiplier) * delta
+
+	if is_on_floor():
+		sliding_stamina = max_sliding_stamina
+	elif sliding_on_wall != 0:
+		sliding_stamina -= 1
 
 	# Handle the movement/deceleration.
 	if direction and not _wall_jumping:
@@ -80,6 +102,7 @@ func _physics_process(delta: float) -> void:
 		# If we are sliding on a wall
 		elif sliding_on_wall != 0 or _leaving_wall != 0:
 			if ((direction < 0 and sliding_on_wall == 1) or _leaving_wall == 1) or ((direction > 0 and sliding_on_wall == 2) or _leaving_wall == 2):
+				sliding_stamina = max_sliding_stamina
 				_wall_jumping = true
 				velocity.y = jump_velocity * 0.75
 				if sliding_on_wall != 0:
@@ -92,6 +115,5 @@ func _physics_process(delta: float) -> void:
 				reset_wall_jumping_timer.one_shot = true
 				reset_wall_jumping_timer.timeout.connect(_reset_wall_jumping)
 				reset_wall_jumping_timer.start()
-			
 
 	move_and_slide()

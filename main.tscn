@@ -19,3 +19,9 @@ position = Vector2(-177, -1)
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("3_04c0g")]
 position = Vector2(-72, -54)
+
+[node name="ClimbableWall" parent="." instance=ExtResource("3_04c0g")]
+position = Vector2(177, 0)
+
+[node name="ClimbableWall2" parent="." instance=ExtResource("3_04c0g")]
+position = Vector2(142, -10)

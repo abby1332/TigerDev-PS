@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 300.0
 @export var jump_velocity = -400.0
-@export var jump_from_wall_directional_velocity = 250.0
+@export var jump_from_wall_directional_velocity = 350.0
 
 @export var climbable_wall_layer = 2
 
@@ -81,7 +81,7 @@ func _physics_process(delta: float) -> void:
 		elif sliding_on_wall != 0 or _leaving_wall != 0:
 			if ((direction < 0 and sliding_on_wall == 1) or _leaving_wall == 1) or ((direction > 0 and sliding_on_wall == 2) or _leaving_wall == 2):
 				_wall_jumping = true
-				velocity.y = jump_velocity
+				velocity.y = jump_velocity * 0.75
 				if sliding_on_wall != 0:
 					_wall_jumping_from = sliding_on_wall
 				else:

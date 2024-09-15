@@ -65,7 +65,7 @@ func _physics_process(delta: float) -> void:
 			_wall_jumping_from = sliding_on_wall
 			var reset_wall_jumping_timer = Timer.new()
 			add_child(reset_wall_jumping_timer)
-			reset_wall_jumping_timer.wait_time = 0.3
+			reset_wall_jumping_timer.wait_time = 0.35
 			reset_wall_jumping_timer.one_shot = true
 			reset_wall_jumping_timer.timeout.connect(_reset_wall_jumping)
 			reset_wall_jumping_timer.start()

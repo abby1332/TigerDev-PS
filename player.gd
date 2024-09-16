@@ -11,12 +11,18 @@ extends CharacterBody2D
 
 @export var max_sliding_stamina = 50
 
+@export var jump_cut_strength = 0.5
+@export var jump_input_buffer_time = 0.125
+
+var time_since_last_jump_input = 0.0
+
 # 0 = no wall, 1 = left wall, 2 = right wall
 var sliding_on_wall = 0
 
 var sliding_stamina = max_sliding_stamina
 
 var _wall_jumping = false
+var has_jump_cut = false
 # 0 = no wall, 1 = left wall, 2 = right wall
 var _wall_jumping_from = 0
 var _leaving_wall = 0
@@ -61,6 +67,13 @@ func _reset_wall_jumping() -> void:
 	
 func _reset_leaving_wall() -> void:
 	_leaving_wall = 0
+	
+#Checks the jump with input buffering
+func _check_jump_input() -> bool:
+	if time_since_last_jump_input > 0.0:
+		return true
+	else:
+		return false
 
 func _physics_process(delta: float) -> void:
 	# Get input movement direction.
@@ -68,10 +81,15 @@ func _physics_process(delta: float) -> void:
 	
 	sliding_on_wall = sliding_on_wall_check(direction)
 	
+	#Handles jump input buffer times
+	time_since_last_jump_input -= delta
+	if Input.is_action_just_pressed("jump"):
+		time_since_last_jump_input = jump_input_buffer_time
+
 	# Add the gravity.
 	if not is_on_floor():
 		if sliding_on_wall == 0:
-			velocity += get_gravity() * delta
+				velocity += get_gravity() * delta
 		else:
 			if(velocity.y < 0):
 				velocity.y *= 0.95
@@ -81,6 +99,8 @@ func _physics_process(delta: float) -> void:
 
 	if is_on_floor():
 		sliding_stamina = max_sliding_stamina
+		#Disables jump-cutting
+		has_jump_cut = false
 	elif sliding_on_wall != 0:
 		sliding_stamina -= 1
 
@@ -96,12 +116,22 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and not _wall_jumping:
+	if _check_jump_input() and not _wall_jumping:
 		if is_on_floor():
+			#Resets the jump input buffer time if successful jump performed
+			time_since_last_jump_input = 0.0
+			#Enables jump-cutting
+			has_jump_cut = true
+			
 			velocity.y = jump_velocity
 		# If we are sliding on a wall
 		elif sliding_on_wall != 0 or _leaving_wall != 0:
 			if ((direction < 0 and sliding_on_wall == 1) or _leaving_wall == 1) or ((direction > 0 and sliding_on_wall == 2) or _leaving_wall == 2):
+				#Resets the jump input buffer time if successful jump performed
+				time_since_last_jump_input = 0.0
+				#Enables jump-cutting
+				has_jump_cut = true
+				
 				sliding_stamina = max_sliding_stamina
 				_wall_jumping = true
 				velocity.y = jump_velocity * 0.75
@@ -115,5 +145,11 @@ func _physics_process(delta: float) -> void:
 				reset_wall_jumping_timer.one_shot = true
 				reset_wall_jumping_timer.timeout.connect(_reset_wall_jumping)
 				reset_wall_jumping_timer.start()
+	
+	#Jump-cuts if the jump input is released during jump
+	if !Input.is_action_pressed("jump") and has_jump_cut and sliding_on_wall == 0 and velocity.y < 0 and not is_on_floor():
+		velocity.y = velocity.y * jump_cut_strength
+		#Disables jump-cutting
+		has_jump_cut = false;
 
 	move_and_slide()

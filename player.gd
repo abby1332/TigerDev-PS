@@ -1,39 +1,40 @@
 extends CharacterBody2D
 
-@export var speed = 300.0
-@export var jump_velocity = -400.0
-@export var jump_from_wall_directional_velocity = 350.0
+@export var speed: float = 300.0
+@export var jump_velocity: float = -400.0
+@export var jump_from_wall_directional_velocity: float = 350.0
 
-@export var climbable_wall_layer = 2
+@export var climbable_wall_layer: int = 2
 
-@export var wall_slow_multiplier = 0.1
-@export var leaving_wall_jump_grace_period = 0.15
+@export var wall_slow_multiplier: float = 0.1
+@export var leaving_wall_jump_grace_period: float = 0.15
 
-@export var max_sliding_stamina = 50
+@export var max_sliding_stamina: int = 50
 
-@export var jump_cut_strength = 0.5
-@export var jump_input_buffer_time = 0.125
+@export var jump_cut_strength: float = 0.5
+@export var jump_input_buffer_time: float = 0.125
 
-var time_since_last_jump_input = 0.0
+var time_since_last_jump_input: float = 0.0
 
 # 0 = no wall, 1 = left wall, 2 = right wall
-var sliding_on_wall = 0
+var sliding_on_wall: int = 0
 
-var sliding_stamina = max_sliding_stamina
+var sliding_stamina: int = max_sliding_stamina
 
-var _wall_jumping = false
-var has_jump_cut = false
+var _wall_jumping: bool = false
+var has_jump_cut: bool = false
 # 0 = no wall, 1 = left wall, 2 = right wall
-var _wall_jumping_from = 0
-var _leaving_wall = 0
+var _wall_jumping_from: int = 0
+var _leaving_wall: int = 0
 
+@warning_ignore("untyped_declaration") #reasoning: type of var is unknown until runtime
 var _last_wall_clinged_to = null
 
 # Checks which side of the player is sliding on a wall.
 func sliding_on_wall_check(direction: float) -> int:
-	var space = get_world_2d().direct_space_state
-	var left_query = PhysicsRayQueryParameters2D.create(global_position, global_position - Vector2(5, 0), climbable_wall_layer)
-	var left_intersect = space.intersect_ray(left_query)
+	var space := get_world_2d().direct_space_state
+	var left_query := PhysicsRayQueryParameters2D.create(global_position, global_position - Vector2(5, 0), climbable_wall_layer)
+	var left_intersect := space.intersect_ray(left_query)
 	if not left_intersect.is_empty():
 		# Reset stamina if we fall off one wall then cling onto another
 		if _last_wall_clinged_to != left_intersect["collider"]:
@@ -41,8 +42,8 @@ func sliding_on_wall_check(direction: float) -> int:
 		if direction < 0 and sliding_stamina > 0:
 			_last_wall_clinged_to = left_intersect["collider"]
 			return 1
-	var right_query = PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(5, 0), climbable_wall_layer)
-	var right_intersect = space.intersect_ray(right_query)
+	var right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(5, 0), climbable_wall_layer)
+	var right_intersect := space.intersect_ray(right_query)
 	if not right_intersect.is_empty():
 		# Reset stamina if we fall off one wall then cling onto another
 		if _last_wall_clinged_to != right_intersect["collider"]:
@@ -52,7 +53,7 @@ func sliding_on_wall_check(direction: float) -> int:
 			return 2
 	if sliding_on_wall != 0:
 		_leaving_wall = sliding_on_wall
-		var leaving_wall_timer = Timer.new()
+		var leaving_wall_timer := Timer.new()
 		add_child(leaving_wall_timer)
 		leaving_wall_timer.wait_time = leaving_wall_jump_grace_period
 		leaving_wall_timer.one_shot = true
@@ -139,7 +140,7 @@ func _physics_process(delta: float) -> void:
 					_wall_jumping_from = sliding_on_wall
 				else:
 					_wall_jumping_from = _leaving_wall
-				var reset_wall_jumping_timer = Timer.new()
+				var reset_wall_jumping_timer := Timer.new()
 				add_child(reset_wall_jumping_timer)
 				reset_wall_jumping_timer.wait_time = 0.25
 				reset_wall_jumping_timer.one_shot = true

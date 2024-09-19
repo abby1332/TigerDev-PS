@@ -89,7 +89,7 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		if sliding_on_wall == 0:
-				velocity += get_gravity() * delta
+			velocity += get_gravity() * delta
 		else:
 			if(velocity.y < 0):
 				velocity.y *= 0.95

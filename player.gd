@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+@export var respawn_point: SpawnPoint
+
 @export var animation_manager: AnimatedSprite2D
 @export var animation_idle: String = "default"
 @export var animation_crouch: String = "crouch"
@@ -12,6 +14,7 @@ class_name Player
 @export var crouching_collider: CollisionShape2D
 
 @export var sliding_particles: GPUParticles2D
+@export var death_particles: GPUParticles2D
 
 #region Wall Jumping
 
@@ -64,6 +67,18 @@ var crouch_speed_multiplier: float = 0.5
 var time_sliding: float = 0.0
 
 #endregion
+
+var dead: bool = false
+
+func respawn(spawn_point: SpawnPoint = respawn_point) -> void:
+	spawn_point.teleport(self)
+	animation_manager.show()
+	dead = false
+	
+func die() -> void:
+	death_particles.emitting = true
+	animation_manager.hide()
+	dead = true
 
 # Checks which side of the player is sliding on a wall.
 func sliding_on_wall_check(direction: float) -> WallDirection:
@@ -147,6 +162,15 @@ func update_crouch_state(_old_state: CrouchState, new_state: CrouchState) -> voi
 		regular_collider.disabled = true
 
 func _physics_process(delta: float) -> void:
+	
+	if Input.is_action_just_pressed("debug_respawn"):
+		respawn()
+	elif Input.is_action_just_pressed("debug_die"):
+		die()
+	
+	if dead:
+		return
+	
 	# Get input movement direction.
 	var direction := Input.get_axis("left", "right")
 	
@@ -247,7 +271,7 @@ func _physics_process(delta: float) -> void:
 	if !Input.is_action_pressed("jump") and has_jump_cut and sliding_on_wall == WallDirection.NONE and velocity.y < 0 and not is_on_floor():
 		velocity.y = velocity.y * jump_cut_strength
 		#Disables jump-cutting
-		has_jump_cut = false;
+		has_jump_cut = false
 
 	animation_state_machine_update()
 

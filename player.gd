@@ -2,6 +2,12 @@ extends CharacterBody2D
 
 @export var speed: float = 300.0
 @export var jump_velocity: float = -400.0
+
+@export var regular_collider: CollisionShape2D
+@export var crouching_collider: CollisionShape2D
+
+#region Wall Jumping
+
 @export var jump_from_wall_directional_velocity: float = 350.0
 
 @export var climbable_wall_layer: int = 2
@@ -14,21 +20,28 @@ extends CharacterBody2D
 @export var jump_cut_strength: float = 0.5
 @export var jump_input_buffer_time: float = 0.125
 
-var time_since_last_jump_input: float = 0.0
-
 # 0 = no wall, 1 = left wall, 2 = right wall
 var sliding_on_wall: int = 0
 
 var sliding_stamina: int = max_sliding_stamina
 
 var _wall_jumping: bool = false
-var has_jump_cut: bool = false
 # 0 = no wall, 1 = left wall, 2 = right wall
 var _wall_jumping_from: int = 0
 var _leaving_wall: int = 0
 
 @warning_ignore("untyped_declaration") #reasoning: type of var is unknown until runtime
 var _last_wall_clinged_to = null
+
+#endregion
+
+var time_since_last_jump_input: float = 0.0
+var has_jump_cut: bool = false
+
+enum CrouchState {NORMAL, CROUCHING, SLIDING}
+
+var crouch_state: CrouchState = CrouchState.NORMAL
+
 
 # Checks which side of the player is sliding on a wall.
 func sliding_on_wall_check(direction: float) -> int:
@@ -76,11 +89,27 @@ func _check_jump_input() -> bool:
 	else:
 		return false
 
+func crouch_state_check() -> CrouchState:
+	if not Input.is_action_pressed("crouch"):
+		return CrouchState.NORMAL
+	elif abs(velocity.x) > 1 and crouch_state != CrouchState.CROUCHING:
+		return CrouchState.SLIDING
+	else:
+		return CrouchState.CROUCHING
+
+func update_crouch_state() -> void:
+	print("state changed")
+
 func _physics_process(delta: float) -> void:
 	# Get input movement direction.
 	var direction := Input.get_axis("left", "right")
 	
 	sliding_on_wall = sliding_on_wall_check(direction)
+	
+	var updated_crouch := crouch_state_check()
+	if updated_crouch != crouch_state:
+		update_crouch_state()
+	crouch_state = updated_crouch
 	
 	#Handles jump input buffer times
 	time_since_last_jump_input -= delta
@@ -90,7 +119,10 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		if sliding_on_wall == 0:
-			velocity += get_gravity() * delta
+			if Input.is_action_pressed("crouch"):
+				velocity += get_gravity() * 5 * delta
+			else:
+				velocity += get_gravity() * delta
 		else:
 			if(velocity.y < 0):
 				velocity.y *= 0.95

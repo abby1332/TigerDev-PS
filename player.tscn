@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://oskm0n4w5tpe"]
+[gd_scene load_steps=6 format=3 uid="uid://oskm0n4w5tpe"]
 
 [ext_resource type="Texture2D" uid="uid://cbjeqjdhbphwy" path="res://resources/sprites/red_box_test_player.png" id="1_8ws07"]
 [ext_resource type="Script" path="res://player.gd" id="1_lroia"]
@@ -17,13 +17,23 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijuf3"]
 size = Vector2(8, 8)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynx8r"]
+size = Vector2(8, 6)
+
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("regular_collider", "crouching_collider")]
 collision_mask = 3
 script = ExtResource("1_lroia")
+regular_collider = NodePath("StandingCollider")
+crouching_collider = NodePath("CrouchingCollider")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sq1mr")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="StandingCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ijuf3")
+
+[node name="CrouchingCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ynx8r")
+disabled = true

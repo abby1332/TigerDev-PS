@@ -31,14 +31,14 @@ angular_velocity_max = 720.0
 gravity = Vector3(0, 98, 0)
 scale_max = 2.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("regular_collider", "crouching_collider", "sliding_particles")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("regular_collider", "crouching_collider", "sliding_particles")]
 collision_mask = 3
 script = ExtResource("1_lroia")
 regular_collider = NodePath("StandingCollider")
 crouching_collider = NodePath("CrouchingCollider")
-sliding_particles = NodePath("GPUParticles2D")
+sliding_particles = NodePath("SlidingParticles")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sq1mr")
 autoplay = "default"
 
@@ -50,7 +50,7 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_ynx8r")
 disabled = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="SlidingParticles" type="GPUParticles2D" parent="."]
 z_index = -1
 position = Vector2(0, 4)
 emitting = false

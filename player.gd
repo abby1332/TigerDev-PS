@@ -1,10 +1,13 @@
 extends CharacterBody2D
+class_name Player
 
 @export var speed: float = 300.0
 @export var jump_velocity: float = -400.0
 
 @export var regular_collider: CollisionShape2D
 @export var crouching_collider: CollisionShape2D
+
+@export var sliding_particles: GPUParticles2D
 
 #region Wall Jumping
 
@@ -38,10 +41,21 @@ var _last_wall_clinged_to = null
 var time_since_last_jump_input: float = 0.0
 var has_jump_cut: bool = false
 
-enum CrouchState {NORMAL, CROUCHING, SLIDING}
+#region Crouching/Sliding
+
+enum CrouchState {
+	NORMAL, 
+	CROUCHING, 
+	SLIDING
+}
 
 var crouch_state: CrouchState = CrouchState.NORMAL
 
+var crouch_speed_multiplier: float = 0.5
+
+var time_sliding: float = 0.0
+
+#endregion
 
 # Checks which side of the player is sliding on a wall.
 func sliding_on_wall_check(direction: float) -> int:
@@ -91,14 +105,30 @@ func _check_jump_input() -> bool:
 
 func crouch_state_check() -> CrouchState:
 	if not Input.is_action_pressed("crouch"):
+		var space := get_world_2d().direct_space_state
+		var top_left_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(-5, -5))
+		var top_left_intersect := space.intersect_ray(top_left_query)
+		var top_right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(5, -5))
+		var top_right_intersect := space.intersect_ray(top_right_query)
+		if (not top_left_intersect.is_empty() or not top_right_intersect.is_empty()) and crouch_state != CrouchState.NORMAL:
+			return CrouchState.CROUCHING
 		return CrouchState.NORMAL
-	elif abs(velocity.x) > 1 and crouch_state != CrouchState.CROUCHING:
+	elif abs(velocity.x) > 1 and crouch_state != CrouchState.CROUCHING and is_on_floor():
 		return CrouchState.SLIDING
 	else:
 		return CrouchState.CROUCHING
 
-func update_crouch_state() -> void:
-	print("state changed")
+func update_crouch_state(_old_state: CrouchState, new_state: CrouchState) -> void:
+	time_sliding = 0.0
+	if new_state == CrouchState.NORMAL:
+		crouching_collider.disabled = true
+		regular_collider.disabled = false
+	elif new_state == CrouchState.SLIDING:
+		crouching_collider.disabled = false
+		regular_collider.disabled = true
+	else:
+		crouching_collider.disabled = false
+		regular_collider.disabled = true
 
 func _physics_process(delta: float) -> void:
 	# Get input movement direction.
@@ -106,10 +136,19 @@ func _physics_process(delta: float) -> void:
 	
 	sliding_on_wall = sliding_on_wall_check(direction)
 	
-	var updated_crouch := crouch_state_check()
-	if updated_crouch != crouch_state:
-		update_crouch_state()
-	crouch_state = updated_crouch
+	var updated_crouch_state := crouch_state_check()
+	if updated_crouch_state != crouch_state:
+		update_crouch_state(crouch_state, updated_crouch_state)
+	crouch_state = updated_crouch_state
+	
+	if crouch_state == CrouchState.SLIDING:
+		time_sliding += delta
+		if abs(velocity.x) > 5:
+			sliding_particles.emitting = true
+		else:
+			sliding_particles.emitting = false
+	else:
+		sliding_particles.emitting = false
 	
 	#Handles jump input buffer times
 	time_since_last_jump_input -= delta
@@ -120,7 +159,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		if sliding_on_wall == 0:
 			if Input.is_action_pressed("crouch"):
-				velocity += get_gravity() * 5 * delta
+				velocity += get_gravity() * 2 * delta
 			else:
 				velocity += get_gravity() * delta
 		else:
@@ -138,15 +177,23 @@ func _physics_process(delta: float) -> void:
 		sliding_stamina -= 1
 
 	# Handle the movement/deceleration.
-	if direction and not _wall_jumping:
-		velocity.x = direction * speed
+	if direction and not _wall_jumping and crouch_state != CrouchState.SLIDING:
+		velocity.x += direction * speed
+		velocity.x = clampf(velocity.x, -speed, speed)
+	elif direction and crouch_state == CrouchState.CROUCHING:
+		velocity.x += direction * speed * crouch_speed_multiplier
+		velocity.x = clampf(velocity.x, -speed, speed)
 	elif _wall_jumping_from != 0:
 		if _wall_jumping_from == 1:
 			velocity.x = move_toward(velocity.x, jump_from_wall_directional_velocity, speed)
 		else:
 			velocity.x = move_toward(velocity.x, -jump_from_wall_directional_velocity, speed)
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
+		if crouch_state != CrouchState.SLIDING:
+			velocity.x *= 0.6
+		elif time_sliding > 0.5:
+			velocity.x *= 0.95
+		velocity.x += move_toward(velocity.x, 0, speed)
 		
 	# Handle jump.
 	if _check_jump_input() and not _wall_jumping:

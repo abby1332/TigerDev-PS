@@ -50,7 +50,6 @@ sliding_particles = NodePath("SlidingParticles")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sq1mr")
-animation = &"crouch"
 autoplay = "default"
 
 [node name="StandingCollider" type="CollisionShape2D" parent="."]

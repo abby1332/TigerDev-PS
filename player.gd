@@ -114,9 +114,9 @@ func _check_jump_input() -> bool:
 func crouch_state_check() -> CrouchState:
 	if not Input.is_action_pressed("crouch"):
 		var space := get_world_2d().direct_space_state
-		var top_left_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(-5, -5))
+		var top_left_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(-4, -5))
 		var top_left_intersect := space.intersect_ray(top_left_query)
-		var top_right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(5, -5))
+		var top_right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(4, -5))
 		var top_right_intersect := space.intersect_ray(top_right_query)
 		if (not top_left_intersect.is_empty() or not top_right_intersect.is_empty()) and crouch_state != CrouchState.NORMAL:
 			return CrouchState.CROUCHING
@@ -124,6 +124,8 @@ func crouch_state_check() -> CrouchState:
 	elif abs(velocity.x) > 1 and crouch_state != CrouchState.CROUCHING and is_on_floor():
 		return CrouchState.SLIDING
 	else:
+		if sliding_on_wall != WallDirection.NONE:
+			return CrouchState.NORMAL
 		return CrouchState.CROUCHING
 		
 func animation_state_machine_update() -> void:

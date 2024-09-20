@@ -182,11 +182,12 @@ func _physics_process(delta: float) -> void:
 
 	# Handle the movement/deceleration.
 	if direction and not wall_jumping and crouch_state != CrouchState.SLIDING:
-		velocity.x += direction * speed
-		velocity.x = clampf(velocity.x, -speed, speed)
-	elif direction and crouch_state == CrouchState.CROUCHING:
-		velocity.x += direction * speed * crouch_speed_multiplier
-		velocity.x = clampf(velocity.x, -speed, speed)
+		if crouch_state == CrouchState.CROUCHING:
+			velocity.x += direction * speed * crouch_speed_multiplier
+			velocity.x = clampf(velocity.x, -speed * crouch_speed_multiplier, speed * crouch_speed_multiplier)
+		else:
+			velocity.x += direction * speed
+			velocity.x = clampf(velocity.x, -speed, speed)
 	elif wall_jumping_from != WallDirection.NONE:
 		if wall_jumping_from == WallDirection.LEFT:
 			velocity.x = move_toward(velocity.x, jump_from_wall_directional_velocity, speed)

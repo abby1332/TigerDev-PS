@@ -1,6 +1,10 @@
 extends CharacterBody2D
 class_name Player
 
+@export var animation_manager: AnimatedSprite2D
+@export var animation_idle: String = "default"
+@export var animation_crouch: String = "crouch"
+
 @export var speed: float = 300.0
 @export var jump_velocity: float = -400.0
 
@@ -121,6 +125,12 @@ func crouch_state_check() -> CrouchState:
 		return CrouchState.SLIDING
 	else:
 		return CrouchState.CROUCHING
+		
+func animation_state_machine_update() -> void:
+	if crouch_state == CrouchState.NORMAL:
+		animation_manager.play(animation_idle)
+	else:
+		animation_manager.play(animation_crouch)
 
 func update_crouch_state(_old_state: CrouchState, new_state: CrouchState) -> void:
 	time_sliding = 0.0
@@ -236,5 +246,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = velocity.y * jump_cut_strength
 		#Disables jump-cutting
 		has_jump_cut = false;
+
+	animation_state_machine_update()
 
 	move_and_slide()

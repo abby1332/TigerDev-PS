@@ -16,6 +16,8 @@ class_name Player
 @export var sliding_particles: GPUParticles2D
 @export var death_particles: GPUParticles2D
 
+@export var death_text: RichTextLabel
+
 #region Wall Jumping
 
 enum WallDirection {
@@ -71,13 +73,21 @@ var time_sliding: float = 0.0
 var dead: bool = false
 
 func respawn(spawn_point: SpawnPoint = respawn_point) -> void:
+	death_particles.hide()
+	death_particles.emitting = false
 	spawn_point.teleport(self)
 	animation_manager.show()
+	death_text.hide()
 	dead = false
 	
 func die() -> void:
+	if dead:
+		return
+	death_particles.show()
 	death_particles.emitting = true
+	death_particles.restart()
 	animation_manager.hide()
+	death_text.show()
 	dead = true
 
 # Checks which side of the player is sliding on a wall.

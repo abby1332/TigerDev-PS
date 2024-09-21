@@ -11,17 +11,6 @@
 [node name="CharacterBody2D" parent="." node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_p0mxc")]
 position = Vector2(0, -10)
 respawn_point = NodePath("../SpawnPoint")
-animation_idle = "default"
-animation_crouch = "crouch"
-speed = 300.0
-jump_velocity = -400.0
-jump_from_wall_directional_velocity = 350.0
-climbable_wall_layer = 2
-wall_slow_multiplier = 0.1
-leaving_wall_jump_grace_period = 0.15
-max_sliding_stamina = 50
-jump_cut_strength = 0.5
-jump_input_buffer_time = 0.125
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(2, 2)

@@ -1,7 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
-@export var respawn_point: SpawnPoint
+@export var spawn_point: SpawnPoint
+var respawn_point: RespawnPoint = null
 
 @export var animation_manager: AnimatedSprite2D
 @export var animation_idle: String = "default"
@@ -72,10 +73,13 @@ var time_sliding: float = 0.0
 
 var dead: bool = false
 
-func respawn(spawn_point: SpawnPoint = respawn_point) -> void:
+func respawn(point: RespawnPoint = respawn_point) -> void:
 	death_particles.hide()
 	death_particles.emitting = false
-	spawn_point.teleport(self)
+	if point != null:
+		point.spawn_point.teleport(self)
+	else:
+		spawn_point.teleport(self)
 	animation_manager.show()
 	death_text.hide()
 	dead = false

@@ -1,10 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://oskm0n4w5tpe"]
+[gd_scene load_steps=8 format=3 uid="uid://oskm0n4w5tpe"]
 
 [ext_resource type="Texture2D" uid="uid://cbjeqjdhbphwy" path="res://resources/sprites/red_box_test_player.png" id="1_8ws07"]
 [ext_resource type="Script" path="res://player.gd" id="1_lroia"]
+[ext_resource type="Texture2D" uid="uid://w4o213qf87uv" path="res://resources/sprites/red_box_test_player_crouch.png" id="2_d21u6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sq1mr"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d21u6")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_8ws07")
@@ -17,13 +26,42 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijuf3"]
 size = Vector2(8, 8)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynx8r"]
+size = Vector2(8, 5)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qjikp"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 70.0
+initial_velocity_min = 25.0
+initial_velocity_max = 50.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+gravity = Vector3(0, 98, 0)
+scale_max = 2.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation_manager", "regular_collider", "crouching_collider", "sliding_particles")]
 collision_mask = 3
 script = ExtResource("1_lroia")
+animation_manager = NodePath("PlayerSprite")
+regular_collider = NodePath("StandingCollider")
+crouching_collider = NodePath("CrouchingCollider")
+sliding_particles = NodePath("SlidingParticles")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sq1mr")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="StandingCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ijuf3")
+
+[node name="CrouchingCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_ynx8r")
+disabled = true
+
+[node name="SlidingParticles" type="GPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(0, 4)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_qjikp")

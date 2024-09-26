@@ -19,6 +19,8 @@ var respawn_point: RespawnPoint = null
 
 @export var death_text: RichTextLabel
 
+@export var death_plane: DeathPlane
+
 #region Wall Jumping
 
 enum WallDirection {
@@ -183,6 +185,10 @@ func _physics_process(delta: float) -> void:
 		die()
 	
 	if dead:
+		return
+	
+	if global_position.y > death_plane.global_position.y:
+		die()
 		return
 	
 	# Get input movement direction.

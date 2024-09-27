@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://oskm0n4w5tpe"]
+[gd_scene load_steps=10 format=3 uid="uid://oskm0n4w5tpe"]
 
 [ext_resource type="Texture2D" uid="uid://cbjeqjdhbphwy" path="res://resources/sprites/red_box_test_player.png" id="1_8ws07"]
 [ext_resource type="Script" path="res://player.gd" id="1_lroia"]
 [ext_resource type="Texture2D" uid="uid://w4o213qf87uv" path="res://resources/sprites/red_box_test_player_crouch.png" id="2_d21u6"]
+[ext_resource type="Script" path="res://card_manager.gd" id="4_pkvbn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sq1mr"]
 animations = [{
@@ -102,3 +103,6 @@ offset_bottom = 23.0
 bbcode_enabled = true
 text = "[wave amp=50.0 freq=10.0 connected=1][rainbow]YOU FUCKING DIED[/rainbow][/wave]"
 scroll_active = false
+
+[node name="CardManager" type="Node2D" parent="."]
+script = ExtResource("4_pkvbn")

@@ -1,6 +1,8 @@
 extends Node2D
 class_name CardManager
 
+@export var card_canvas: CanvasLayer
+
 @export var max_cards: int = 5
 
 var cards: Array[Card] = []
@@ -16,7 +18,7 @@ func get_card_input() -> int:
 
 func _ready() -> void:
 	cards.resize(max_cards)
-	for child in get_parent().get_children():
+	for child in get_children():
 		print(child.name)
 		if child is TestCard:
 			cards[0] = child as TestCard

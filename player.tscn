@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://oskm0n4w5tpe"]
+[gd_scene load_steps=13 format=3 uid="uid://oskm0n4w5tpe"]
 
 [ext_resource type="Texture2D" uid="uid://cbjeqjdhbphwy" path="res://resources/sprites/red_box_test_player.png" id="1_8ws07"]
 [ext_resource type="Script" path="res://player.gd" id="1_lroia"]
 [ext_resource type="Texture2D" uid="uid://w4o213qf87uv" path="res://resources/sprites/red_box_test_player_crouch.png" id="2_d21u6"]
 [ext_resource type="Script" path="res://card_manager.gd" id="4_pkvbn"]
+[ext_resource type="PackedScene" uid="uid://c3iqqws57t05y" path="res://card_ui_manager.tscn" id="5_5y5m6"]
+[ext_resource type="PackedScene" uid="uid://dng35y854mon8" path="res://test_card.tscn" id="5_h6wqe"]
+[ext_resource type="Texture2D" uid="uid://c2lg8a0ilnco6" path="res://resources/sprites/test_card.png" id="7_fa47k"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sq1mr"]
 animations = [{
@@ -57,9 +60,11 @@ orbit_velocity_max = 0.116
 gravity = Vector3(0, 0, 0)
 color = Color(1, 0, 0, 1)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation_manager", "regular_collider", "crouching_collider", "sliding_particles", "death_particles", "death_text")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("card_manager", "card_canvas", "animation_manager", "regular_collider", "crouching_collider", "sliding_particles", "death_particles", "death_text")]
 collision_mask = 7
 script = ExtResource("1_lroia")
+card_manager = NodePath("CardManager")
+card_canvas = NodePath("CardUiManager")
 animation_manager = NodePath("PlayerSprite")
 regular_collider = NodePath("StandingCollider")
 crouching_collider = NodePath("CrouchingCollider")
@@ -104,5 +109,15 @@ bbcode_enabled = true
 text = "[wave amp=50.0 freq=10.0 connected=1][rainbow]YOU FUCKING DIED[/rainbow][/wave]"
 scroll_active = false
 
-[node name="CardManager" type="Node2D" parent="."]
+[node name="CardManager" type="Node2D" parent="." node_paths=PackedStringArray("card_canvas")]
 script = ExtResource("4_pkvbn")
+card_canvas = NodePath("../CardUiManager")
+
+[node name="TestCard" parent="CardManager" node_paths=PackedStringArray("sprite") instance=ExtResource("5_h6wqe")]
+sprite = NodePath("../../CardUiManager/Sprite2D")
+
+[node name="CardUiManager" parent="." instance=ExtResource("5_5y5m6")]
+
+[node name="Sprite2D" type="Sprite2D" parent="CardUiManager"]
+position = Vector2(115, 647)
+texture = ExtResource("7_fa47k")

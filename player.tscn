@@ -102,3 +102,5 @@ offset_bottom = 23.0
 bbcode_enabled = true
 text = "[wave amp=50.0 freq=10.0 connected=1][rainbow]YOU FUCKING DIED[/rainbow][/wave]"
 scroll_active = false
+
+[node name="Area2D" type="Area2D" parent="."]

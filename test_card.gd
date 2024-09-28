@@ -10,6 +10,8 @@ var last_direction: float
 
 func _reset() -> void:
 	active = false
+	
+	queue_free()
 
 func use(plyr: Player) -> void:
 	active = true
@@ -21,6 +23,8 @@ func use(plyr: Player) -> void:
 	timer.one_shot = true
 	timer.timeout.connect(_reset)
 	timer.start()
+	
+	sprite.queue_free()
 
 func _physics_process(delta: float) -> void:
 	if active and not player.dead and abs(player.velocity.x) > 0:

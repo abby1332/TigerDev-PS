@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://orv0xlp8qaqf"]
+
+[ext_resource type="Script" path="res://card_manager.gd" id="1_ifr3t"]
+
+[node name="CardManager" type="CanvasLayer" node_paths=PackedStringArray("initial_card_position")]
+script = ExtResource("1_ifr3t")
+initial_card_position = NodePath("InitialCardPosition")
+
+[node name="InitialCardPosition" type="Node2D" parent="."]
+position = Vector2(90, 650)

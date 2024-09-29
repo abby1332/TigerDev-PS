@@ -7,4 +7,4 @@ script = ExtResource("1_ifr3t")
 initial_card_position = NodePath("InitialCardPosition")
 
 [node name="InitialCardPosition" type="Node2D" parent="."]
-position = Vector2(90, 650)
+position = Vector2(51, 647)

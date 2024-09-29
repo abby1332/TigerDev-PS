@@ -34,6 +34,20 @@ func use_card(card_index: int) -> bool:
 	update_card_positions()
 	return true
 
+func send_top_card_to_back() -> void:
+	if cards.size() < 2:
+		return
+	var card := cards.pop_front() as Card
+	cards.push_back(card)
+	update_card_positions()
+
+func send_back_card_to_top() -> void:
+	if cards.size() < 2:
+		return
+	var card := cards.pop_back() as Card
+	cards.push_front(card)
+	update_card_positions()
+
 # This looks more elegant than 5 if statements but is probably less efficient.
 func get_card_input() -> int:
 	for i in range(1, max_cards + 1):
@@ -52,3 +66,8 @@ func _physics_process(delta: float) -> void:
 	var card_input := get_card_input()
 	if card_input != -1:
 		use_card(card_input - 1)
+	
+	if Input.is_action_just_pressed("send_top_card_to_back"):
+		send_top_card_to_back()
+	elif Input.is_action_just_pressed("send_back_card_to_top"):
+		send_back_card_to_top()

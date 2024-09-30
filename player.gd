@@ -1,7 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
-@export var respawn_point: SpawnPoint
+@export var spawn_point: SpawnPoint
+var respawn_point: RespawnPoint = null
 
 @export var animation_manager: AnimatedSprite2D
 @export var animation_idle: String = "default"
@@ -17,6 +18,8 @@ class_name Player
 @export var death_particles: GPUParticles2D
 
 @export var death_text: RichTextLabel
+
+@export var death_plane: DeathPlane
 
 #region Wall Jumping
 
@@ -76,14 +79,18 @@ func get_crouch_state():
 
 var dead: bool = false
 
-func respawn(spawn_point: SpawnPoint = respawn_point) -> void:
+func respawn(point: RespawnPoint = respawn_point) -> void:
 	death_particles.hide()
 	death_particles.emitting = false
-	spawn_point.teleport(self)
+	if point != null:
+		point.spawn_point.teleport(self)
+	else:
+		spawn_point.teleport(self)
 	animation_manager.show()
 	death_text.hide()
 	dead = false
-			
+	velocity = Vector2(0.0, 0.0)
+	
 func die() -> void:
 	if dead:
 		return
@@ -183,6 +190,10 @@ func _physics_process(delta: float) -> void:
 		die()
 	
 	if dead:
+		return
+	
+	if global_position.y > death_plane.global_position.y:
+		die()
 		return
 	
 	# Get input movement direction.

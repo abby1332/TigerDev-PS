@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://d38yynx22ev4y"]
+[gd_scene load_steps=7 format=4 uid="uid://d38yynx22ev4y"]
 
 [ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://player.tscn" id="1_p0mxc"]
+[ext_resource type="PackedScene" uid="uid://bjtvsvry3dapy" path="res://enemy.tscn" id="2_3wa2d"]
 [ext_resource type="PackedScene" uid="uid://i6ptj3fncpgt" path="res://floor.tscn" id="2_8f8hk"]
 [ext_resource type="PackedScene" uid="uid://bvdu5v28yulr0" path="res://climbable_wall.tscn" id="3_04c0g"]
 [ext_resource type="PackedScene" uid="uid://be1mbm2trdwj2" path="res://test_tile_map.tscn" id="4_eo0di"]
@@ -8,12 +9,18 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_p0mxc")]
+[node name="Player" parent="." node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_p0mxc")]
 position = Vector2(0, -10)
 respawn_point = NodePath("../SpawnPoint")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_3wa2d")]
+position = Vector2(76, -22)
+scale = Vector2(0.5, 0.5)
+collision_mask = 3
+player = NodePath("../Player")
 
 [node name="Floor" parent="." instance=ExtResource("2_8f8hk")]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://oskm0n4w5tpe"]
 
-[ext_resource type="Texture2D" uid="uid://cbjeqjdhbphwy" path="res://resources/sprites/red_box_test_player.png" id="1_8ws07"]
 [ext_resource type="Script" path="res://player.gd" id="1_lroia"]
 [ext_resource type="Texture2D" uid="uid://w4o213qf87uv" path="res://resources/sprites/red_box_test_player_crouch.png" id="2_d21u6"]
+[ext_resource type="Texture2D" uid="uid://c41eii4dmtcw7" path="res://resources/sprites/conceptart3.png" id="3_cuflb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sq1mr"]
 animations = [{
@@ -16,7 +16,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_8ws07")
+"texture": ExtResource("3_cuflb")
 }],
 "loop": true,
 "name": &"default",
@@ -67,14 +67,17 @@ death_particles = NodePath("DeathParticles")
 death_text = NodePath("DeathLabel")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_sq1mr")
 autoplay = "default"
 
 [node name="StandingCollider" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_ijuf3")
 
 [node name="CrouchingCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1.5)
+position = Vector2(0, 5)
+scale = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_ynx8r")
 disabled = true
 

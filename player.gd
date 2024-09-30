@@ -28,9 +28,9 @@ var respawn_point: RespawnPoint = null
 #region Wall Jumping
 
 enum WallDirection {
-    NONE,
-    LEFT,
-    RIGHT
+	NONE,
+	LEFT,
+	RIGHT
 }
 
 @export var jump_from_wall_directional_velocity: float = 350.0
@@ -77,7 +77,7 @@ var time_sliding: float = 0.0
 
 #Return the crouch state for other objexts
 func get_crouch_state():
-    return crouch_state
+	return crouch_state
 
 #endregion
 
@@ -97,16 +97,16 @@ func respawn(point: RespawnPoint = respawn_point) -> void:
 	death_text.hide()
 	dead = false
 	velocity = Vector2(0.0, 0.0)
-	
+
 func die() -> void:
-    if dead:
-        return
-    death_particles.show()
-    death_particles.emitting = true
-    death_particles.restart()
-    animation_manager.hide()
-    death_text.show()
-    dead = true
+	if dead:
+		return
+	death_particles.show()
+	death_particles.emitting = true
+	death_particles.restart()
+	animation_manager.hide()
+	death_text.show()
+	dead = true
 
 # Checks which side of the player is sliding on a wall.
 func sliding_on_wall_check() -> WallDirection:
@@ -149,10 +149,10 @@ func _reset_leaving_wall() -> void:
 
 #Checks the jump with input buffering
 func _check_jump_input() -> bool:
-    if time_since_last_jump_input > 0.0:
-        return true
-    else:
-        return false
+	if time_since_last_jump_input > 0.0:
+		return true
+	else:
+		return false
 
 func crouch_state_check() -> CrouchState:
     if not Input.is_action_pressed("crouch"):
@@ -172,22 +172,22 @@ func crouch_state_check() -> CrouchState:
         return CrouchState.CROUCHING
 
 func animation_state_machine_update() -> void:
-    if crouch_state == CrouchState.NORMAL:
-        animation_manager.play(animation_idle)
-    else:
-        animation_manager.play(animation_crouch)
+	if crouch_state == CrouchState.NORMAL:
+		animation_manager.play(animation_idle)
+	else:
+		animation_manager.play(animation_crouch)
 
 func update_crouch_state(_old_state: CrouchState, new_state: CrouchState) -> void:
-    time_sliding = 0.0
-    if new_state == CrouchState.NORMAL:
-        crouching_collider.disabled = true
-        regular_collider.disabled = false
-    elif new_state == CrouchState.SLIDING:
-        crouching_collider.disabled = false
-        regular_collider.disabled = true
-    else:
-        crouching_collider.disabled = false
-        regular_collider.disabled = true
+	time_sliding = 0.0
+	if new_state == CrouchState.NORMAL:
+		crouching_collider.disabled = true
+		regular_collider.disabled = false
+	elif new_state == CrouchState.SLIDING:
+		crouching_collider.disabled = false
+		regular_collider.disabled = true
+	else:
+		crouching_collider.disabled = false
+		regular_collider.disabled = true
 
 func _physics_process(delta: float) -> void:
 
@@ -229,26 +229,26 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		time_since_last_jump_input = jump_input_buffer_time
 
-    # Add the gravity.
-    if not is_on_floor():
-        if sliding_on_wall == WallDirection.NONE:
-            if Input.is_action_pressed("crouch"):
-                velocity += get_gravity() * 2 * delta
-            else:
-                velocity += get_gravity() * delta
-        else:
-            if(velocity.y < 0):
-                velocity.y *= 0.95
-                velocity += get_gravity() * delta
-            else:
-                velocity += (get_gravity() * wall_slow_multiplier) * delta
+	# Add the gravity.
+	if not is_on_floor():
+		if sliding_on_wall == WallDirection.NONE:
+			if Input.is_action_pressed("crouch"):
+				velocity += get_gravity() * 2 * delta
+			else:
+				velocity += get_gravity() * delta
+		else:
+			if(velocity.y < 0):
+				velocity.y *= 0.95
+				velocity += get_gravity() * delta
+			else:
+				velocity += (get_gravity() * wall_slow_multiplier) * delta
 
-    if is_on_floor():
-        sliding_stamina = max_sliding_stamina
-        #Disables jump-cutting
-        has_jump_cut = false
-    elif sliding_on_wall != WallDirection.NONE:
-        sliding_stamina -= 1
+	if is_on_floor():
+		sliding_stamina = max_sliding_stamina
+		#Disables jump-cutting
+		has_jump_cut = false
+	elif sliding_on_wall != WallDirection.NONE:
+		sliding_stamina -= 1
 
     # Handle the movement/deceleration.
     if direction and not wall_jumping and crouch_state != CrouchState.SLIDING:
@@ -312,4 +312,4 @@ func _physics_process(delta: float) -> void:
 
 	animation_state_machine_update()
 
-    move_and_slide()
+	move_and_slide()

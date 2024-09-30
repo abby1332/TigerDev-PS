@@ -18,3 +18,6 @@ player = NodePath("../Player")
 
 [node name="Floor" parent="." instance=ExtResource("3_npqhu")]
 position = Vector2(62, 14)
+
+[node name="Floor" parent="Floor" instance=ExtResource("3_npqhu")]
+position = Vector2(-374, 0)

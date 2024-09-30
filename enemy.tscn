@@ -18,7 +18,7 @@ animations = [{
 size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ilne"]
-size = Vector2(32, 1)
+size = Vector2(28, 3)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_xhxef")
@@ -32,7 +32,7 @@ sprite_frames = SubResource("SpriteFrames_m8cnm")
 shape = SubResource("RectangleShape2D_7mjne")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 15.5)
+position = Vector2(0, 13.5)
 shape = SubResource("RectangleShape2D_7ilne")
 
 [node name="DirectionTimer" type="Timer" parent="."]

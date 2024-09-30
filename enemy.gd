@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name BasicEnemy
 
-const speed = 10
+const speed: float = 50 #1/4 as fast as the player
 var is_chase: bool = true #Is the enemy currently chasing the player? Will only chase if theyre close
 var is_roaming: bool  = false #Wander around when not attacking the player
 var dead: bool = false
@@ -13,11 +13,14 @@ var knockback_force = -20 #When hit, the enemy will be knocked backwards
 @export var player: CharacterBody2D #Remember to set player in scene inspector
 var player_in_range = false #Is the player close enough to chase
 @onready var damage_zone = $DealDamageArea
+const chase_distance: float = 100 #Distance where enemy will start chasing
+const stop_chase_distance: float = 150 #Distance to stop chasing
 
 func _physics_process(delta):
 	if !is_on_floor():
 		velocity.y += gravity * delta
 		velocity.x = 0
+	check_player_distance()
 	move(delta)
 	move_and_slide()
 
@@ -43,10 +46,23 @@ func _on_direction_timer_timeout() -> void:
 	if !is_chase:
 		dir = choose([Vector2.RIGHT, Vector2.LEFT])
 		velocity.x = 0 #No sliding plz
+
+#Choose a direction to wander in randomly
 func choose(array):
 	array.shuffle()
 	return array.front()
 
+#If player enterse the damage collision zone, player dies
 func _on_deal_damage_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		body.die()
+
+# Check the distance between enemy and player to determine chasing/roaming
+func check_player_distance():
+	if player and !dead: #Chase player when it gets too close
+		var distance_to_player = position.distance_to(player.position)
+		if distance_to_player < chase_distance:
+			is_chase = true
+		elif (distance_to_player > stop_chase_distance) or player.dead: #Start romaing when the player is dead or leaves area
+			is_chase = false
+			is_roaming = true

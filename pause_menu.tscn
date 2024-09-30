@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://betoum50sgox0"]
+
+[ext_resource type="Script" path="res://pause_menu.gd" id="1_2u4f4"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_2u4f4")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.262932, 0.262932, 0.262932, 0.431373)
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -93.0
+offset_right = 79.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 10
+
+[node name="Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "Paused"
+
+[node name="ResumeBtn" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="SettingsBtn" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="QuitBtn" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="GridContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="GridContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="GridContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]

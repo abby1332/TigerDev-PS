@@ -91,6 +91,7 @@ func respawn(point: RespawnPoint = respawn_point) -> void:
 	animation_manager.show()
 	death_text.hide()
 	dead = false
+	velocity = Vector2(0.0, 0.0)
 	
 func die() -> void:
 	if dead:

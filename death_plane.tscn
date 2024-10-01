@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://chrk5vdwtw0j"]
+
+[ext_resource type="Script" path="res://death_plane.gd" id="1_ecxxa"]
+
+[node name="DeathPlane" type="Node2D"]
+script = ExtResource("1_ecxxa")

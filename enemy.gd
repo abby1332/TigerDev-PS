@@ -13,6 +13,7 @@ var knockback_force = -20 #When hit, the enemy will be knocked backwards
 @export var player: CharacterBody2D #Remember to set player in scene inspector
 var player_in_range = false #Is the player close enough to chase
 @onready var damage_zone = $DealDamageArea
+@onready var spike_trap = $SpikeTrapArea
 const chase_distance: float = 100 #Distance where enemy will start chasing
 const stop_chase_distance: float = 150 #Distance to stop chasing
 
@@ -41,6 +42,12 @@ func move(delta):
 			is_roaming = true
 	elif dead:
 		velocity.x = 0 #No sliding around plz
+
+# Reverse direction when hitting a spike trap
+#func _on_spike_trap_area_entered(body: Node2D) -> void:
+	#if body == self:  # Ensure it is the enemy itself that hit the spike
+		#dir.x *= -1  # Reverse direction on spike hit
+		#velocity.x = dir.x * speed  # Update velocity after direction change
 
 #If player enterse the damage collision zone, player dies
 func _on_deal_damage_area_body_entered(body: Node2D) -> void:

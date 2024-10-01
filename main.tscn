@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://d38yynx22ev4y"]
+[gd_scene load_steps=10 format=4 uid="uid://d38yynx22ev4y"]
 
 [ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://player.tscn" id="1_p0mxc"]
 [ext_resource type="PackedScene" uid="uid://bjtvsvry3dapy" path="res://enemy.tscn" id="2_3wa2d"]
@@ -12,7 +12,7 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_p0mxc")]
+[node name="Player" parent="." node_paths=PackedStringArray("spawn_point", "death_plane") instance=ExtResource("1_p0mxc")]
 position = Vector2(0, -10)
 spawn_point = NodePath("../SpawnPoint")
 death_plane = NodePath("../DeathPlane")
@@ -63,7 +63,6 @@ position = Vector2(132, -420)
 rotation = -1.5708
 
 [node name="SpawnPoint" parent="." instance=ExtResource("5_sh2bk")]
-
 position = Vector2(0, -25)
 
 [node name="RespawnPoint" parent="." instance=ExtResource("6_kiqvl")]
@@ -73,4 +72,4 @@ position = Vector2(80, -54)
 position = Vector2(35, -458)
 
 [node name="DeathPlane" parent="." instance=ExtResource("8_74ss3")]
-position = Vector2(0, 20)
+position = Vector2(0, 30)

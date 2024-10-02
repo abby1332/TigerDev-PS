@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://db1mcy4avgl01"]
+
+[ext_resource type="Script" path="res://dropped_card.gd" id="1_crn5m"]
+[ext_resource type="PackedScene" uid="uid://dng35y854mon8" path="res://test_card.tscn" id="2_y17vv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jctu2"]
+size = Vector2(62, 127)
+
+[node name="DroppedCard" type="Area2D" node_paths=PackedStringArray("card")]
+script = ExtResource("1_crn5m")
+card = NodePath("TestCard")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_jctu2")
+
+[node name="TestCard" parent="." instance=ExtResource("2_y17vv")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

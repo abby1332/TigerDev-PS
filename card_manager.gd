@@ -6,17 +6,27 @@ class_name CardManager
 
 @export var max_cards: int = 5
 
+@export var card_scale: Vector2 = Vector2(0.5, 0.5)
+
 var cards: Array[Card] = []
 
 @onready var player: Player = get_parent()
 
+func is_full() -> bool:
+	return cards.size() >= max_cards
+
+func is_empty() -> bool:
+	return cards.size() == 0
+
 func give_card(card: Card) -> bool:
 	if cards.size() >= max_cards:
 		return false
+	card.reparent(self)
 	var sprite := card.sprite
 	sprite.reparent(self)
 	sprite.position = initial_card_position.position
 	sprite.position.x += distance_between_cards * cards.size()
+	sprite.scale = card_scale
 	sprite.show()
 	cards.push_back(card)
 	return true
@@ -56,6 +66,9 @@ func get_card_input() -> int:
 	return -1
 
 func _ready() -> void:
+	
+	show()
+	
 	for child in get_children():
 		print(child.name)
 		if child is TestCard:

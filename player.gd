@@ -2,7 +2,6 @@ extends CharacterBody2D
 class_name Player
 
 @export var card_manager: CardManager
-@export var card_canvas: CanvasLayer
 
 @export var spawn_point: SpawnPoint
 var respawn_point: RespawnPoint = null

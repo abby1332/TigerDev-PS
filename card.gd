@@ -12,4 +12,7 @@ func _ready() -> void:
 			if n is Sprite2D:
 				sprite = n as Sprite2D
 				break
-	sprite.hide()
+	
+	if not get_parent() is DroppedCard:
+		hide()
+	

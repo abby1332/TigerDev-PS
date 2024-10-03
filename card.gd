@@ -15,4 +15,3 @@ func _ready() -> void:
 	
 	if not get_parent() is DroppedCard:
 		hide()
-	

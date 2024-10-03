@@ -12,6 +12,67 @@ var cards: Array[Card] = []
 
 @onready var player: Player = get_parent()
 
+var animated_cards: Dictionary = {}
+
+class CardAnimationInstance:
+	var animated_card: Card
+	var animated_card_sprite: Sprite2D
+	var animation_type: String
+	var cm: CardManager
+	
+	func _init(card: Card, type: String, card_manager: CardManager):
+		animated_card = card
+		animated_card_sprite = card.sprite
+		animation_type = type
+		cm = card_manager
+	
+	func get_position_at_time(t: float, anim_type: String = animation_type) -> Vector2:
+		match anim_type:
+			"scroll_to_back": return get_point_on_bezier_at_time(cm.initial_card_position.position, 
+					cm.initial_card_position.position + Vector2(cm.distance_between_cards * (cm.cards.size() - 1), 0), 
+					Vector2(cm.initial_card_position.position.x, cm.initial_card_position.position.y - cm.initial_card_position.position.x),
+					Vector2(cm.initial_card_position.position.x + cm.distance_between_cards * (cm.cards.size() - 1), cm.initial_card_position.position.y - cm.initial_card_position.position.x),
+					t
+				)
+			# Reverse of scroll_to_back
+			"scroll_to_front": return get_position_at_time(1 - t, "scroll_to_back")
+			"rise": return get_point_for_rise(min(1, t * 2))
+			"slide_left": return get_point_for_slide_left(min(1, t * 3))
+			"slide_right": return get_position_at_time(3 - t, "slide_left")
+			# If the anim_type is unknown made the card do a little jig
+			_: return Vector2(cm.initial_card_position.x * t * 25, cm.initial_card_position.y * t * 25)
+	
+	func animate_card_sprite_pos(t: float) -> void:
+		if animated_card_sprite == null:
+			return
+		animated_card_sprite.position = get_position_at_time(t)
+	
+	# Heisted from: https://docs.godotengine.org/en/stable/tutorials/math/beziers_and_curves.html
+	func get_point_on_bezier_at_time(p1: Vector2, p2: Vector2, c1: Vector2, c2: Vector2, t: float) -> Vector2:
+		var q0 = p1.lerp(c1, t)
+		var q1 = c1.lerp(c2, t)
+		var q2 = c2.lerp(p2, t)
+
+		var r0 = q0.lerp(q1, t)
+		var r1 = q1.lerp(q2, t)
+
+		var s = r0.lerp(r1, t)
+		return s 
+	
+	func get_point_for_rise(t: float) -> Vector2:
+		return Vector2(cm.initial_card_position.position.x + cm.distance_between_cards * cm.cards.find(animated_card), cm.initial_card_position.position.y + ((1 - t) * animated_card_sprite.get_rect().size.y))
+
+	func get_point_for_slide_left(t: float) -> Vector2:
+		var i := cm.cards.find(animated_card)
+		return Vector2(cm.initial_card_position.position.x + (cm.distance_between_cards * (i+1) - cm.distance_between_cards * t), cm.initial_card_position.position.y)
+
+func add_card_to_animated_cards(card: Card, type: String):
+	for ca: CardAnimationInstance in animated_cards:
+		if ca.animated_card == card:
+			animated_cards.erase(ca)
+			break
+	animated_cards[CardAnimationInstance.new(card, type, self)] = 0
+
 func is_full() -> bool:
 	return cards.size() >= max_cards
 
@@ -29,6 +90,7 @@ func give_card(card: Card) -> bool:
 	sprite.scale = card_scale
 	sprite.show()
 	cards.push_back(card)
+	add_card_to_animated_cards(card, "rise")
 	return true
 
 func update_card_positions() -> void:
@@ -49,14 +111,24 @@ func send_top_card_to_back() -> void:
 		return
 	var card := cards.pop_front() as Card
 	cards.push_back(card)
-	update_card_positions()
+	for c: Card in cards:
+		if c == card:
+			continue
+		add_card_to_animated_cards(c, "slide_left")
+	add_card_to_animated_cards(card, "scroll_to_back")
+	#update_card_positions()
 
 func send_back_card_to_top() -> void:
 	if cards.size() < 2:
 		return
 	var card := cards.pop_back() as Card
 	cards.push_front(card)
-	update_card_positions()
+	for c: Card in cards:
+		if c == card:
+			continue
+		add_card_to_animated_cards(c, "slide_right")
+	add_card_to_animated_cards(card, "scroll_to_front")
+	#update_card_positions()
 
 # This looks more elegant than 5 if statements but is probably less efficient.
 func get_card_input() -> int:
@@ -75,6 +147,15 @@ func _ready() -> void:
 			give_card(child as TestCard)
 	print(cards)
 
+func _process(delta: float) -> void:
+	for ca: CardAnimationInstance in animated_cards.keys():
+		var t := animated_cards[ca] as float
+		if t > 1:
+			animated_cards.erase(ca)
+			continue
+		ca.animate_card_sprite_pos(t)
+		animated_cards[ca] += delta
+
 func _physics_process(delta: float) -> void:
 	var card_input := get_card_input()
 	if card_input != -1:
@@ -84,3 +165,7 @@ func _physics_process(delta: float) -> void:
 		send_top_card_to_back()
 	elif Input.is_action_just_pressed("send_back_card_to_top"):
 		send_back_card_to_top()
+		
+	if Input.is_action_just_pressed("crouch"):
+		var ca = CardAnimationInstance.new(cards[1], "slide_left", self)
+		animated_cards[ca] = 0.0

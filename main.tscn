@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b6ugxlnqk3o76" path="res://respawn_point.tscn" id="6_kiqvl"]
 [ext_resource type="PackedScene" uid="uid://chrk5vdwtw0j" path="res://death_plane.tscn" id="8_74ss3"]
 [ext_resource type="PackedScene" uid="uid://fl6siaxv6op2" path="res://card_spawner.tscn" id="9_8chcu"]
-[ext_resource type="PackedScene" uid="uid://cjd010obkmc5g" path="res://dropped_test_card.tscn" id="10_i82mb"]
+[ext_resource type="PackedScene" uid="uid://dng35y854mon8" path="res://test_card.tscn" id="10_id8qi"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -71,4 +71,4 @@ position = Vector2(0, 20)
 
 [node name="CardSpawner" parent="." instance=ExtResource("9_8chcu")]
 position = Vector2(-48, -98)
-dropped_card_scene = ExtResource("10_i82mb")
+card_scene = ExtResource("10_id8qi")

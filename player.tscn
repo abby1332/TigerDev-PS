@@ -1,11 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://oskm0n4w5tpe"]
+[gd_scene load_steps=10 format=3 uid="uid://oskm0n4w5tpe"]
 
 [ext_resource type="Texture2D" uid="uid://cbjeqjdhbphwy" path="res://resources/sprites/red_box_test_player.png" id="1_8ws07"]
 [ext_resource type="Script" path="res://player.gd" id="1_lroia"]
 [ext_resource type="Texture2D" uid="uid://w4o213qf87uv" path="res://resources/sprites/red_box_test_player_crouch.png" id="2_d21u6"]
 [ext_resource type="PackedScene" uid="uid://orv0xlp8qaqf" path="res://card_manager.tscn" id="4_4rsrk"]
-[ext_resource type="PackedScene" uid="uid://dng35y854mon8" path="res://test_card.tscn" id="5_h6wqe"]
-[ext_resource type="PackedScene" uid="uid://culp07wje7a7w" path="res://test_card2.tscn" id="6_dcv3x"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sq1mr"]
 animations = [{
@@ -109,13 +107,3 @@ scroll_active = false
 
 [node name="CardManager" parent="." instance=ExtResource("4_4rsrk")]
 visible = false
-
-[node name="TestCard" parent="CardManager" instance=ExtResource("5_h6wqe")]
-
-[node name="TestCard2" parent="CardManager" instance=ExtResource("6_dcv3x")]
-
-[node name="TestCard3" parent="CardManager" instance=ExtResource("5_h6wqe")]
-
-[node name="TestCard4" parent="CardManager" instance=ExtResource("6_dcv3x")]
-
-[node name="TestCard5" parent="CardManager" instance=ExtResource("5_h6wqe")]

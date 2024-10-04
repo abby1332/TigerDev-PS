@@ -72,6 +72,7 @@ func add_card_to_animated_cards(card: Card, type: String):
 			animated_cards.erase(ca)
 			break
 	animated_cards[CardAnimationInstance.new(card, type, self)] = 0
+	update_card_order()
 
 func is_full() -> bool:
 	return cards.size() >= max_cards
@@ -97,13 +98,18 @@ func update_card_positions() -> void:
 	for i in range(0, cards.size()):
 		cards[i].sprite.position.x = initial_card_position.position.x + (distance_between_cards * i)
 
+func update_card_order() -> void:
+	for i in range(0, cards.size()):
+		cards[i].sprite.z_index = cards.size() - i
+
 func use_card(card_index: int) -> bool:
 	if card_index >= cards.size() or cards[card_index] == null:
 		return false
 	var card := cards[card_index]
 	card.use(player)
 	cards.remove_at(card_index)
-	update_card_positions()
+	for i in range(card_index, cards.size()):
+		add_card_to_animated_cards(cards[i], "slide_left")
 	return true
 
 func send_top_card_to_back() -> void:
@@ -165,7 +171,3 @@ func _physics_process(delta: float) -> void:
 		send_top_card_to_back()
 	elif Input.is_action_just_pressed("send_back_card_to_top"):
 		send_back_card_to_top()
-		
-	if Input.is_action_just_pressed("crouch"):
-		var ca = CardAnimationInstance.new(cards[1], "slide_left", self)
-		animated_cards[ca] = 0.0

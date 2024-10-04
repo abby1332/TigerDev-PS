@@ -23,6 +23,8 @@ var respawn_point: RespawnPoint = null
 
 @export var death_plane: DeathPlane
 
+@onready var camera: Camera2D = get_viewport().get_camera_2d()
+
 #region Wall Jumping
 
 enum WallDirection {

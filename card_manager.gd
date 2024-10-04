@@ -14,6 +14,9 @@ var cards: Array[Card] = []
 
 var animated_cards: Dictionary = {}
 
+var scroll_ready: bool = true
+
+# Class that handles all the animations for a specific card
 class CardAnimationInstance:
 	var animated_card: Card
 	var animated_card_sprite: Sprite2D
@@ -21,7 +24,7 @@ class CardAnimationInstance:
 	var cm: CardManager
 	
 	@warning_ignore("untyped_declaration") #reasoning: constructors cannot have explicit return types
-	func _init(card: Card, type: String, card_manager: CardManager):
+	func _init(card: Card, type: String, card_manager: CardManager) -> void:
 		animated_card = card
 		animated_card_sprite = card.sprite
 		animation_type = type
@@ -73,6 +76,7 @@ class CardAnimationInstance:
 		return Vector2(cm.initial_card_position.position.x + (cm.distance_between_cards * (i-1) + cm.distance_between_cards * t), cm.initial_card_position.position.y)
 
 func add_card_to_animated_cards(card: Card, type: String) -> void:
+	# Erases any CardAnimationInstances that have this card
 	for ca: CardAnimationInstance in animated_cards:
 		if ca.animated_card == card:
 			animated_cards.erase(ca)
@@ -100,10 +104,12 @@ func give_card(card: Card) -> bool:
 	add_card_to_animated_cards(card, "rise")
 	return true
 
-func update_card_positions() -> void:
+# Do not use this function except for when the cards need to have their positions updated instantly (which should be never)
+func instant_update_card_positions() -> void:
 	for i in range(0, cards.size()):
 		cards[i].sprite.position.x = initial_card_position.position.x + (distance_between_cards * i)
 
+# Fixes the z_index of each of the cards
 func update_card_order() -> void:
 	for i in range(0, cards.size()):
 		cards[i].sprite.z_index = cards.size() - i
@@ -128,7 +134,6 @@ func send_top_card_to_back() -> void:
 			continue
 		add_card_to_animated_cards(c, "slide_left")
 	add_card_to_animated_cards(card, "scroll_to_back")
-	#update_card_positions()
 
 func send_back_card_to_top() -> void:
 	if cards.size() < 2:
@@ -140,7 +145,6 @@ func send_back_card_to_top() -> void:
 			continue
 		add_card_to_animated_cards(c, "slide_right")
 	add_card_to_animated_cards(card, "scroll_to_front")
-	#update_card_positions()
 
 # This looks more elegant than 5 if statements but is probably less efficient.
 func get_card_input() -> int:
@@ -149,17 +153,24 @@ func get_card_input() -> int:
 			return i
 	return -1
 
+func reset_scroll() -> void:
+	scroll_ready = true
+
+func begin_scroll_reset_timer() -> void:
+	scroll_ready = false
+	var timer := Timer.new()
+	add_child(timer)
+	timer.wait_time = 0.2
+	timer.one_shot = true
+	timer.timeout.connect(reset_scroll)
+	timer.start()
+
 func _ready() -> void:
 	
 	show()
-	
-	for child in get_children():
-		print(child.name)
-		if child is TestCard:
-			give_card(child as TestCard)
-	print(cards)
 
 func _process(delta: float) -> void:
+	# Updates the animations for each animated card
 	for ca: CardAnimationInstance in animated_cards.keys():
 		var t := animated_cards[ca] as float
 		if t > 1:
@@ -173,7 +184,9 @@ func _physics_process(_delta: float) -> void:
 	if card_input != -1:
 		use_card(card_input - 1)
 	
-	if Input.is_action_just_pressed("send_top_card_to_back"):
+	if Input.is_action_just_pressed("send_top_card_to_back") and scroll_ready:
 		send_top_card_to_back()
-	elif Input.is_action_just_pressed("send_back_card_to_top"):
+		begin_scroll_reset_timer()
+	elif Input.is_action_just_pressed("send_back_card_to_top") and scroll_ready:
 		send_back_card_to_top()
+		begin_scroll_reset_timer()

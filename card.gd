@@ -7,6 +7,7 @@ func use(_player: Player) -> void:
 	push_error("Tried to use card from the base class, the use() function MUST be overriden!")
 
 func _ready() -> void:
+	# If we don't know the sprite, make an attempt to find it
 	if sprite == null:
 		for n in get_children():
 			if n is Sprite2D:

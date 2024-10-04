@@ -20,6 +20,7 @@ class CardAnimationInstance:
 	var animation_type: String
 	var cm: CardManager
 	
+	@warning_ignore("untyped_declaration") #reasoning: constructors cannot have explicit return types
 	func _init(card: Card, type: String, card_manager: CardManager):
 		animated_card = card
 		animated_card_sprite = card.sprite
@@ -35,10 +36,12 @@ class CardAnimationInstance:
 					t
 				)
 			# Reverse of scroll_to_back
-			"scroll_to_front": return get_position_at_time(1 - t, "scroll_to_back")
+			"scroll_to_front": 
+				animated_card.z_index = 0
+				return get_position_at_time(1 - t, "scroll_to_back")
 			"rise": return get_point_for_rise(min(1, t * 2))
 			"slide_left": return get_point_for_slide_left(min(1, t * 3))
-			"slide_right": return get_position_at_time(3 - t, "slide_left")
+			"slide_right": return get_point_for_slide_right(min(1, t * 3))
 			# If the anim_type is unknown made the card do a little jig
 			_: return Vector2(cm.initial_card_position.x * t * 25, cm.initial_card_position.y * t * 25)
 	
@@ -49,15 +52,14 @@ class CardAnimationInstance:
 	
 	# Heisted from: https://docs.godotengine.org/en/stable/tutorials/math/beziers_and_curves.html
 	func get_point_on_bezier_at_time(p1: Vector2, p2: Vector2, c1: Vector2, c2: Vector2, t: float) -> Vector2:
-		var q0 = p1.lerp(c1, t)
-		var q1 = c1.lerp(c2, t)
-		var q2 = c2.lerp(p2, t)
+		var q0 := p1.lerp(c1, t)
+		var q1 := c1.lerp(c2, t)
+		var q2 := c2.lerp(p2, t)
 
-		var r0 = q0.lerp(q1, t)
-		var r1 = q1.lerp(q2, t)
+		var r0 := q0.lerp(q1, t)
+		var r1 := q1.lerp(q2, t)
 
-		var s = r0.lerp(r1, t)
-		return s 
+		return r0.lerp(r1, t)
 	
 	func get_point_for_rise(t: float) -> Vector2:
 		return Vector2(cm.initial_card_position.position.x + cm.distance_between_cards * cm.cards.find(animated_card), cm.initial_card_position.position.y + ((1 - t) * animated_card_sprite.get_rect().size.y))
@@ -65,8 +67,12 @@ class CardAnimationInstance:
 	func get_point_for_slide_left(t: float) -> Vector2:
 		var i := cm.cards.find(animated_card)
 		return Vector2(cm.initial_card_position.position.x + (cm.distance_between_cards * (i+1) - cm.distance_between_cards * t), cm.initial_card_position.position.y)
+	
+	func get_point_for_slide_right(t: float) -> Vector2:
+		var i := cm.cards.find(animated_card)
+		return Vector2(cm.initial_card_position.position.x + (cm.distance_between_cards * (i-1) + cm.distance_between_cards * t), cm.initial_card_position.position.y)
 
-func add_card_to_animated_cards(card: Card, type: String):
+func add_card_to_animated_cards(card: Card, type: String) -> void:
 	for ca: CardAnimationInstance in animated_cards:
 		if ca.animated_card == card:
 			animated_cards.erase(ca)
@@ -162,7 +168,7 @@ func _process(delta: float) -> void:
 		ca.animate_card_sprite_pos(t)
 		animated_cards[ca] += delta
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var card_input := get_card_input()
 	if card_input != -1:
 		use_card(card_input - 1)

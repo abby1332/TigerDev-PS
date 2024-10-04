@@ -3,7 +3,7 @@ class_name DroppedCard
 
 @export var card: Card
 
-func pickup_card(player: Player):
+func pickup_card(player: Player) -> void:
 	if player.card_manager.give_card(card):
 		queue_free()
 

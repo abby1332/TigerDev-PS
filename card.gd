@@ -3,7 +3,7 @@ class_name Card
 
 @export var sprite: Sprite2D
 
-func use(player: Player) -> void:
+func use(_player: Player) -> void:
 	push_error("Tried to use card from the base class, the use() function MUST be overriden!")
 
 func _ready() -> void:

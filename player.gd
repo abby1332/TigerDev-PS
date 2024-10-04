@@ -303,6 +303,9 @@ func _physics_process(delta: float) -> void:
 		#Disables jump-cutting
 		has_jump_cut = false
 
+	if abs(velocity.x) > speed:
+		velocity.x *= 0.95
+
 	animation_state_machine_update()
 
 	move_and_slide()

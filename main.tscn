@@ -16,18 +16,18 @@
 [node name="CharacterBody2D" parent="." node_paths=PackedStringArray("spawn_point", "death_plane") instance=ExtResource("1_p0mxc")]
 position = Vector2(0, -10)
 spawn_point = NodePath("../SpawnPoint")
-animation_idle = null
-animation_crouch = null
-speed = null
-jump_velocity = null
+animation_idle = "default"
+animation_crouch = "crouch"
+speed = 300.0
+jump_velocity = -400.0
 death_plane = NodePath("../DeathPlane")
-jump_from_wall_directional_velocity = null
-climbable_wall_layer = null
-wall_slow_multiplier = null
-leaving_wall_jump_grace_period = null
-max_sliding_stamina = null
-jump_cut_strength = null
-jump_input_buffer_time = null
+jump_from_wall_directional_velocity = 350.0
+climbable_wall_layer = 2
+wall_slow_multiplier = 0.1
+leaving_wall_jump_grace_period = 0.15
+max_sliding_stamina = 50
+jump_cut_strength = 0.5
+jump_input_buffer_time = 0.125
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(2.5, 2.5)

@@ -62,22 +62,11 @@ collision_mask = 7
 script = ExtResource("1_lroia")
 card_manager = NodePath("CardManager")
 animation_manager = NodePath("PlayerSprite")
-animation_idle = null
-animation_crouch = null
-speed = null
-jump_velocity = null
 regular_collider = NodePath("StandingCollider")
 crouching_collider = NodePath("CrouchingCollider")
 sliding_particles = NodePath("SlidingParticles")
 death_particles = NodePath("DeathParticles")
 death_text = NodePath("DeathLabel")
-jump_from_wall_directional_velocity = null
-climbable_wall_layer = null
-wall_slow_multiplier = null
-leaving_wall_jump_grace_period = null
-max_sliding_stamina = null
-jump_cut_strength = null
-jump_input_buffer_time = null
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sq1mr")

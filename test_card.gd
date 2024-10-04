@@ -28,5 +28,5 @@ func use(plyr: Player) -> void:
 
 func _physics_process(delta: float) -> void:
 	if active and not player.dead and abs(player.velocity.x) > 0:
-		player.velocity.x += last_direction * player.speed * delta * 100
+		player.velocity.x += last_direction * player.speed * delta * 30
 		player.move_and_slide()

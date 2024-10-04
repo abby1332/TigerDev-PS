@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+@export var card_manager: CardManager
+
 @export var spawn_point: SpawnPoint
 var respawn_point: RespawnPoint = null
 
@@ -20,6 +22,8 @@ var respawn_point: RespawnPoint = null
 @export var death_text: RichTextLabel
 
 @export var death_plane: DeathPlane
+
+@onready var camera: Camera2D = get_viewport().get_camera_2d()
 
 #region Wall Jumping
 
@@ -75,6 +79,9 @@ var time_sliding: float = 0.0
 
 var dead: bool = false
 
+var direction: float = 0.0
+var last_direction: float = 0.0
+
 func respawn(point: RespawnPoint = respawn_point) -> void:
 	death_particles.hide()
 	death_particles.emitting = false
@@ -98,7 +105,7 @@ func die() -> void:
 	dead = true
 
 # Checks which side of the player is sliding on a wall.
-func sliding_on_wall_check(direction: float) -> WallDirection:
+func sliding_on_wall_check() -> WallDirection:
 	var space := get_world_2d().direct_space_state
 	var left_query := PhysicsRayQueryParameters2D.create(global_position, global_position - Vector2(5, 0), climbable_wall_layer)
 	var left_intersect := space.intersect_ray(left_query)
@@ -193,9 +200,11 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	# Get input movement direction.
-	var direction := Input.get_axis("left", "right")
+	direction = Input.get_axis("left", "right")
+	if direction != 0.0:
+		last_direction = direction
 	
-	sliding_on_wall = sliding_on_wall_check(direction)
+	sliding_on_wall = sliding_on_wall_check()
 	
 	var updated_crouch_state := crouch_state_check()
 	if updated_crouch_state != crouch_state:
@@ -293,6 +302,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y = velocity.y * jump_cut_strength
 		#Disables jump-cutting
 		has_jump_cut = false
+
+	if abs(velocity.x) > speed:
+		velocity.x *= 0.95
 
 	animation_state_machine_update()
 

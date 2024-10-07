@@ -64,9 +64,9 @@ var has_jump_cut: bool = false
 #region Crouching/Sliding
 
 enum CrouchState {
-    NORMAL,
-    CROUCHING,
-    SLIDING
+	NORMAL,
+	CROUCHING,
+	SLIDING
 }
 
 var crouch_state: CrouchState = CrouchState.NORMAL
@@ -141,11 +141,11 @@ func sliding_on_wall_check() -> WallDirection:
 
 # Resets the player's wall jumping variables.
 func _reset_wall_jumping() -> void:
-    wall_jumping = false
-    wall_jumping_from = WallDirection.NONE
+	wall_jumping = false
+	wall_jumping_from = WallDirection.NONE
 
 func _reset_leaving_wall() -> void:
-    leaving_wall = WallDirection.NONE
+	leaving_wall = WallDirection.NONE
 
 #Checks the jump with input buffering
 func _check_jump_input() -> bool:
@@ -155,21 +155,21 @@ func _check_jump_input() -> bool:
 		return false
 
 func crouch_state_check() -> CrouchState:
-    if not Input.is_action_pressed("crouch"):
-        var space := get_world_2d().direct_space_state
-        var top_left_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(-4, -5))
-        var top_left_intersect := space.intersect_ray(top_left_query)
-        var top_right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(4, -5))
-        var top_right_intersect := space.intersect_ray(top_right_query)
-        if (not top_left_intersect.is_empty() or not top_right_intersect.is_empty()) and crouch_state != CrouchState.NORMAL:
-            return CrouchState.CROUCHING
-        return CrouchState.NORMAL
-    elif abs(velocity.x) > 1 and crouch_state != CrouchState.CROUCHING and is_on_floor():
-        return CrouchState.SLIDING
-    else:
-        if sliding_on_wall != WallDirection.NONE:
-            return CrouchState.NORMAL
-        return CrouchState.CROUCHING
+	if not Input.is_action_pressed("crouch"):
+		var space := get_world_2d().direct_space_state
+		var top_left_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(-4, -5))
+		var top_left_intersect := space.intersect_ray(top_left_query)
+		var top_right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(4, -5))
+		var top_right_intersect := space.intersect_ray(top_right_query)
+		if (not top_left_intersect.is_empty() or not top_right_intersect.is_empty()) and crouch_state != CrouchState.NORMAL:
+			return CrouchState.CROUCHING
+		return CrouchState.NORMAL
+	elif abs(velocity.x) > 1 and crouch_state != CrouchState.CROUCHING and is_on_floor():
+		return CrouchState.SLIDING
+	else:
+		if sliding_on_wall != WallDirection.NONE:
+			return CrouchState.NORMAL
+		return CrouchState.CROUCHING
 
 func animation_state_machine_update() -> void:
 	if crouch_state == CrouchState.NORMAL:
@@ -250,62 +250,62 @@ func _physics_process(delta: float) -> void:
 	elif sliding_on_wall != WallDirection.NONE:
 		sliding_stamina -= 1
 
-    # Handle the movement/deceleration.
-    if direction and not wall_jumping and crouch_state != CrouchState.SLIDING:
-        if crouch_state == CrouchState.CROUCHING:
-            velocity.x += direction * speed * crouch_speed_multiplier
-            velocity.x = clampf(velocity.x, -speed * crouch_speed_multiplier, speed * crouch_speed_multiplier)
-        else:
-            velocity.x += direction * speed
-            velocity.x = clampf(velocity.x, -speed, speed)
-    elif wall_jumping_from != WallDirection.NONE:
-        if wall_jumping_from == WallDirection.LEFT:
-            velocity.x = move_toward(velocity.x, jump_from_wall_directional_velocity, speed)
-        else:
-            velocity.x = move_toward(velocity.x, -jump_from_wall_directional_velocity, speed)
-    else:
-        if crouch_state != CrouchState.SLIDING:
-            velocity.x *= 0.6
-        elif time_sliding > 0.5:
-            velocity.x *= 0.95
-        velocity.x += move_toward(velocity.x, 0, speed)
+	# Handle the movement/deceleration.
+	if direction and not wall_jumping and crouch_state != CrouchState.SLIDING:
+		if crouch_state == CrouchState.CROUCHING:
+			velocity.x += direction * speed * crouch_speed_multiplier
+			velocity.x = clampf(velocity.x, -speed * crouch_speed_multiplier, speed * crouch_speed_multiplier)
+		else:
+			velocity.x += direction * speed
+			velocity.x = clampf(velocity.x, -speed, speed)
+	elif wall_jumping_from != WallDirection.NONE:
+		if wall_jumping_from == WallDirection.LEFT:
+			velocity.x = move_toward(velocity.x, jump_from_wall_directional_velocity, speed)
+		else:
+			velocity.x = move_toward(velocity.x, -jump_from_wall_directional_velocity, speed)
+	else:
+		if crouch_state != CrouchState.SLIDING:
+			velocity.x *= 0.6
+		elif time_sliding > 0.5:
+			velocity.x *= 0.95
+		velocity.x += move_toward(velocity.x, 0, speed)
 
-    # Handle jump.
-    if _check_jump_input() and not wall_jumping:
-        if is_on_floor():
-            #Resets the jump input buffer time if successful jump performed
-            time_since_last_jump_input = 0.0
-            #Enables jump-cutting
-            has_jump_cut = true
+	# Handle jump.
+	if _check_jump_input() and not wall_jumping:
+		if is_on_floor():
+			#Resets the jump input buffer time if successful jump performed
+			time_since_last_jump_input = 0.0
+			#Enables jump-cutting
+			has_jump_cut = true
 
-            velocity.y = jump_velocity
-        # If we are sliding on a wall
-        elif sliding_on_wall != WallDirection.NONE or leaving_wall != WallDirection.NONE:
-            if ((direction < 0 and sliding_on_wall == WallDirection.LEFT) or leaving_wall == WallDirection.LEFT) or ((direction > 0 and sliding_on_wall == WallDirection.RIGHT) or leaving_wall == WallDirection.RIGHT):
-                #Resets the jump input buffer time if successful jump performed
-                time_since_last_jump_input = 0.0
-                #Enables jump-cutting
-                has_jump_cut = true
+			velocity.y = jump_velocity
+		# If we are sliding on a wall
+		elif sliding_on_wall != WallDirection.NONE or leaving_wall != WallDirection.NONE:
+			if ((direction < 0 and sliding_on_wall == WallDirection.LEFT) or leaving_wall == WallDirection.LEFT) or ((direction > 0 and sliding_on_wall == WallDirection.RIGHT) or leaving_wall == WallDirection.RIGHT):
+				#Resets the jump input buffer time if successful jump performed
+				time_since_last_jump_input = 0.0
+				#Enables jump-cutting
+				has_jump_cut = true
 
-                sliding_stamina = max_sliding_stamina
-                wall_jumping = true
-                velocity.y = jump_velocity * 0.75
-                if sliding_on_wall != WallDirection.NONE:
-                    wall_jumping_from = sliding_on_wall
-                else:
-                    wall_jumping_from = leaving_wall
-                var reset_wall_jumping_timer := Timer.new()
-                add_child(reset_wall_jumping_timer)
-                reset_wall_jumping_timer.wait_time = 0.25
-                reset_wall_jumping_timer.one_shot = true
-                reset_wall_jumping_timer.timeout.connect(_reset_wall_jumping)
-                reset_wall_jumping_timer.start()
+				sliding_stamina = max_sliding_stamina
+				wall_jumping = true
+				velocity.y = jump_velocity * 0.75
+				if sliding_on_wall != WallDirection.NONE:
+					wall_jumping_from = sliding_on_wall
+				else:
+					wall_jumping_from = leaving_wall
+				var reset_wall_jumping_timer := Timer.new()
+				add_child(reset_wall_jumping_timer)
+				reset_wall_jumping_timer.wait_time = 0.25
+				reset_wall_jumping_timer.one_shot = true
+				reset_wall_jumping_timer.timeout.connect(_reset_wall_jumping)
+				reset_wall_jumping_timer.start()
 
-    #Jump-cuts if the jump input is released during jump
-    if !Input.is_action_pressed("jump") and has_jump_cut and sliding_on_wall == WallDirection.NONE and velocity.y < 0 and not is_on_floor():
-        velocity.y = velocity.y * jump_cut_strength
-        #Disables jump-cutting
-        has_jump_cut = false
+	#Jump-cuts if the jump input is released during jump
+	if !Input.is_action_pressed("jump") and has_jump_cut and sliding_on_wall == WallDirection.NONE and velocity.y < 0 and not is_on_floor():
+		velocity.y = velocity.y * jump_cut_strength
+		#Disables jump-cutting
+		has_jump_cut = false
 
 	if abs(velocity.x) > speed:
 		velocity.x *= 0.95

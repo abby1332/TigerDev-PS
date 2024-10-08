@@ -83,16 +83,22 @@ var direction: float = 0.0
 var last_direction: float = 0.0
 
 func respawn(point: RespawnPoint = respawn_point) -> void:
-	death_particles.hide()
-	death_particles.emitting = false
-	if point != null:
-		point.spawn_point.teleport(self)
+	var where_to_spawn: Vector2
+	if respawn_point == null:
+		where_to_spawn = spawn_point.global_position
 	else:
-		spawn_point.teleport(self)
-	animation_manager.show()
-	death_text.hide()
-	dead = false
-	velocity = Vector2(0.0, 0.0)
+		where_to_spawn = respawn_point.global_position
+	RespawnManager.respawn(where_to_spawn)
+	#death_particles.hide()
+	#death_particles.emitting = false
+	#if point != null:
+		#point.spawn_point.teleport(self)
+	#else:
+		#spawn_point.teleport(self)
+	#animation_manager.show()
+	#death_text.hide()
+	#dead = false
+	#velocity = Vector2(0.0, 0.0)
 	
 func die() -> void:
 	if dead:

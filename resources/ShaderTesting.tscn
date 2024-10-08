@@ -1,11 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bt2h0w2r8651r"]
+[gd_scene load_steps=3 format=3 uid="uid://bt2h0w2r8651r"]
 
+[ext_resource type="Texture2D" uid="uid://be83o1w3rl6wj" path="res://resources/Shaders/Textures/coderoverload.webp" id="1_kofd1"]
 [ext_resource type="Material" uid="uid://1i5oiowvlm5h" path="res://resources/Shaders/Materials/Posterization.tres" id="2_2gx7b"]
 
 [node name="ShaderTesting" type="Node2D"]
 
-[node name="TestImage" type="Sprite2D" parent="."]
-position = Vector2(965, 552)
+[node name="Coderoverload" type="Sprite2D" parent="."]
+position = Vector2(960, 504)
+scale = Vector2(9.54167, 6.33333)
+texture = ExtResource("1_kofd1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

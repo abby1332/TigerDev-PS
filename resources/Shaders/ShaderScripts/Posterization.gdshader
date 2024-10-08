@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform sampler2D u_dither_tex;
+uniform sampler2D u_dither_tex : repeat_enable;
 uniform sampler2D u_color_tex;
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 

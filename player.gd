@@ -88,7 +88,7 @@ func respawn(point: RespawnPoint = respawn_point) -> void:
 		where_to_spawn = spawn_point.global_position
 	else:
 		where_to_spawn = respawn_point.global_position
-	RespawnManager.respawn(where_to_spawn)
+	RespawnManager.respawn()
 	#death_particles.hide()
 	#death_particles.emitting = false
 	#if point != null:

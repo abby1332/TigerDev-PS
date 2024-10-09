@@ -57,7 +57,7 @@ orbit_velocity_max = 0.116
 gravity = Vector3(0, 0, 0)
 color = Color(1, 0, 0, 1)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("card_manager", "animation_manager", "regular_collider", "crouching_collider", "sliding_particles", "death_particles", "death_text")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("card_manager", "animation_manager", "regular_collider", "crouching_collider", "sliding_particles", "death_particles", "death_text", "respawn_effects", "welcome_back_message")]
 collision_mask = 7
 script = ExtResource("1_lroia")
 card_manager = NodePath("CardManager")
@@ -67,6 +67,8 @@ crouching_collider = NodePath("CrouchingCollider")
 sliding_particles = NodePath("SlidingParticles")
 death_particles = NodePath("DeathParticles")
 death_text = NodePath("DeathLabel")
+respawn_effects = NodePath("RespawnEffects")
+welcome_back_message = NodePath("RespawnEffects/RespawnEffectsControl/WelcomeBackMessage")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sq1mr")
@@ -103,6 +105,28 @@ offset_right = 75.0
 offset_bottom = 23.0
 bbcode_enabled = true
 text = "[wave amp=50.0 freq=10.0 connected=1][rainbow]YOU FUCKING DIED[/rainbow][/wave]"
+scroll_active = false
+
+[node name="RespawnEffects" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="RespawnEffectsControl" type="Control" parent="RespawnEffects"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WelcomeBackMessage" type="RichTextLabel" parent="RespawnEffects/RespawnEffectsControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[pulse freq=3.0 color=#00FFF  ease=-1][color=FF0000][outline_size=10][font_size=76][center]WELCOME BACK![/center][/font_size][/outline_size][/color][/pulse]"
 scroll_active = false
 
 [node name="CardManager" parent="." instance=ExtResource("4_4rsrk")]

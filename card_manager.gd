@@ -16,6 +16,8 @@ var animated_cards: Dictionary = {}
 
 var scroll_ready: bool = true
 
+var used_card_spawners: Array[String] = []
+
 # Class that handles all the animations for a specific card
 class CardAnimationInstance:
 	var animated_card: Card

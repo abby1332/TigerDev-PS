@@ -17,4 +17,8 @@ func spawn() -> bool:
 	return true
 
 func _ready() -> void:
-	spawn()
+	if RespawnManager.current_save != null:
+		if not name in RespawnManager.current_save.used_card_spawners:
+			spawn()
+	else:
+		spawn()

@@ -21,8 +21,6 @@ var respawn_point: RespawnPoint = null
 
 @export var death_text: RichTextLabel
 
-@export var death_plane: DeathPlane
-
 @onready var camera: Camera2D = get_viewport().get_camera_2d()
 
 #region Wall Jumping
@@ -191,6 +189,15 @@ func update_crouch_state(_old_state: CrouchState, new_state: CrouchState) -> voi
 		crouching_collider.disabled = false
 		regular_collider.disabled = true
 
+func is_below_death_plane() -> bool:
+	if !is_instance_valid(camera):
+		for child: Node in get_children():
+			if child is Camera2D:
+				camera = child as Camera2D
+				break
+		return is_below_death_plane()
+	return global_position.y > camera.limit_bottom
+
 func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("debug_respawn"):
@@ -201,7 +208,7 @@ func _physics_process(delta: float) -> void:
 	if dead:
 		return
 	
-	if global_position.y > death_plane.global_position.y:
+	if is_below_death_plane():
 		die()
 		return
 	

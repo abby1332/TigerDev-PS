@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://d38yynx22ev4y"]
+[gd_scene load_steps=11 format=4 uid="uid://d38yynx22ev4y"]
 
 [ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://player.tscn" id="1_p0mxc"]
 [ext_resource type="PackedScene" uid="uid://i6ptj3fncpgt" path="res://floor.tscn" id="2_8f8hk"]
@@ -7,25 +7,20 @@
 [ext_resource type="PackedScene" uid="uid://dmijlu5x8oc8w" path="res://spawn_point.tscn" id="5_sh2bk"]
 [ext_resource type="PackedScene" uid="uid://p80u057lknov" path="res://spike_trap.tscn" id="6_6l2wc"]
 [ext_resource type="PackedScene" uid="uid://b6ugxlnqk3o76" path="res://respawn_point.tscn" id="6_kiqvl"]
-[ext_resource type="PackedScene" uid="uid://chrk5vdwtw0j" path="res://death_plane.tscn" id="8_74ss3"]
 [ext_resource type="PackedScene" uid="uid://fl6siaxv6op2" path="res://card_spawner.tscn" id="9_8chcu"]
 [ext_resource type="PackedScene" uid="uid://dng35y854mon8" path="res://test_card.tscn" id="10_id8qi"]
 [ext_resource type="PackedScene" uid="uid://bepyetyir6wh7" path="res://pause_menu.tscn" id="11_brn5f"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." node_paths=PackedStringArray("spawn_point", "death_plane") instance=ExtResource("1_p0mxc")]
+[node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_p0mxc")]
 position = Vector2(0, -10)
 spawn_point = NodePath("../SpawnPoint")
-death_plane = NodePath("../DeathPlane")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2.5, 2.5)
 limit_bottom = 20
 position_smoothing_speed = 20.0
-
-[node name="DeathPlane" parent="." instance=ExtResource("8_74ss3")]
-position = Vector2(0, 20)
 
 [node name="Floor" parent="." instance=ExtResource("2_8f8hk")]
 

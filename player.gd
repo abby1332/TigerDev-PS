@@ -21,6 +21,10 @@ var respawn_point: RespawnPoint = null
 
 @export var death_text: RichTextLabel
 
+@export var respawn_effects: Node
+@export var respawn_effects_length: float = 2.0
+@export var welcome_back_message: RichTextLabel
+
 @onready var camera: Camera2D = get_viewport().get_camera_2d()
 
 #region Wall Jumping

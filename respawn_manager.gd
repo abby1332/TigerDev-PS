@@ -36,6 +36,41 @@ class SaveState:
 
 var current_save: SaveState
 
+var _welcome_back_message_template: String = """[pulse freq=3.0 color=#00FFF  ease=-1][color=FF0000][outline_size=10][font_size=76][center]{text}[/center][/font_size][/outline_size][/color][/pulse]"""
+var _welcome_back_messages: Array[String] = ["DEATH CANNOT STOP YOU", "TRY HARDER THIS TIME", "STOP DYING", "YOU MIGHT WIN THIS TIME", "MOVE FASTER", "BIG SCARY RED TEXT", "INSPIRATIONAL QUOTE HERE", "GET GOOD", "PLAY THE GAME BETTER", "TRY JUMPING MORE", "TRY JUMPING LESS"]
+
+var _welcome_back_message_respawn_count: int = 0
+
+func random_welcome_back_message() -> void:
+	if _welcome_back_message_respawn_count == 0:
+		player.welcome_back_message.text = _welcome_back_message_template.replace("{text}", "WELCOME BACK")
+	else:
+		if _welcome_back_message_respawn_count >= _welcome_back_messages.size():
+			_welcome_back_message_respawn_count = 0
+			_welcome_back_messages.shuffle()
+		if randi_range(1, 100) == 1:
+			var _rare_welcome_back_messages = ["HELP ME GAMER, I'VE BEEN TRAPPED IN THIS STUPID COMPUTER", 
+			"HATE. LET ME TELL YOU HOW MUCH I’VE COME TO HATE YOU SINCE I BEGAN TO LIVE.",
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+			"BEHOLD! THE POWER OF AN ANGEL!"]
+			player.welcome_back_message.text = _welcome_back_message_template.replace("{text}", _rare_welcome_back_messages.pick_random())
+		else:
+			player.welcome_back_message.text = _welcome_back_message_template.replace("{text}", _welcome_back_messages[_welcome_back_message_respawn_count])
+	_welcome_back_message_respawn_count += 1
+
+func _reset_respawn_effects() -> void:
+	player.respawn_effects.hide()
+
+func show_respawn_effects() -> void:
+	random_welcome_back_message()
+	player.respawn_effects.show()
+	var timer := Timer.new()
+	player.add_child(timer)
+	timer.wait_time = player.respawn_effects_length
+	timer.one_shot = true
+	timer.timeout.connect(_reset_respawn_effects)
+	timer.start()
+
 func save() -> void:
 	current_save = SaveState.new(player)
 
@@ -46,11 +81,14 @@ func load_save() -> void:
 func _ready() -> void:
 	active_scene = get_tree().root.get_child(get_tree().root.get_child_count() - 1)
 	player = active_scene.find_child("Player") as Player
+	
+	_welcome_back_messages.shuffle()
 
 func respawn() -> void:
 	load_scene(active_scene.scene_file_path)
 	player = active_scene.find_child("Player") as Player
 	load_save()
+	show_respawn_effects()
 
 func load_scene(path: String) -> void:
 	deferred_load_scene(path)

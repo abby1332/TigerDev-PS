@@ -48,7 +48,7 @@ func random_welcome_back_message() -> void:
 		if _welcome_back_message_respawn_count >= _welcome_back_messages.size():
 			_welcome_back_message_respawn_count = 0
 			_welcome_back_messages.shuffle()
-		if randi_range(1, 100) == 1:
+		if randi_range(1, 300) == 1:
 			var _rare_welcome_back_messages = ["HELP ME GAMER, I'VE BEEN TRAPPED IN THIS STUPID COMPUTER", 
 			"HATE. LET ME TELL YOU HOW MUCH I’VE COME TO HATE YOU SINCE I BEGAN TO LIVE.",
 			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",

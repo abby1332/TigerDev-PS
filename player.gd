@@ -13,7 +13,7 @@ var respawn_point: RespawnPoint = null
 @export var speed: float = 300.0
 @export var jump_velocity: float = -400.0
 
-var is_ignoring_gravity = false
+var is_ignoring_gravity: bool = false
 
 @export var regular_collider: CollisionShape2D
 @export var crouching_collider: CollisionShape2D

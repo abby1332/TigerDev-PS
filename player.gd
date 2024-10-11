@@ -23,6 +23,8 @@ var respawn_point: RespawnPoint = null
 
 @export var death_plane: DeathPlane
 
+@export var camera_manager: CameraManager
+
 @onready var camera: Camera2D = get_viewport().get_camera_2d()
 
 #region Wall Jumping
@@ -184,6 +186,9 @@ func update_crouch_state(_old_state: CrouchState, new_state: CrouchState) -> voi
 	else:
 		crouching_collider.disabled = false
 		regular_collider.disabled = true
+
+func _ready() -> void:
+	camera_manager.start(self)
 
 func _physics_process(delta: float) -> void:
 	

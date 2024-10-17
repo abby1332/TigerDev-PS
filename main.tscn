@@ -22,9 +22,7 @@ death_plane = NodePath("../DeathPlane")
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(2.5, 2.5)
 limit_bottom = 0
-limit_smoothed = true
 position_smoothing_enabled = true
-position_smoothing_speed = 3.0
 
 [node name="Floor" parent="." instance=ExtResource("2_8f8hk")]
 

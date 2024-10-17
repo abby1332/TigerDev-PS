@@ -4,30 +4,20 @@ class_name CameraManager
 var player: Player
 var camera: Camera2D
 
-var left_threshhold: float
-var right_threshhold: float
+var vertical_look: float = 0.0
 
 func start(plyr: Player) -> void:
 	player = plyr
 	camera = player.camera
 	camera.reparent(self)
-	
-	reset_threshholds()
-
-func is_within_threshholds() -> bool:
-	return player.global_position.x > left_threshhold and player.global_position.x < right_threshhold
-
-func reset_threshholds() -> void:
-	left_threshhold = player.global_position.x - 60
-	right_threshhold = player.global_position.x + 60
-	print(Vector2(left_threshhold, right_threshhold))
 
 func update_camera_position() -> void:
-	if is_within_threshholds():
-		position = Vector2(25 * player.last_direction, 0)
+	if player.crouch_state == player.CrouchState.CROUCHING:
+		vertical_look = 1
 	else:
-		reset_threshholds()
+		vertical_look = 0
 	
+	position = Vector2(0, 75 * vertical_look)
 
 func _physics_process(_delta: float) -> void:
 	update_camera_position()

@@ -13,6 +13,8 @@ var respawn_point: RespawnPoint = null
 @export var speed: float = 300.0
 @export var jump_velocity: float = -400.0
 
+var is_ignoring_gravity: bool = false
+
 @export var regular_collider: CollisionShape2D
 @export var crouching_collider: CollisionShape2D
 
@@ -22,6 +24,8 @@ var respawn_point: RespawnPoint = null
 @export var death_text: RichTextLabel
 
 @export var death_plane: DeathPlane
+
+@export var camera_manager: CameraManager
 
 @onready var camera: Camera2D = get_viewport().get_camera_2d()
 
@@ -80,7 +84,9 @@ var time_sliding: float = 0.0
 var dead: bool = false
 
 var direction: float = 0.0
-var last_direction: float = 0.0
+
+var look_direction: Vector2 = Vector2.ZERO
+var last_look_direction: Vector2 = Vector2.ZERO
 
 func respawn(point: RespawnPoint = respawn_point) -> void:
 	death_particles.hide()
@@ -185,6 +191,9 @@ func update_crouch_state(_old_state: CrouchState, new_state: CrouchState) -> voi
 		crouching_collider.disabled = false
 		regular_collider.disabled = true
 
+func _ready() -> void:
+	camera_manager.start(self)
+
 func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("debug_respawn"):
@@ -201,8 +210,10 @@ func _physics_process(delta: float) -> void:
 	
 	# Get input movement direction.
 	direction = Input.get_axis("left", "right")
-	if direction != 0.0:
-		last_direction = direction
+
+	look_direction = Vector2(direction, Input.get_axis("up", "crouch"))
+	if look_direction.x != 0.0 or look_direction.y != 0.0:
+		last_look_direction = look_direction
 	
 	sliding_on_wall = sliding_on_wall_check()
 	
@@ -226,7 +237,7 @@ func _physics_process(delta: float) -> void:
 		time_since_last_jump_input = jump_input_buffer_time
 
 	# Add the gravity.
-	if not is_on_floor():
+	if !is_on_floor() and !is_ignoring_gravity:
 		if sliding_on_wall == WallDirection.NONE:
 			if Input.is_action_pressed("crouch"):
 				velocity += get_gravity() * 2 * delta

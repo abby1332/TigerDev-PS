@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://oskm0n4w5tpe"]
+[gd_scene load_steps=11 format=3 uid="uid://oskm0n4w5tpe"]
 
 [ext_resource type="Texture2D" uid="uid://cbjeqjdhbphwy" path="res://resources/sprites/red_box_test_player.png" id="1_8ws07"]
 [ext_resource type="Script" path="res://player.gd" id="1_lroia"]
 [ext_resource type="Texture2D" uid="uid://w4o213qf87uv" path="res://resources/sprites/red_box_test_player_crouch.png" id="2_d21u6"]
 [ext_resource type="PackedScene" uid="uid://orv0xlp8qaqf" path="res://card_manager.tscn" id="4_4rsrk"]
+[ext_resource type="Script" path="res://camera_manager.gd" id="5_2hta7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sq1mr"]
 animations = [{
@@ -57,7 +58,7 @@ orbit_velocity_max = 0.116
 gravity = Vector3(0, 0, 0)
 color = Color(1, 0, 0, 1)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("card_manager", "animation_manager", "regular_collider", "crouching_collider", "sliding_particles", "death_particles", "death_text")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("card_manager", "animation_manager", "regular_collider", "crouching_collider", "sliding_particles", "death_particles", "death_text", "camera_manager")]
 collision_mask = 7
 script = ExtResource("1_lroia")
 card_manager = NodePath("CardManager")
@@ -67,6 +68,7 @@ crouching_collider = NodePath("CrouchingCollider")
 sliding_particles = NodePath("SlidingParticles")
 death_particles = NodePath("DeathParticles")
 death_text = NodePath("DeathLabel")
+camera_manager = NodePath("CameraManager")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sq1mr")
@@ -107,3 +109,6 @@ scroll_active = false
 
 [node name="CardManager" parent="." instance=ExtResource("4_4rsrk")]
 visible = false
+
+[node name="CameraManager" type="Node2D" parent="."]
+script = ExtResource("5_2hta7")

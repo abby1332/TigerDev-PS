@@ -11,13 +11,10 @@ func start(plyr: Player) -> void:
 	camera = player.camera
 	camera.reparent(self)
 
-func update_camera_position() -> void:
-	if player.crouch_state == player.CrouchState.CROUCHING:
-		vertical_look = 1
-	else:
-		vertical_look = 0
-	
-	position = Vector2(0, 75 * vertical_look)
-
-func _physics_process(_delta: float) -> void:
-	update_camera_position()
+#func update_camera_position() -> void:
+	#vertical_look = max(-1, min(1, player.look_direction.y))
+	#
+	#position = Vector2(0, 75 * vertical_look)
+#
+#func _physics_process(_delta: float) -> void:
+	#update_camera_position()

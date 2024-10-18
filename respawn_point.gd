@@ -31,3 +31,4 @@ func _on_body_entered(body: Node2D) -> void:
 	if player.respawn_point != null:
 		player.respawn_point.set_active_sprite(false)
 	player.respawn_point = self
+	RespawnManager.save()

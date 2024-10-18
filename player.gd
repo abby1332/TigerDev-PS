@@ -23,7 +23,9 @@ var is_ignoring_gravity: bool = false
 
 @export var death_text: RichTextLabel
 
-@export var death_plane: DeathPlane
+@export var respawn_effects: Node
+@export var respawn_effects_length: float = 2.0
+@export var welcome_back_message: RichTextLabel
 
 @export var camera_manager: CameraManager
 
@@ -88,17 +90,23 @@ var direction: float = 0.0
 var look_direction: Vector2 = Vector2.ZERO
 var last_look_direction: Vector2 = Vector2.ZERO
 
-func respawn(point: RespawnPoint = respawn_point) -> void:
-	death_particles.hide()
-	death_particles.emitting = false
-	if point != null:
-		point.spawn_point.teleport(self)
-	else:
-		spawn_point.teleport(self)
-	animation_manager.show()
-	death_text.hide()
-	dead = false
-	velocity = Vector2(0.0, 0.0)
+func respawn(_point: RespawnPoint = respawn_point) -> void:
+	#var where_to_spawn: Vector2
+	#if respawn_point == null:
+		#where_to_spawn = spawn_point.global_position
+	#else:
+		#where_to_spawn = respawn_point.global_position
+	RespawnManager.respawn()
+	#death_particles.hide()
+	#death_particles.emitting = false
+	#if point != null:
+		#point.spawn_point.teleport(self)
+	#else:
+		#spawn_point.teleport(self)
+	#animation_manager.show()
+	#death_text.hide()
+	#dead = false
+	#velocity = Vector2(0.0, 0.0)
 	
 func die() -> void:
 	if dead:
@@ -194,6 +202,15 @@ func update_crouch_state(_old_state: CrouchState, new_state: CrouchState) -> voi
 func _ready() -> void:
 	camera_manager.start(self)
 
+func is_below_death_plane() -> bool:
+	if !is_instance_valid(camera):
+		for child: Node in get_children():
+			if child is Camera2D:
+				camera = child as Camera2D
+				break
+		return is_below_death_plane()
+	return global_position.y > camera.limit_bottom
+
 func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("debug_respawn"):
@@ -204,7 +221,7 @@ func _physics_process(delta: float) -> void:
 	if dead:
 		return
 	
-	if global_position.y > death_plane.global_position.y:
+	if is_below_death_plane():
 		die()
 		return
 	

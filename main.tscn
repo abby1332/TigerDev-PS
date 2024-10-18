@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b6ugxlnqk3o76" path="res://respawn_point.tscn" id="6_kiqvl"]
 [ext_resource type="PackedScene" uid="uid://chrk5vdwtw0j" path="res://death_plane.tscn" id="8_74ss3"]
 [ext_resource type="PackedScene" uid="uid://fl6siaxv6op2" path="res://card_spawner.tscn" id="9_8chcu"]
-[ext_resource type="PackedScene" uid="uid://dng35y854mon8" path="res://test_card.tscn" id="10_id8qi"]
+[ext_resource type="PackedScene" uid="uid://c8vh87q0rdp11" path="res://slice_card.tscn" id="10_0i7dp"]
 [ext_resource type="PackedScene" uid="uid://bepyetyir6wh7" path="res://pause_menu.tscn" id="11_brn5f"]
 
 [node name="Node2D" type="Node2D"]
@@ -72,15 +72,15 @@ position = Vector2(0, 20)
 
 [node name="CardSpawner3" parent="." instance=ExtResource("9_8chcu")]
 position = Vector2(-27, -172)
-card_scene = ExtResource("10_id8qi")
+card_scene = ExtResource("10_0i7dp")
 
 [node name="CardSpawner2" parent="." instance=ExtResource("9_8chcu")]
 position = Vector2(82, -139)
-card_scene = ExtResource("10_id8qi")
+card_scene = ExtResource("10_0i7dp")
 
 [node name="CardSpawner" parent="." instance=ExtResource("9_8chcu")]
 position = Vector2(-48, -98)
-card_scene = ExtResource("10_id8qi")
+card_scene = ExtResource("10_0i7dp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

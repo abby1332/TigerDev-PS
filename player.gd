@@ -79,6 +79,10 @@ var crouch_speed_multiplier: float = 0.5
 
 var time_sliding: float = 0.0
 
+#Return the crouch state for other objects
+func get_crouch_state():
+	return crouch_state
+
 #endregion
 
 var dead: bool = false

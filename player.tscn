@@ -58,8 +58,7 @@ orbit_velocity_max = 0.116
 gravity = Vector3(0, 0, 0)
 color = Color(1, 0, 0, 1)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("card_manager", "animation_manager", "regular_collider", "crouching_collider", "sliding_particles", "death_particles", "death_text", "respawn_effects", "welcome_back_message")]
-
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("card_manager", "animation_manager", "regular_collider", "crouching_collider", "sliding_particles", "death_particles", "death_text", "respawn_effects", "welcome_back_message", "camera_manager")]
 collision_mask = 7
 script = ExtResource("1_lroia")
 card_manager = NodePath("CardManager")
@@ -69,9 +68,9 @@ crouching_collider = NodePath("CrouchingCollider")
 sliding_particles = NodePath("SlidingParticles")
 death_particles = NodePath("DeathParticles")
 death_text = NodePath("DeathLabel")
-camera_manager = NodePath("CameraManager")
 respawn_effects = NodePath("RespawnEffects")
 welcome_back_message = NodePath("RespawnEffects/RespawnEffectsControl/WelcomeBackMessage")
+camera_manager = NodePath("CameraManager")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sq1mr")

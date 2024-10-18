@@ -1,0 +1,3 @@
+The following files in this directory are licensed CC0 by datagoblin:
+	- monogram-extended.ttf
+	- monogram-extended-italic.ttf

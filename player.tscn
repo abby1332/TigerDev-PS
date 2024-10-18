@@ -126,7 +126,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "[pulse freq=3.0 color=#00FFF  ease=-1][color=FF0000][outline_size=10][font_size=76][center]WELCOME BACK![/center][/font_size][/outline_size][/color][/pulse]"
+text = "[pulse freq=3.0 color=#00FFF  ease=-1][color=FF0000][outline_size=5][font_size=100][center][font=res://resources/fonts/monogram-extended.ttf]WELCOME BACK![/font][/center][/font_size][/outline_size][/color][/pulse]"
 scroll_active = false
 
 [node name="CardManager" parent="." instance=ExtResource("4_4rsrk")]

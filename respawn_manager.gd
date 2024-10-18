@@ -36,7 +36,7 @@ class SaveState:
 
 var current_save: SaveState
 
-var _welcome_back_message_template: String = """[pulse freq=3.0 color=#00FFF  ease=-1][color=FF0000][outline_size=10][font_size=76][center]{text}[/center][/font_size][/outline_size][/color][/pulse]"""
+var _welcome_back_message_template: String = """[pulse freq=3.0 color=#00FFF  ease=-1][color=FF0000][outline_size=5][font_size=100][center][font=res://resources/fonts/monogram-extended.ttf]{text}[/font][/center][/font_size][/outline_size][/color][/pulse]"""
 var _welcome_back_messages: Array[String] = ["DEATH CANNOT STOP YOU", "TRY HARDER THIS TIME", "STOP DYING", "YOU MIGHT WIN THIS TIME", "MOVE FASTER", "BIG SCARY RED TEXT", "INSPIRATIONAL QUOTE HERE", "GET GOOD", "PLAY THE GAME BETTER", "TRY JUMPING MORE", "TRY JUMPING LESS"]
 
 var _welcome_back_message_respawn_count: int = 0
@@ -49,7 +49,7 @@ func random_welcome_back_message() -> void:
 			_welcome_back_message_respawn_count = 0
 			_welcome_back_messages.shuffle()
 		if randi_range(1, 300) == 1:
-			var _rare_welcome_back_messages = ["HELP ME GAMER, I'VE BEEN TRAPPED IN THIS STUPID COMPUTER", 
+			var _rare_welcome_back_messages := ["HELP ME GAMER, I'VE BEEN TRAPPED IN THIS STUPID COMPUTER", 
 			"HATE. LET ME TELL YOU HOW MUCH I’VE COME TO HATE YOU SINCE I BEGAN TO LIVE.",
 			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 			"BEHOLD! THE POWER OF AN ANGEL!"]

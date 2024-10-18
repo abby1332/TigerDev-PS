@@ -88,12 +88,12 @@ var direction: float = 0.0
 var look_direction: Vector2 = Vector2.ZERO
 var last_look_direction: Vector2 = Vector2.ZERO
 
-func respawn(point: RespawnPoint = respawn_point) -> void:
-	var where_to_spawn: Vector2
-	if respawn_point == null:
-		where_to_spawn = spawn_point.global_position
-	else:
-		where_to_spawn = respawn_point.global_position
+func respawn(_point: RespawnPoint = respawn_point) -> void:
+	#var where_to_spawn: Vector2
+	#if respawn_point == null:
+		#where_to_spawn = spawn_point.global_position
+	#else:
+		#where_to_spawn = respawn_point.global_position
 	RespawnManager.respawn()
 	#death_particles.hide()
 	#death_particles.emitting = false

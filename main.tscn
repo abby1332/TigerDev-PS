@@ -20,7 +20,6 @@ spawn_point = NodePath("../SpawnPoint")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2.5, 2.5)
-
 limit_bottom = 50
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0

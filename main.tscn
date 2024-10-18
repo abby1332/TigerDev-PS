@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://d38yynx22ev4y"]
+[gd_scene load_steps=12 format=4 uid="uid://d38yynx22ev4y"]
 
 [ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://player.tscn" id="1_p0mxc"]
+[ext_resource type="PackedScene" uid="uid://bjtvsvry3dapy" path="res://enemy.tscn" id="2_3wa2d"]
 [ext_resource type="PackedScene" uid="uid://i6ptj3fncpgt" path="res://floor.tscn" id="2_8f8hk"]
 [ext_resource type="PackedScene" uid="uid://bvdu5v28yulr0" path="res://climbable_wall.tscn" id="3_04c0g"]
 [ext_resource type="PackedScene" uid="uid://be1mbm2trdwj2" path="res://test_tile_map.tscn" id="4_eo0di"]
@@ -14,7 +15,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_p0mxc")]
-position = Vector2(0, -10)
+position = Vector2(-13, -157)
 spawn_point = NodePath("../SpawnPoint")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -27,6 +28,10 @@ drag_horizontal_enabled = true
 drag_horizontal_offset = 0.2
 drag_left_margin = 0.1
 drag_right_margin = 0.1
+
+[node name="Enemy" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(116, -130)
+scale = Vector2(0.5, 0.5)
 
 [node name="Floor" parent="." instance=ExtResource("2_8f8hk")]
 

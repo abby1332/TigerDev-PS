@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+static var player: Player = self
+
 @export var card_manager: CardManager
 
 @export var spawn_point: SpawnPoint
@@ -81,6 +83,10 @@ var crouch_speed_multiplier: float = 0.5
 
 var time_sliding: float = 0.0
 
+#Return the crouch state for other objects
+func get_crouch_state() -> CrouchState:
+	return crouch_state
+
 #endregion
 
 var dead: bool = false
@@ -89,6 +95,9 @@ var direction: float = 0.0
 
 var look_direction: Vector2 = Vector2.ZERO
 var last_look_direction: Vector2 = Vector2.ZERO
+
+func _ready() -> void:
+	player = self
 
 func respawn(_point: RespawnPoint = respawn_point) -> void:
 	#var where_to_spawn: Vector2

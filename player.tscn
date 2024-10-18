@@ -134,5 +134,7 @@ scroll_active = false
 [node name="CardManager" parent="." instance=ExtResource("4_4rsrk")]
 visible = false
 
+[node name="Area2D" type="Area2D" parent="."]
+
 [node name="CameraManager" type="Node2D" parent="."]
 script = ExtResource("5_2hta7")

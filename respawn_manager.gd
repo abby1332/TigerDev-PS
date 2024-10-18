@@ -22,7 +22,7 @@ class SaveState:
 		var card_manager := plyr.card_manager
 		for path: String in cards:
 			var card: Card = ResourceLoader.load(path).instantiate() as Card
-			player.add_child(card)
+			plyr.add_child(card)
 			card_manager.give_card(card)
 		card_manager.used_card_spawners.append_array(used_card_spawners)
 		

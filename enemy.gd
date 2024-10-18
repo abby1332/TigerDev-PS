@@ -31,9 +31,12 @@ var is_dealing_damage: bool = false
 #It can go left or right no jumping
 var dir: Vector2 
 
-@onready var player: Player = RespawnManager.player
+@onready var player: Player = Player.player
 
 @onready var damage_zone = $DealDamageArea
+
+@onready var general_area: Area2D = $GeneralCollision
+@onready var general_collider: CollisionShape2D = $GeneralCollision/CollisionShape2D
 
 func _physics_process(delta):
 	if !is_on_floor():
@@ -42,6 +45,23 @@ func _physics_process(delta):
 	check_player_distance()
 	move(delta)
 	move_and_slide()
+
+# -1 for approaching left edge, 0 for none, 1 for approaching right edge
+func approaching_edge() -> int:
+	if !is_on_floor():
+		return 0
+	var space := get_world_2d().direct_space_state
+	var rect := general_collider.shape.get_rect().size
+	var left_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(-rect.x / 2 - 1, rect.y / 2 + 1), general_area.collision_mask)
+	var left_intersect := space.intersect_ray(left_query)
+	if left_intersect.is_empty():
+		return -1
+	var right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(rect.x / 2 + 1, rect.y / 2 + 1), general_area.collision_mask)
+	var right_intersect := space.intersect_ray(right_query)
+	if right_intersect.is_empty():
+		return 1
+	return 0
+	
 
 #Determines if the enemy should be chasing, roaming, or dying
 func move(delta) -> void:
@@ -73,6 +93,19 @@ func move(delta) -> void:
 		velocity.x = 0 
 	if abs(velocity.x) > speed:
 		velocity.x *= 0.95
+	var edge = approaching_edge()
+	if is_chasing and player.global_position.y <= global_position.y:
+		if edge < 0:
+			velocity.x = max(0, velocity.x)
+		elif edge > 0:
+			velocity.x = min(0, velocity.x)
+	elif !is_chasing:
+		if edge < 0:
+			velocity.x = max(0, velocity.x)
+			dir *= -1
+		elif edge > 0:
+			velocity.x = min(0, velocity.x)
+			dir *= -1
 
 func disable_movement(seconds: float):
 	movement_disabled = true

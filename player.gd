@@ -31,7 +31,7 @@ var is_ignoring_gravity: bool = false
 
 @export var camera_manager: CameraManager
 
-@onready var camera: Camera2D = get_viewport().get_camera_2d()
+@onready var camera: Camera2D = $Camera2D
 
 #region Wall Jumping
 
@@ -98,6 +98,7 @@ var last_look_direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	player = self
+	camera_manager.start()
 
 func respawn(_point: RespawnPoint = respawn_point) -> void:
 	#var where_to_spawn: Vector2
@@ -130,7 +131,8 @@ func die() -> void:
 # Checks which side of the player is sliding on a wall.
 func sliding_on_wall_check() -> WallDirection:
 	var space := get_world_2d().direct_space_state
-	var left_query := PhysicsRayQueryParameters2D.create(global_position, global_position - Vector2(5, 0), climbable_wall_layer)
+	var rect := regular_collider.shape.get_rect().size
+	var left_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(-rect.x, 0), climbable_wall_layer)
 	var left_intersect := space.intersect_ray(left_query)
 	if not left_intersect.is_empty():
 		# Reset stamina if we fall off one wall then cling onto another
@@ -139,7 +141,7 @@ func sliding_on_wall_check() -> WallDirection:
 		if direction < 0 and sliding_stamina > 0:
 			last_wall_clinged_to = left_intersect["collider"]
 			return WallDirection.LEFT
-	var right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(5, 0), climbable_wall_layer)
+	var right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(rect.x, 0), climbable_wall_layer)
 	var right_intersect := space.intersect_ray(right_query)
 	if not right_intersect.is_empty():
 		# Reset stamina if we fall off one wall then cling onto another
@@ -176,9 +178,10 @@ func _check_jump_input() -> bool:
 func crouch_state_check() -> CrouchState:
 	if not Input.is_action_pressed("crouch"):
 		var space := get_world_2d().direct_space_state
-		var top_left_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(-4, -5))
+		var rect := crouching_collider.shape.get_rect().size
+		var top_left_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(rect.x * -1 + 1, -rect.y - 1))
 		var top_left_intersect := space.intersect_ray(top_left_query)
-		var top_right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(4, -5))
+		var top_right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(rect.x - 1, -rect.y - 1))
 		var top_right_intersect := space.intersect_ray(top_right_query)
 		if (not top_left_intersect.is_empty() or not top_right_intersect.is_empty()) and crouch_state != CrouchState.NORMAL:
 			return CrouchState.CROUCHING
@@ -207,9 +210,6 @@ func update_crouch_state(_old_state: CrouchState, new_state: CrouchState) -> voi
 	else:
 		crouching_collider.disabled = false
 		regular_collider.disabled = true
-
-func _ready() -> void:
-	camera_manager.start(self)
 
 func is_below_death_plane() -> bool:
 	if !is_instance_valid(camera):

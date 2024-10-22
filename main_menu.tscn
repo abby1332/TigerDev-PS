@@ -11,118 +11,138 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-grow_horizontal = 2
+[node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="PlacekLogo" type="Sprite2D" parent="Control"]
-position = Vector2(0, 100)
-scale = Vector2(4, 4)
-texture = ExtResource("1_1whhs")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Buttons" type="Control" parent="."]
+[node name="Buttons" type="Control" parent="CanvasLayer"]
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 script = ExtResource("2_wk6rj")
+first_level_path = "res://main.tscn"
 
-[node name="StartButton" type="Button" parent="Buttons"]
+[node name="StartButton" type="Button" parent="CanvasLayer/Buttons" node_paths=PackedStringArray("label")]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_top = 300.0
-offset_right = 300.0
+offset_right = 230.0
 offset_bottom = 350.0
 grow_vertical = 2
 flat = true
-alignment = 0
 script = ExtResource("3_rbpxv")
+label = NodePath("StartLabel")
 
-[node name="StartLabel" type="RichTextLabel" parent="Buttons/StartButton"]
+[node name="StartLabel" type="RichTextLabel" parent="CanvasLayer/Buttons/StartButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 bbcode_enabled = true
 text = "[font=res://resources/fonts/monogram-extended.ttf][font size=60]  START[/font]"
 
-[node name="OptionButton" type="Button" parent="Buttons"]
+[node name="OptionButton" type="Button" parent="CanvasLayer/Buttons" node_paths=PackedStringArray("label")]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_top = 350.0
-offset_right = 300.0
+offset_right = 230.0
 offset_bottom = 400.0
 grow_vertical = 2
 flat = true
 alignment = 0
 script = ExtResource("3_rbpxv")
+label = NodePath("OptionLabel")
 
-[node name="OptionLabel" type="RichTextLabel" parent="Buttons/OptionButton"]
+[node name="OptionLabel" type="RichTextLabel" parent="CanvasLayer/Buttons/OptionButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 bbcode_enabled = true
 text = "[font=res://resources/fonts/monogram-extended.ttf][font size=60]  OPTIONS[/font]"
 
-[node name="CreditButton" type="Button" parent="Buttons"]
+[node name="CreditButton" type="Button" parent="CanvasLayer/Buttons" node_paths=PackedStringArray("label")]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_top = 400.0
-offset_right = 300.0
+offset_right = 230.0
 offset_bottom = 450.0
 grow_vertical = 2
 flat = true
 alignment = 0
 script = ExtResource("3_rbpxv")
+label = NodePath("CreditLabel")
 
-[node name="CreditLabel" type="RichTextLabel" parent="Buttons/CreditButton"]
+[node name="CreditLabel" type="RichTextLabel" parent="CanvasLayer/Buttons/CreditButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 bbcode_enabled = true
 text = "[font=res://resources/fonts/monogram-extended.ttf][font size=60]  CREDITS[/font]"
 
-[node name="ExitButton" type="Button" parent="Buttons"]
+[node name="ExitButton" type="Button" parent="CanvasLayer/Buttons" node_paths=PackedStringArray("label")]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_top = 450.0
-offset_right = 300.0
+offset_right = 230.0
 offset_bottom = 500.0
 grow_vertical = 2
 flat = true
 alignment = 0
 script = ExtResource("3_rbpxv")
+label = NodePath("ExitLabel")
 
-[node name="ExitLabel" type="RichTextLabel" parent="Buttons/ExitButton"]
+[node name="ExitLabel" type="RichTextLabel" parent="CanvasLayer/Buttons/ExitButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 bbcode_enabled = true
 text = "[font=res://resources/fonts/monogram-extended.ttf][font size=60]  EXIT[/font]"
 
-[connection signal="pressed" from="Buttons/StartButton" to="Buttons" method="_on_start_button_pressed"]
-[connection signal="pressed" from="Buttons/OptionButton" to="Buttons" method="_on_option_button_pressed"]
-[connection signal="pressed" from="Buttons/CreditButton" to="Buttons" method="_on_credit_button_pressed"]
-[connection signal="pressed" from="Buttons/ExitButton" to="Buttons" method="_on_exit_button_pressed"]
+[node name="Control" type="Control" parent="CanvasLayer"]
+z_index = -1
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="PlacekLogo" type="Sprite2D" parent="CanvasLayer/Control"]
+position = Vector2(0, 100)
+scale = Vector2(4, 4)
+texture = ExtResource("1_1whhs")
+
+[connection signal="mouse_entered" from="CanvasLayer/Buttons/StartButton" to="CanvasLayer/Buttons" method="_on_start_button_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Buttons/StartButton" to="CanvasLayer/Buttons" method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/OptionButton" to="CanvasLayer/Buttons" method="_on_option_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/CreditButton" to="CanvasLayer/Buttons" method="_on_credit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/ExitButton" to="CanvasLayer/Buttons" method="_on_exit_button_pressed"]

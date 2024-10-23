@@ -1,14 +1,12 @@
 extends Node2D
 class_name CameraManager
 
-var player: Player
 var camera: Camera2D
 
-var vertical_look: float = 0.0
+#var vertical_look: float = 0.0
 
-func start(plyr: Player) -> void:
-	player = plyr
-	camera = player.camera
+func start() -> void:
+	camera = Player.player.camera
 	camera.reparent(self)
 
 #func update_camera_position() -> void:

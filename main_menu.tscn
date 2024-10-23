@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c45w12qbqt8p0"]
+[gd_scene load_steps=8 format=3 uid="uid://c45w12qbqt8p0"]
 
 [ext_resource type="Texture2D" uid="uid://cg4uasacwppjb" path="res://resources/sprites/gui/Placek_LOGO.png" id="1_1whhs"]
 [ext_resource type="Script" path="res://main_menu_button_manager.gd" id="2_wk6rj"]
 [ext_resource type="Script" path="res://main_menu_button.gd" id="3_rbpxv"]
+[ext_resource type="PackedScene" uid="uid://cms75vdmxf8wg" path="res://resources/3d/Placek.glb" id="4_othdc"]
+[ext_resource type="Script" path="res://resources/3d/rotating_title.gd" id="5_6prxi"]
 
 [sub_resource type="Gradient" id="Gradient_mf5uh"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -21,11 +23,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Buttons" type="Control" parent="CanvasLayer"]
+[node name="Buttons" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("credit_screen_parent")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -33,6 +33,7 @@ offset_bottom = 40.0
 mouse_filter = 2
 script = ExtResource("2_wk6rj")
 first_level_path = "res://main.tscn"
+credit_screen_parent = NodePath("../Control2")
 
 [node name="StartButton" type="Button" parent="CanvasLayer/Buttons" node_paths=PackedStringArray("label")]
 layout_mode = 1
@@ -136,6 +137,7 @@ bbcode_enabled = true
 text = "[font=res://resources/fonts/monogram-extended.ttf][font size=60]  EXIT[/font]"
 
 [node name="Control" type="Control" parent="CanvasLayer"]
+visible = false
 z_index = -1
 layout_mode = 3
 anchors_preset = 5
@@ -150,6 +152,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("1_1whhs")
 
 [node name="Control2" type="Control" parent="CanvasLayer"]
+visible = false
 z_index = 1
 layout_mode = 3
 anchors_preset = 15
@@ -183,9 +186,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 64.0
-offset_right = 10.0
+offset_left = 3.0
+offset_top = 109.0
+offset_right = -2.0
+offset_bottom = -68.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -212,7 +216,7 @@ mouse_filter = 2
 bbcode_enabled = true
 text = "[center][font=res://resources/fonts/monogram-extended.ttf][font size=120][u]CREDITS[/u][/font]"
 
-[node name="Button" type="Button" parent="CanvasLayer/Control2"]
+[node name="CreditExitButton" type="Button" parent="CanvasLayer/Control2"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -221,7 +225,7 @@ offset_top = -68.0
 offset_right = 177.0
 grow_vertical = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control2/Button"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control2/CreditExitButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -238,8 +242,29 @@ mouse_filter = 2
 bbcode_enabled = true
 text = "[center][font=res://resources/fonts/monogram-extended.ttf][font size=60]EXIT[/font]"
 
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="Node3D" type="Node3D" parent="."]
+script = ExtResource("5_6prxi")
+
+[node name="Placek" parent="Node3D" instance=ExtResource("4_othdc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.8, -3)
+
+[node name="Placek2" parent="Node3D" instance=ExtResource("4_othdc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.25729, 0.8, 3)
+
+[node name="Node3D" type="Node3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Placek" parent="Node3D/Node3D" instance=ExtResource("4_othdc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.8, -3)
+
+[node name="Placek2" parent="Node3D/Node3D" instance=ExtResource("4_othdc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.25729, 0.8, 3)
+
 [connection signal="mouse_entered" from="CanvasLayer/Buttons/StartButton" to="CanvasLayer/Buttons" method="_on_start_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Buttons/StartButton" to="CanvasLayer/Buttons" method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Buttons/OptionButton" to="CanvasLayer/Buttons" method="_on_option_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Buttons/CreditButton" to="CanvasLayer/Buttons" method="_on_credit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Buttons/ExitButton" to="CanvasLayer/Buttons" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control2/CreditExitButton" to="CanvasLayer/Buttons" method="_on_credit_exit_button_pressed"]

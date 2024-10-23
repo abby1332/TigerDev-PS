@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://c45w12qbqt8p0"]
+[gd_scene load_steps=6 format=3 uid="uid://c45w12qbqt8p0"]
 
 [ext_resource type="Texture2D" uid="uid://cg4uasacwppjb" path="res://resources/sprites/gui/Placek_LOGO.png" id="1_1whhs"]
 [ext_resource type="Script" path="res://main_menu_button_manager.gd" id="2_wk6rj"]
 [ext_resource type="Script" path="res://main_menu_button.gd" id="3_rbpxv"]
+
+[sub_resource type="Gradient" id="Gradient_mf5uh"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w1biw"]
+gradient = SubResource("Gradient_mf5uh")
+width = 500
+height = 500
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -140,6 +148,95 @@ mouse_filter = 2
 position = Vector2(0, 100)
 scale = Vector2(4, 4)
 texture = ExtResource("1_1whhs")
+
+[node name="Control2" type="Control" parent="CanvasLayer"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CreditBackgroundPositioner" type="Control" parent="CanvasLayer/Control2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreditBackground" type="Sprite2D" parent="CanvasLayer/Control2/CreditBackgroundPositioner"]
+position = Vector2(16.4062, 16.4375)
+scale = Vector2(2.38238, 1.35425)
+texture = SubResource("GradientTexture2D_w1biw")
+
+[node name="CreditList" type="RichTextLabel" parent="CanvasLayer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 64.0
+offset_right = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font=res://resources/fonts/monogram-extended.ttf][font size=60]
+[ul]THE GHOST OF GEORGE ORWELL[/ul]
+[ul]THE GHOST OF CHRISTMAS PAST[/ul]
+[ul]EVERYONE THAT HAS EVER LIVED[/ul]
+[ul]THE GHOST OF CHRISTMAS FUTURE[/ul]
+[ul]MY PARENTS(?)[/ul]
+[ul]THE WHEAT THAT DIED TO BECOME MY BREAKFAST[/ul]"
+tab_size = 1
+
+[node name="CreditTitle" type="RichTextLabel" parent="CanvasLayer/Control2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 118.0
+grow_horizontal = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[center][font=res://resources/fonts/monogram-extended.ttf][font size=120][u]CREDITS[/u][/font]"
+
+[node name="Button" type="Button" parent="CanvasLayer/Control2"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -68.0
+offset_right = 177.0
+grow_vertical = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control2/Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -25.0
+offset_right = 50.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[center][font=res://resources/fonts/monogram-extended.ttf][font size=60]EXIT[/font]"
 
 [connection signal="mouse_entered" from="CanvasLayer/Buttons/StartButton" to="CanvasLayer/Buttons" method="_on_start_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Buttons/StartButton" to="CanvasLayer/Buttons" method="_on_start_button_pressed"]

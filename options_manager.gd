@@ -1,9 +1,10 @@
 extends Node
 
 const default_options: Dictionary = {
-	"test" = 5,
-	"test_2" = 10,
-	"test_3" = "what the fuck"
+	"audio.master" = 100,
+	"audio.music" = 100,
+	"audio.sound_effects" = 100,
+	"graphics.full_screen" = false
 }
 
 var options: Dictionary = default_options.duplicate(true)
@@ -16,8 +17,7 @@ func _enter_tree() -> void:
 		return
 	for section in config.get_sections():
 		for key in config.get_section_keys(section):
-			options[key] = config.get_value(section, key)
-	set_option("test", 234892934)
+			options[section + "." + key] = config.get_value(section, key)
 	save()
 
 func reset() -> void:
@@ -27,14 +27,17 @@ func reset() -> void:
 
 func save() -> void:
 	for key: String in options.keys():
-		config.set_value("options", key, options[key])
+		var sectionkey := key.split(".")
+		config.set_value(sectionkey[0], sectionkey[1], options[key])
 	config.save("user://options.cfg")
 
-func get_option(key: String) -> Variant:
-	return options[key]
+func get_option(section: String, key: String) -> Variant:
+	if options[section + "." + key] == null:
+		options[section + "." + key] = default_options[section + "." + key]
+	return options[section + "." + key]
 	
-func set_option(key: String, value: Variant) -> void:
-	if get_option(key) == value:
+func set_option(section: String, key: String, value: Variant) -> void:
+	if get_option(section, key) == value:
 		return
-	options[key] = value
+	options[section + "." + key] = value
 	save()

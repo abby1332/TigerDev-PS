@@ -84,6 +84,10 @@ func _ready() -> void:
 	
 	_welcome_back_messages.shuffle()
 
+func update_active_scene() -> void:
+	active_scene = get_tree().root.get_child(get_tree().root.get_child_count() - 1)
+	player = active_scene.find_child("Player") as Player
+
 func respawn() -> void:
 	load_scene(active_scene.scene_file_path)
 	player = active_scene.find_child("Player") as Player

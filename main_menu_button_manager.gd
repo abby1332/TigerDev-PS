@@ -9,6 +9,7 @@ func _on_start_button_pressed() -> void:
 	if(credit_screen_parent.visible):
 		return
 	RespawnManager.load_scene(first_level_path)
+	RespawnManager.update_active_scene()
 
 func _on_option_button_pressed() -> void:
 	if(credit_screen_parent.visible || options_screen_parent.visible):

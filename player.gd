@@ -96,6 +96,22 @@ var direction: float = 0.0
 var look_direction: Vector2 = Vector2.ZERO
 var last_look_direction: Vector2 = Vector2.ZERO
 
+var kill_everything_mode: bool = false
+var kill_everything_timer: Timer = null
+
+func activate_kill_everything_mode(seconds: float) -> void:
+	if kill_everything_timer != null:
+		kill_everything_timer.free()
+		kill_everything_timer = null
+	kill_everything_mode = true
+	kill_everything_timer = Timer.new()
+	add_child(kill_everything_timer)
+	kill_everything_timer.wait_time = seconds
+	kill_everything_timer.one_shot = true
+	var timeout := func () -> void: kill_everything_mode = false
+	kill_everything_timer.timeout.connect(timeout)
+	kill_everything_timer.start()
+
 func _ready() -> void:
 	player = self
 	camera_manager.start()

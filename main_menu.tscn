@@ -3,16 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://cg4uasacwppjb" path="res://resources/sprites/gui/Placek_LOGO.png" id="1_1whhs"]
 [ext_resource type="Script" path="res://main_menu_button_manager.gd" id="2_wk6rj"]
 [ext_resource type="Script" path="res://main_menu_button.gd" id="3_rbpxv"]
+[ext_resource type="Theme" uid="uid://cd3c80nfki0s0" path="res://theme.tres" id="4_bcpts"]
+[ext_resource type="Script" path="res://options_panel.gd" id="4_jnuoe"]
 [ext_resource type="PackedScene" uid="uid://cms75vdmxf8wg" path="res://resources/3d/Placek.glb" id="4_othdc"]
 [ext_resource type="Script" path="res://resources/3d/rotating_title.gd" id="5_6prxi"]
-
-[sub_resource type="Gradient" id="Gradient_mf5uh"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_w1biw"]
-gradient = SubResource("Gradient_mf5uh")
-width = 500
-height = 500
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -25,7 +19,7 @@ mouse_filter = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Buttons" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("credit_screen_parent")]
+[node name="Buttons" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("credit_screen_parent", "options_screen_parent")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -33,7 +27,8 @@ offset_bottom = 40.0
 mouse_filter = 2
 script = ExtResource("2_wk6rj")
 first_level_path = "res://main.tscn"
-credit_screen_parent = NodePath("../Control2")
+credit_screen_parent = NodePath("../Credit")
+options_screen_parent = NodePath("../Options")
 
 [node name="StartButton" type="Button" parent="CanvasLayer/Buttons" node_paths=PackedStringArray("label")]
 layout_mode = 1
@@ -136,7 +131,7 @@ mouse_filter = 2
 bbcode_enabled = true
 text = "[font=res://resources/fonts/monogram-extended.ttf][font size=60]  EXIT[/font]"
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="2DLogo" type="Control" parent="CanvasLayer"]
 visible = false
 z_index = -1
 layout_mode = 3
@@ -146,12 +141,12 @@ anchor_right = 0.5
 grow_horizontal = 2
 mouse_filter = 2
 
-[node name="PlacekLogo" type="Sprite2D" parent="CanvasLayer/Control"]
+[node name="PlacekLogo" type="Sprite2D" parent="CanvasLayer/2DLogo"]
 position = Vector2(0, 100)
 scale = Vector2(4, 4)
 texture = ExtResource("1_1whhs")
 
-[node name="Control2" type="Control" parent="CanvasLayer"]
+[node name="Credit" type="Control" parent="CanvasLayer"]
 visible = false
 z_index = 1
 layout_mode = 3
@@ -162,26 +157,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CreditBackgroundPositioner" type="Control" parent="CanvasLayer/Control2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CreditBackground" type="Sprite2D" parent="CanvasLayer/Control2/CreditBackgroundPositioner"]
-position = Vector2(16.4062, 16.4375)
-scale = Vector2(2.38238, 1.35425)
-texture = SubResource("GradientTexture2D_w1biw")
-
-[node name="CreditList" type="RichTextLabel" parent="CanvasLayer/Control2"]
+[node name="CreditList" type="RichTextLabel" parent="CanvasLayer/Credit"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -203,7 +179,7 @@ text = "[font=res://resources/fonts/monogram-extended.ttf][font size=60]
 [ul]THE WHEAT THAT DIED TO BECOME MY BREAKFAST[/ul]"
 tab_size = 1
 
-[node name="CreditTitle" type="RichTextLabel" parent="CanvasLayer/Control2"]
+[node name="CreditTitle" type="RichTextLabel" parent="CanvasLayer/Credit"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -216,7 +192,7 @@ mouse_filter = 2
 bbcode_enabled = true
 text = "[center][font=res://resources/fonts/monogram-extended.ttf][font size=120][u]CREDITS[/u][/font]"
 
-[node name="CreditExitButton" type="Button" parent="CanvasLayer/Control2"]
+[node name="CreditExitButton" type="Button" parent="CanvasLayer/Credit"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -225,7 +201,7 @@ offset_top = -68.0
 offset_right = 177.0
 grow_vertical = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control2/CreditExitButton"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Credit/CreditExitButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -241,6 +217,125 @@ grow_vertical = 2
 mouse_filter = 2
 bbcode_enabled = true
 text = "[center][font=res://resources/fonts/monogram-extended.ttf][font size=60]EXIT[/font]"
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/Credit"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Options" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_jnuoe")
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="OptionsVertBox" type="VBoxContainer" parent="CanvasLayer/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="CanvasLayer/Options/OptionsVertBox"]
+layout_mode = 2
+theme = ExtResource("4_bcpts")
+bbcode_enabled = true
+text = "[center][font size=60]Options"
+fit_content = true
+
+[node name="MasterVolumeLabel" type="RichTextLabel" parent="CanvasLayer/Options/OptionsVertBox"]
+layout_mode = 2
+theme = ExtResource("4_bcpts")
+bbcode_enabled = true
+text = "[center]Master Volume"
+fit_content = true
+
+[node name="MasterVolumeSlider" type="HSlider" parent="CanvasLayer/Options/OptionsVertBox"]
+layout_mode = 2
+theme = ExtResource("4_bcpts")
+tick_count = 11
+ticks_on_borders = true
+
+[node name="MusicVolumeLabel" type="RichTextLabel" parent="CanvasLayer/Options/OptionsVertBox"]
+layout_mode = 2
+theme = ExtResource("4_bcpts")
+bbcode_enabled = true
+text = "[center]Music Volume"
+fit_content = true
+
+[node name="MusicVolumeSlider" type="HSlider" parent="CanvasLayer/Options/OptionsVertBox"]
+layout_mode = 2
+theme = ExtResource("4_bcpts")
+tick_count = 11
+ticks_on_borders = true
+
+[node name="SoundEffectsVolumeLabel" type="RichTextLabel" parent="CanvasLayer/Options/OptionsVertBox"]
+layout_mode = 2
+theme = ExtResource("4_bcpts")
+bbcode_enabled = true
+text = "[center]Sound Effects Volume"
+fit_content = true
+
+[node name="SoundEffetsVolumeSlider" type="HSlider" parent="CanvasLayer/Options/OptionsVertBox"]
+layout_mode = 2
+theme = ExtResource("4_bcpts")
+tick_count = 11
+ticks_on_borders = true
+
+[node name="FullScreenLabel" type="RichTextLabel" parent="CanvasLayer/Options/OptionsVertBox"]
+layout_mode = 2
+theme = ExtResource("4_bcpts")
+bbcode_enabled = true
+text = " Full screen"
+fit_content = true
+
+[node name="FullScreenCheck" type="CheckButton" parent="CanvasLayer/Options/OptionsVertBox/FullScreenLabel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("4_bcpts")
+
+[node name="OptionsExit" type="Button" parent="CanvasLayer/Options"]
+layout_mode = 0
+offset_right = 98.0
+offset_bottom = 50.0
+theme = ExtResource("4_bcpts")
+text = "EXIT"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 
@@ -267,4 +362,12 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.2572
 [connection signal="pressed" from="CanvasLayer/Buttons/OptionButton" to="CanvasLayer/Buttons" method="_on_option_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Buttons/CreditButton" to="CanvasLayer/Buttons" method="_on_credit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Buttons/ExitButton" to="CanvasLayer/Buttons" method="_on_exit_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control2/CreditExitButton" to="CanvasLayer/Buttons" method="_on_credit_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Credit/CreditExitButton" to="CanvasLayer/Buttons" method="_on_credit_exit_button_pressed"]
+[connection signal="drag_ended" from="CanvasLayer/Options/OptionsVertBox/MasterVolumeSlider" to="CanvasLayer/Options" method="_on_master_volume_slider_drag_ended"]
+[connection signal="value_changed" from="CanvasLayer/Options/OptionsVertBox/MasterVolumeSlider" to="CanvasLayer/Options" method="_on_master_volume_slider_value_changed"]
+[connection signal="drag_ended" from="CanvasLayer/Options/OptionsVertBox/MusicVolumeSlider" to="CanvasLayer/Options" method="_on_music_volume_slider_drag_ended"]
+[connection signal="value_changed" from="CanvasLayer/Options/OptionsVertBox/MusicVolumeSlider" to="CanvasLayer/Options" method="_on_music_volume_slider_value_changed"]
+[connection signal="drag_ended" from="CanvasLayer/Options/OptionsVertBox/SoundEffetsVolumeSlider" to="CanvasLayer/Options" method="_on_sound_effets_volume_slider_drag_ended"]
+[connection signal="value_changed" from="CanvasLayer/Options/OptionsVertBox/SoundEffetsVolumeSlider" to="CanvasLayer/Options" method="_on_sound_effets_volume_slider_value_changed"]
+[connection signal="toggled" from="CanvasLayer/Options/OptionsVertBox/FullScreenLabel/FullScreenCheck" to="CanvasLayer/Options" method="_on_full_screen_check_toggled"]
+[connection signal="pressed" from="CanvasLayer/Options/OptionsExit" to="CanvasLayer/Buttons" method="_on_options_exit_pressed"]

@@ -98,6 +98,7 @@ var last_look_direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	player = self
+	camera_manager.start(self)
 
 func respawn(_point: RespawnPoint = respawn_point) -> void:
 	#var where_to_spawn: Vector2
@@ -207,9 +208,6 @@ func update_crouch_state(_old_state: CrouchState, new_state: CrouchState) -> voi
 	else:
 		crouching_collider.disabled = false
 		regular_collider.disabled = true
-
-func _ready() -> void:
-	camera_manager.start(self)
 
 func is_below_death_plane() -> bool:
 	if !is_instance_valid(camera):

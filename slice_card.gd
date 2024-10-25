@@ -15,7 +15,7 @@ func _reset() -> void:
 	queue_free()
 
 func use(plyr: Player) -> void:
-	plyr.activate_kill_everything_mode(duration * 8)
+	plyr.activate_kill_everything_mode(duration * 4)
 	
 	active = true
 	player = plyr

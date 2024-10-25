@@ -107,7 +107,7 @@ func move(delta) -> void:
 			velocity.x = min(0, velocity.x)
 			dir *= -1
 
-func disable_movement(seconds: float):
+func disable_movement(seconds: float) -> void:
 	movement_disabled = true
 	var timer := Timer.new()
 	add_child(timer)
@@ -116,6 +116,9 @@ func disable_movement(seconds: float):
 	var timeout := func () -> void: movement_disabled = false
 	timer.timeout.connect(timeout)
 	timer.start()
+
+func die() -> void:
+	queue_free()
 
 # Reverse direction when hitting a spike trap
 #func _on_spike_trap_area_entered(body: Node2D) -> void:
@@ -127,6 +130,9 @@ func disable_movement(seconds: float):
 func _on_deal_damage_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		var player := body as Player
+		if player.kill_everything_mode:
+			die()
+			return
 		player.die()
 
 # Check the distance between enemy and player to determine chasing/roaming

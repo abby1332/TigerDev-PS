@@ -15,6 +15,8 @@ func _reset() -> void:
 	queue_free()
 
 func use(plyr: Player) -> void:
+	plyr.activate_kill_everything_mode(duration * 8)
+	
 	active = true
 	player = plyr
 	last_look_direction = player.last_look_direction

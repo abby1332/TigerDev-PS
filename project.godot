@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 RespawnManager="*res://respawn_manager.gd"
+OptionsManager="*res://options_manager.gd"
 
 [debug]
 

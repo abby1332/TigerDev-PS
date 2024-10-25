@@ -26,10 +26,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijuf3"]
-size = Vector2(8, 8)
+size = Vector2(8, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynx8r"]
-size = Vector2(8, 5)
+size = Vector2(8, 10)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qjikp"]
 particle_flag_disable_z = true
@@ -73,14 +73,17 @@ welcome_back_message = NodePath("RespawnEffects/RespawnEffectsControl/WelcomeBac
 camera_manager = NodePath("CameraManager")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
+scale = Vector2(1, 2)
 sprite_frames = SubResource("SpriteFrames_sq1mr")
 autoplay = "default"
 
 [node name="StandingCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_ijuf3")
 
 [node name="CrouchingCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1.5)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_ynx8r")
 disabled = true
 

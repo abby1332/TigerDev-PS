@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://main_menu_button.gd" id="3_rbpxv"]
 [ext_resource type="Theme" uid="uid://cd3c80nfki0s0" path="res://theme.tres" id="4_bcpts"]
 [ext_resource type="Script" path="res://options_panel.gd" id="4_jnuoe"]
-[ext_resource type="PackedScene" uid="uid://cms75vdmxf8wg" path="res://resources/3d/Placek.glb" id="4_othdc"]
 [ext_resource type="Script" path="res://resources/3d/rotating_title.gd" id="5_6prxi"]
+[ext_resource type="PackedScene" uid="uid://bb1w2xxvmfld1" path="res://resources/3d/Placekreal.glb" id="8_1gwu8"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -342,19 +342,19 @@ text = "EXIT"
 [node name="Node3D" type="Node3D" parent="."]
 script = ExtResource("5_6prxi")
 
-[node name="Placek" parent="Node3D" instance=ExtResource("4_othdc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.8, -3)
-
-[node name="Placek2" parent="Node3D" instance=ExtResource("4_othdc")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.25729, 0.8, 3)
-
 [node name="Node3D" type="Node3D" parent="Node3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="Placek" parent="Node3D/Node3D" instance=ExtResource("4_othdc")]
+[node name="Placekreal" parent="Node3D/Node3D" instance=ExtResource("8_1gwu8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.8, -3)
 
-[node name="Placek2" parent="Node3D/Node3D" instance=ExtResource("4_othdc")]
+[node name="Placekreal2" parent="Node3D/Node3D" instance=ExtResource("8_1gwu8")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.25729, 0.8, 3)
+
+[node name="Placekreal" parent="Node3D" instance=ExtResource("8_1gwu8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.8, -3)
+
+[node name="Placekreal2" parent="Node3D" instance=ExtResource("8_1gwu8")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.25729, 0.8, 3)
 
 [connection signal="mouse_entered" from="CanvasLayer/Buttons/StartButton" to="CanvasLayer/Buttons" method="_on_start_button_mouse_entered"]

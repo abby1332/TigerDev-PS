@@ -1,6 +1,10 @@
 extends CharacterBody2D
 class_name Player
 
+static var player: Player = self
+
+@export var card_manager: CardManager
+
 @export var spawn_point: SpawnPoint
 var respawn_point: RespawnPoint = null
 
@@ -11,6 +15,8 @@ var respawn_point: RespawnPoint = null
 @export var speed: float = 300.0
 @export var jump_velocity: float = -400.0
 
+var is_ignoring_gravity: bool = false
+
 @export var regular_collider: CollisionShape2D
 @export var crouching_collider: CollisionShape2D
 
@@ -19,7 +25,13 @@ var respawn_point: RespawnPoint = null
 
 @export var death_text: RichTextLabel
 
-@export var death_plane: DeathPlane
+@export var respawn_effects: Node
+@export var respawn_effects_length: float = 2.0
+@export var welcome_back_message: RichTextLabel
+
+@export var camera_manager: CameraManager
+
+@onready var camera: Camera2D = $Camera2D
 
 #region Wall Jumping
 
@@ -71,21 +83,56 @@ var crouch_speed_multiplier: float = 0.5
 
 var time_sliding: float = 0.0
 
+#Return the crouch state for other objects
+func get_crouch_state() -> CrouchState:
+	return crouch_state
+
 #endregion
 
 var dead: bool = false
 
-func respawn(point: RespawnPoint = respawn_point) -> void:
-	death_particles.hide()
-	death_particles.emitting = false
-	if point != null:
-		point.spawn_point.teleport(self)
-	else:
-		spawn_point.teleport(self)
-	animation_manager.show()
-	death_text.hide()
-	dead = false
-	velocity = Vector2(0.0, 0.0)
+var direction: float = 0.0
+
+var look_direction: Vector2 = Vector2.ZERO
+var last_look_direction: Vector2 = Vector2.ZERO
+
+var kill_everything_mode: bool = false
+var kill_everything_timer: Timer = null
+
+func activate_kill_everything_mode(seconds: float) -> void:
+	if kill_everything_timer != null:
+		kill_everything_timer.free()
+		kill_everything_timer = null
+	kill_everything_mode = true
+	kill_everything_timer = Timer.new()
+	add_child(kill_everything_timer)
+	kill_everything_timer.wait_time = seconds
+	kill_everything_timer.one_shot = true
+	var timeout := func () -> void: kill_everything_mode = false
+	kill_everything_timer.timeout.connect(timeout)
+	kill_everything_timer.start()
+
+func _ready() -> void:
+	player = self
+	camera_manager.start()
+
+func respawn(_point: RespawnPoint = respawn_point) -> void:
+	#var where_to_spawn: Vector2
+	#if respawn_point == null:
+		#where_to_spawn = spawn_point.global_position
+	#else:
+		#where_to_spawn = respawn_point.global_position
+	RespawnManager.respawn()
+	#death_particles.hide()
+	#death_particles.emitting = false
+	#if point != null:
+		#point.spawn_point.teleport(self)
+	#else:
+		#spawn_point.teleport(self)
+	#animation_manager.show()
+	#death_text.hide()
+	#dead = false
+	#velocity = Vector2(0.0, 0.0)
 	
 func die() -> void:
 	if dead:
@@ -98,9 +145,10 @@ func die() -> void:
 	dead = true
 
 # Checks which side of the player is sliding on a wall.
-func sliding_on_wall_check(direction: float) -> WallDirection:
+func sliding_on_wall_check() -> WallDirection:
 	var space := get_world_2d().direct_space_state
-	var left_query := PhysicsRayQueryParameters2D.create(global_position, global_position - Vector2(5, 0), climbable_wall_layer)
+	var rect := regular_collider.shape.get_rect().size
+	var left_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(-rect.x, 0), climbable_wall_layer)
 	var left_intersect := space.intersect_ray(left_query)
 	if not left_intersect.is_empty():
 		# Reset stamina if we fall off one wall then cling onto another
@@ -109,7 +157,7 @@ func sliding_on_wall_check(direction: float) -> WallDirection:
 		if direction < 0 and sliding_stamina > 0:
 			last_wall_clinged_to = left_intersect["collider"]
 			return WallDirection.LEFT
-	var right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(5, 0), climbable_wall_layer)
+	var right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(rect.x, 0), climbable_wall_layer)
 	var right_intersect := space.intersect_ray(right_query)
 	if not right_intersect.is_empty():
 		# Reset stamina if we fall off one wall then cling onto another
@@ -146,9 +194,10 @@ func _check_jump_input() -> bool:
 func crouch_state_check() -> CrouchState:
 	if not Input.is_action_pressed("crouch"):
 		var space := get_world_2d().direct_space_state
-		var top_left_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(-4, -5))
+		var rect := crouching_collider.shape.get_rect().size
+		var top_left_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(rect.x * -1 + 1, -rect.y - 1))
 		var top_left_intersect := space.intersect_ray(top_left_query)
-		var top_right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(4, -5))
+		var top_right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(rect.x - 1, -rect.y - 1))
 		var top_right_intersect := space.intersect_ray(top_right_query)
 		if (not top_left_intersect.is_empty() or not top_right_intersect.is_empty()) and crouch_state != CrouchState.NORMAL:
 			return CrouchState.CROUCHING
@@ -178,6 +227,15 @@ func update_crouch_state(_old_state: CrouchState, new_state: CrouchState) -> voi
 		crouching_collider.disabled = false
 		regular_collider.disabled = true
 
+func is_below_death_plane() -> bool:
+	if !is_instance_valid(camera):
+		for child: Node in get_children():
+			if child is Camera2D:
+				camera = child as Camera2D
+				break
+		return is_below_death_plane()
+	return global_position.y > camera.limit_bottom
+
 func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("debug_respawn"):
@@ -188,14 +246,18 @@ func _physics_process(delta: float) -> void:
 	if dead:
 		return
 	
-	if global_position.y > death_plane.global_position.y:
+	if is_below_death_plane():
 		die()
 		return
 	
 	# Get input movement direction.
-	var direction := Input.get_axis("left", "right")
+	direction = Input.get_axis("left", "right")
+
+	look_direction = Vector2(direction, Input.get_axis("up", "crouch"))
+	if look_direction.x != 0.0 or look_direction.y != 0.0:
+		last_look_direction = look_direction
 	
-	sliding_on_wall = sliding_on_wall_check(direction)
+	sliding_on_wall = sliding_on_wall_check()
 	
 	var updated_crouch_state := crouch_state_check()
 	if updated_crouch_state != crouch_state:
@@ -217,7 +279,7 @@ func _physics_process(delta: float) -> void:
 		time_since_last_jump_input = jump_input_buffer_time
 
 	# Add the gravity.
-	if not is_on_floor():
+	if !is_on_floor() and !is_ignoring_gravity:
 		if sliding_on_wall == WallDirection.NONE:
 			if Input.is_action_pressed("crouch"):
 				velocity += get_gravity() * 2 * delta
@@ -293,6 +355,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y = velocity.y * jump_cut_strength
 		#Disables jump-cutting
 		has_jump_cut = false
+
+	if abs(velocity.x) > speed:
+		velocity.x *= 0.95
 
 	animation_state_machine_update()
 

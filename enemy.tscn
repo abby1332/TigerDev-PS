@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjtvsvry3dapy"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_xhxef"]
+[ext_resource type="Texture2D" uid="uid://dbd0vtitdjuns" path="res://resources/sprites/enemybox.png" id="2_b67ix"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xlacx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b67ix")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mjne"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ilne"]
+size = Vector2(28, 30)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 15
+script = ExtResource("1_xhxef")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xlacx")
+
+[node name="DealDamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamageArea"]
+shape = SubResource("RectangleShape2D_7mjne")
+
+[node name="DirectionTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7ilne")
+
+[node name="GeneralCollision" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GeneralCollision"]
+shape = SubResource("RectangleShape2D_7ilne")
+
+[connection signal="body_entered" from="DealDamageArea" to="." method="_on_deal_damage_area_body_entered"]
+[connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
+[connection signal="area_entered" from="GeneralCollision" to="." method="_on_general_collision_area_entered"]
+[connection signal="body_entered" from="GeneralCollision" to="." method="_on_general_collision_body_entered"]

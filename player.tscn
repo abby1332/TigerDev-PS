@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://oskm0n4w5tpe"]
+[gd_scene load_steps=11 format=3 uid="uid://oskm0n4w5tpe"]
 
 [ext_resource type="Texture2D" uid="uid://cbjeqjdhbphwy" path="res://resources/sprites/red_box_test_player.png" id="1_8ws07"]
 [ext_resource type="Script" path="res://player.gd" id="1_lroia"]
 [ext_resource type="Texture2D" uid="uid://w4o213qf87uv" path="res://resources/sprites/red_box_test_player_crouch.png" id="2_d21u6"]
 [ext_resource type="PackedScene" uid="uid://orv0xlp8qaqf" path="res://card_manager.tscn" id="4_4rsrk"]
+[ext_resource type="Script" path="res://camera_manager.gd" id="5_2hta7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sq1mr"]
 animations = [{
@@ -25,10 +26,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijuf3"]
-size = Vector2(8, 8)
+size = Vector2(8, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynx8r"]
-size = Vector2(8, 5)
+size = Vector2(8, 10)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qjikp"]
 particle_flag_disable_z = true
@@ -57,7 +58,7 @@ orbit_velocity_max = 0.116
 gravity = Vector3(0, 0, 0)
 color = Color(1, 0, 0, 1)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("card_manager", "animation_manager", "regular_collider", "crouching_collider", "sliding_particles", "death_particles", "death_text")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("card_manager", "animation_manager", "regular_collider", "crouching_collider", "sliding_particles", "death_particles", "death_text", "respawn_effects", "welcome_back_message", "camera_manager")]
 collision_mask = 7
 script = ExtResource("1_lroia")
 card_manager = NodePath("CardManager")
@@ -67,16 +68,22 @@ crouching_collider = NodePath("CrouchingCollider")
 sliding_particles = NodePath("SlidingParticles")
 death_particles = NodePath("DeathParticles")
 death_text = NodePath("DeathLabel")
+respawn_effects = NodePath("RespawnEffects")
+welcome_back_message = NodePath("RespawnEffects/RespawnEffectsControl/WelcomeBackMessage")
+camera_manager = NodePath("CameraManager")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
+scale = Vector2(1, 2)
 sprite_frames = SubResource("SpriteFrames_sq1mr")
 autoplay = "default"
 
 [node name="StandingCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_ijuf3")
 
 [node name="CrouchingCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1.5)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_ynx8r")
 disabled = true
 
@@ -105,5 +112,32 @@ bbcode_enabled = true
 text = "[wave amp=50.0 freq=10.0 connected=1][rainbow]YOU FUCKING DIED[/rainbow][/wave]"
 scroll_active = false
 
+[node name="RespawnEffects" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="RespawnEffectsControl" type="Control" parent="RespawnEffects"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WelcomeBackMessage" type="RichTextLabel" parent="RespawnEffects/RespawnEffectsControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[pulse freq=3.0 color=#00FFF  ease=-1][color=FF0000][outline_size=5][font_size=100][center][font=res://resources/fonts/monogram-extended.ttf]WELCOME BACK![/font][/center][/font_size][/outline_size][/color][/pulse]"
+scroll_active = false
+
 [node name="CardManager" parent="." instance=ExtResource("4_4rsrk")]
 visible = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CameraManager" type="Node2D" parent="."]
+script = ExtResource("5_2hta7")

@@ -11,12 +11,12 @@ class SaveState:
 	
 	func _init(plyr: Player) -> void:
 		player = plyr
-		var card_manager := plyr.card_manager
+		var card_manager := player.card_manager
 		for card: Card in card_manager.cards:
 			cards.append(card.scene_file_path)
 		used_card_spawners.append_array(card_manager.used_card_spawners)
 		
-		active_respawn_point = plyr.respawn_point.name
+		active_respawn_point = player.respawn_point.name
 	
 	func load_save(plyr: Player, scene: Node) -> void:
 		var card_manager := plyr.card_manager
@@ -83,6 +83,10 @@ func _ready() -> void:
 	player = active_scene.find_child("Player") as Player
 	
 	_welcome_back_messages.shuffle()
+
+func update_active_scene() -> void:
+	active_scene = get_tree().root.get_child(get_tree().root.get_child_count() - 1)
+	player = active_scene.find_child("Player") as Player
 
 func respawn() -> void:
 	load_scene(active_scene.scene_file_path)

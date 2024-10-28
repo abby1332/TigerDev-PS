@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cd3c80nfki0s0"]
+
+[ext_resource type="FontFile" uid="uid://b1biwe0x6s5hv" path="res://resources/fonts/monogram-extended.ttf" id="1_dhnsj"]
+[ext_resource type="Texture2D" uid="uid://i5f1obpmsuhp" path="res://resources/sprites/gui/check_box_filled.png" id="1_iiv35"]
+[ext_resource type="Texture2D" uid="uid://c43c1y3iimma3" path="res://resources/sprites/gui/slider_active.png" id="1_qnjst"]
+[ext_resource type="Texture2D" uid="uid://bqrh2cct1sva4" path="res://resources/sprites/gui/slider_inactive.png" id="2_i2qde"]
+[ext_resource type="Texture2D" uid="uid://dg5rpqy6httkx" path="res://resources/sprites/gui/check_box_empty.png" id="2_khpug"]
+[ext_resource type="Texture2D" uid="uid://beo1oyuy1oeje" path="res://resources/sprites/gui/slider_selected.png" id="3_nemiw"]
+
+[resource]
+default_font = ExtResource("1_dhnsj")
+default_font_size = 40
+CheckButton/icons/checked = ExtResource("1_iiv35")
+CheckButton/icons/unchecked = ExtResource("2_khpug")
+HSlider/icons/grabber = ExtResource("1_qnjst")
+HSlider/icons/grabber_disabled = ExtResource("2_i2qde")
+HSlider/icons/grabber_highlight = ExtResource("3_nemiw")

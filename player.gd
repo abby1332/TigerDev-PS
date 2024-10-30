@@ -362,8 +362,6 @@ func _physics_process(delta: float) -> void:
 	# If the absolute y velocity is too high the player will just clip through things, this stops it from getting over 900 smoothly
 	if abs(velocity.y) > 900:
 		velocity.y *= 0.9
-	
-	print(velocity.y)
 
 	animation_state_machine_update()
 

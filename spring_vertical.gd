@@ -7,13 +7,19 @@ func _on_body_entered(body: Node2D) -> void:
 	var player := body as Player
 	if player.velocity.y > 0:
 		if player.velocity.y > 600:
-			player.velocity.y *= -1
-			player.velocity.y -= 100
+			if player.velocity.y > 1000:
+				player.velocity.y *= -1
+			else:
+				player.velocity.y *= -1
+				player.velocity.y -= 100
 		else:
 			player.velocity.y = -600
 	else :
 		if player.velocity.y < -600:
-			player.velocity.y *= -1
-			player.velocity.y += 100
+			if player.velocity.y < -1000:
+				player.velocity.y *= -1
+			else:
+				player.velocity.y *= -1
+				player.velocity.y += 100
 		else:
 			player.velocity.y = 700

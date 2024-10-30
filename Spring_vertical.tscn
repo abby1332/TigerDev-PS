@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://csdt00voucj6g" path="res://resources/sprites/Spring_temp_sonic_rush2.png" id="1_81fod"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_50lvr"]
-size = Vector2(16, 19)
+size = Vector2(18, 21)
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 4
@@ -12,7 +12,7 @@ collision_mask = 15
 script = ExtResource("1_7vobm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_50lvr")
 one_way_collision_margin = 0.0
 

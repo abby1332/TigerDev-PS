@@ -94,7 +94,8 @@ card_scene = ExtResource("10_0i7dp")
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_brn5f")]
 
 [node name="Area2D" parent="." instance=ExtResource("12_nmoj7")]
-position = Vector2(-326, -419)
+position = Vector2(-333, -415)
+rotation = 2.35619
 
 [node name="Area2D2" parent="." instance=ExtResource("13_6f3ph")]
 position = Vector2(-55, -435)

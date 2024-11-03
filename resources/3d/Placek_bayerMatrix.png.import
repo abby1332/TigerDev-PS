@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdtjllhnjlr0c"
+uid="uid://dosn8g3cnejfh"
 path.s3tc="res://.godot/imported/Placek_bayerMatrix.png-a83da4d87dc63e84b6f93e5ad9ae909e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "10f19d19a916b90c8040daf998bbf37a"
 }
 
 [deps]

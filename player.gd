@@ -209,11 +209,11 @@ func crouch_state_check() -> CrouchState:
 			return CrouchState.NORMAL
 		return CrouchState.CROUCHING
 		
-func animation_state_machine_update() -> void:
-	if crouch_state == CrouchState.NORMAL:
-		animation_manager.play(animation_idle)
-	else:
-		animation_manager.play(animation_crouch)
+#func animation_state_machine_update() -> void:
+	#if crouch_state == CrouchState.NORMAL:
+		#animation_manager.play(animation_idle)
+	#else:
+		#animation_manager.play(animation_crouch)
 
 func update_crouch_state(_old_state: CrouchState, new_state: CrouchState) -> void:
 	time_sliding = 0.0
@@ -254,8 +254,10 @@ func _physics_process(delta: float) -> void:
 	direction = Input.get_axis("left", "right")
 
 	look_direction = Vector2(direction, Input.get_axis("up", "crouch"))
-	if look_direction.x != 0.0 or look_direction.y != 0.0:
-		last_look_direction = look_direction
+	if look_direction.x != 0.0:
+		last_look_direction.x = look_direction.x
+	if look_direction.y != 0.0:
+		last_look_direction.y = look_direction.y
 	
 	sliding_on_wall = sliding_on_wall_check()
 	
@@ -359,6 +361,6 @@ func _physics_process(delta: float) -> void:
 	if abs(velocity.x) > speed:
 		velocity.x *= 0.95
 
-	animation_state_machine_update()
+	#animation_state_machine_update()
 
 	move_and_slide()

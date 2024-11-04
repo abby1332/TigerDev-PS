@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://d38yynx22ev4y"]
+[gd_scene load_steps=15 format=4 uid="uid://d38yynx22ev4y"]
 
 [ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://player.tscn" id="1_p0mxc"]
 [ext_resource type="PackedScene" uid="uid://bjtvsvry3dapy" path="res://enemy.tscn" id="2_3wa2d"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bepyetyir6wh7" path="res://pause_menu.tscn" id="11_brn5f"]
 [ext_resource type="PackedScene" uid="uid://87iajlg52byd" path="res://spring_horizontal.tscn" id="12_nmoj7"]
 [ext_resource type="PackedScene" uid="uid://cp544257x4a4e" path="res://Spring_vertical.tscn" id="13_6f3ph"]
+[ext_resource type="PackedScene" uid="uid://dp73vyrnrifm1" path="res://Spring_diag_forward.tscn" id="14_2kqnf"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -99,3 +100,7 @@ rotation = 2.35619
 
 [node name="Area2D2" parent="." instance=ExtResource("13_6f3ph")]
 position = Vector2(-55, -435)
+
+[node name="Area2D3" parent="." instance=ExtResource("14_2kqnf")]
+position = Vector2(38, -7)
+scale = Vector2(0.6, 0.6)

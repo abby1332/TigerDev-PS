@@ -132,6 +132,7 @@ func _on_deal_damage_area_body_entered(body: Node2D) -> void:
 		var player := body as Player
 		if player.kill_everything_mode:
 			die()
+			FreezeFrameManager.zoom_frame(0.01, 1.3, 3)
 			return
 		player.die()
 

@@ -1,12 +1,29 @@
 extends Node2D
 class_name PlayerAnimationMachine
 
+enum SpecialState {
+	NONE,
+	DASH
+}
+
+var current_special_state: SpecialState = SpecialState.NONE
+var state_timer: SceneTreeTimer
+
 @onready var player: Player = self.get_parent()
 
 @export var sprite: AnimatedSprite2D
 
 var time_sliding: float = 0.0
 var time_falling: float = 0.0
+
+func set_animation_special_state(state: SpecialState, duration: float) -> void:
+	current_special_state = state
+	if state_timer != null and state_timer.time_left > 0:
+		state_timer.free()
+	state_timer = get_tree().create_timer(duration)
+	state_timer.timeout.connect(func () -> void:
+		current_special_state = SpecialState.NONE
+		)
 
 func rl(anim_name: String) -> String:
 	if player.last_look_direction.x > 0:
@@ -15,6 +32,16 @@ func rl(anim_name: String) -> String:
 		return "L_" + anim_name
 
 func update(delta: float) -> void:
+	match current_special_state:
+		SpecialState.NONE:
+			sprite.rotation = 0
+			pass
+		SpecialState.DASH:
+			sprite.speed_scale = 1
+			sprite.look_at(sprite.global_position + Vector2(0, player.last_look_direction.y))
+			sprite.animation = rl("dash")
+			return
+	
 	if player.crouch_state == Player.CrouchState.SLIDING:
 		sprite.speed_scale = 1
 		time_sliding += delta

@@ -12,6 +12,8 @@ var respawn_point: RespawnPoint = null
 @export var animation_idle: String = "default"
 @export var animation_crouch: String = "crouch"
 
+@onready var animation_machine: PlayerAnimationMachine = $PlayerAnimationMachine
+
 @export var speed: float = 300.0
 @export var jump_velocity: float = -400.0
 
@@ -256,8 +258,7 @@ func _physics_process(delta: float) -> void:
 	look_direction = Vector2(direction, Input.get_axis("up", "crouch"))
 	if look_direction.x != 0.0:
 		last_look_direction.x = look_direction.x
-	if look_direction.y != 0.0:
-		last_look_direction.y = look_direction.y
+	last_look_direction.y = look_direction.y
 	
 	sliding_on_wall = sliding_on_wall_check()
 	

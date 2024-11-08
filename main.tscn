@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d38yynx22ev4y"]
+[gd_scene load_steps=18 format=3 uid="uid://d38yynx22ev4y"]
 
 [ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://player.tscn" id="1_p0mxc"]
 [ext_resource type="AudioStream" uid="uid://crt5pp77a4l32" path="res://resources/TLVL EXTRAS/Forest Level.ogg" id="1_q4p1t"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://k33mnf6us026" path="res://resources/TLVL EXTRAS/Arrow DI.png" id="14_ws553"]
 [ext_resource type="Texture2D" uid="uid://c3qi8qu2cjduw" path="res://resources/TLVL EXTRAS/Plus Sign.png" id="15_stm7o"]
 [ext_resource type="Texture2D" uid="uid://ct8xbqn8hbscf" path="res://resources/TLVL EXTRAS/Arrow DIM.png" id="16_y3h5h"]
+[ext_resource type="PackedScene" uid="uid://cp544257x4a4e" path="res://resources/all spring stuff/Spring_vertical.tscn" id="17_r6u5s"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-42, -1101)
@@ -1055,3 +1056,34 @@ texture = ExtResource("14_ws553")
 position = Vector2(714, -216)
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("16_y3h5h")
+
+[node name="Area2D" parent="." instance=ExtResource("17_r6u5s")]
+z_index = -1
+position = Vector2(1736, -371)
+
+[node name="Area2D2" parent="." instance=ExtResource("17_r6u5s")]
+z_index = -1
+position = Vector2(3485, 143)
+
+[node name="Area2D3" parent="." instance=ExtResource("17_r6u5s")]
+z_index = -1
+position = Vector2(4704, 415)
+
+[node name="Area2D4" parent="." instance=ExtResource("17_r6u5s")]
+z_index = -1
+position = Vector2(4410, -146)
+
+[node name="Area2D5" parent="." instance=ExtResource("17_r6u5s")]
+z_index = -1
+position = Vector2(5350, -257)
+
+[node name="Area2D6" parent="." instance=ExtResource("17_r6u5s")]
+z_index = -1
+position = Vector2(8191, 335)
+
+[node name="Area2D7" parent="." instance=ExtResource("17_r6u5s")]
+z_index = -1
+position = Vector2(8985, 833)
+
+[node name="RespawnPoint7" parent="." instance=ExtResource("6_kiqvl")]
+position = Vector2(16351, -66)

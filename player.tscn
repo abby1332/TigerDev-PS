@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://oskm0n4w5tpe"]
+[gd_scene load_steps=119 format=3 uid="uid://oskm0n4w5tpe"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_lroia"]
 [ext_resource type="Texture2D" uid="uid://w4o213qf87uv" path="res://resources/sprites/red_box_test_player_crouch.png" id="2_d21u6"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://be8ybrdxegilk" path="res://resources/spritesheets/player_run.png" id="6_namog"]
 [ext_resource type="Texture2D" uid="uid://rqkt53w5hopi" path="res://resources/spritesheets/player_slide.png" id="7_xuj7u"]
 [ext_resource type="Script" path="res://player_animation_machine.gd" id="11_oyrvp"]
+[ext_resource type="Script" path="res://player_sound_machine.gd" id="12_q7fwi"]
+[ext_resource type="AudioStream" uid="uid://cehbj4l84v2wj" path="res://resources/audio/hit_enemy.ogg" id="12_qc2c6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wdrxx"]
 atlas = ExtResource("2_gno13")
@@ -822,6 +824,15 @@ orbit_velocity_max = 0.116
 gravity = Vector3(0, 0, 0)
 color = Color(1, 0, 0, 1)
 
+[sub_resource type="Gradient" id="Gradient_w7dd6"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 1, 0.431373, 1, 1, 1, 0.435294, 1, 1, 1, 0.431373)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bh22l"]
+gradient = SubResource("Gradient_w7dd6")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("card_manager", "animation_manager", "regular_collider", "crouching_collider", "sliding_particles", "death_particles", "death_text", "respawn_effects", "welcome_back_message", "camera_manager")]
 collision_mask = 7
 script = ExtResource("1_lroia")
@@ -923,10 +934,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScreenFlashColor" type="ColorRect" parent="ScreenFlash/ScreenFlashControl"]
+[node name="TextureRect" type="TextureRect" parent="ScreenFlash/ScreenFlashControl"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = SubResource("GradientTexture2D_bh22l")
+
+[node name="Sounds" type="Node" parent="."]
+script = ExtResource("12_q7fwi")
+
+[node name="EnemyHitSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("12_qc2c6")
+volume_db = 6.0
+attenuation = 0.0769465

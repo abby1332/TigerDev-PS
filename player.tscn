@@ -834,6 +834,7 @@ fill_from = Vector2(1, 1)
 fill_to = Vector2(0, 0)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("card_manager", "animation_manager", "regular_collider", "crouching_collider", "sliding_particles", "death_particles", "death_text", "respawn_effects", "welcome_back_message", "camera_manager")]
+scale = Vector2(2, 2)
 collision_mask = 7
 script = ExtResource("1_lroia")
 card_manager = NodePath("CardManager")

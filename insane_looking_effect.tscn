@@ -3,7 +3,7 @@
 [sub_resource type="Gradient" id="Gradient_lo1wy"]
 colors = PackedColorArray(0.615686, 0, 1, 1, 1, 0, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2ff6q"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_53hia"]
 gradient = SubResource("Gradient_lo1wy")
 
 [sub_resource type="Curve" id="Curve_643ks"]
@@ -12,14 +12,14 @@ max_value = 2.0
 _data = [Vector2(0, 0.0452232), 0.0, 0.0, 0, 0, Vector2(0.258278, -0.013567), 0.0, 0.0, 0, 0, Vector2(0.668874, 2), 0.0, 0.0, 0, 0, Vector2(0.996689, 2), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_7tjio"]
+[sub_resource type="CurveTexture" id="CurveTexture_4406j"]
 curve = SubResource("Curve_643ks")
 
 [sub_resource type="Curve" id="Curve_7i4kp"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.486755, 1), 0.0, 0.0, 0, 0, Vector2(0.807947, 0.750141), -0.113489, -0.113489, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_ndwpt"]
+[sub_resource type="CurveTexture" id="CurveTexture_66lx0"]
 curve = SubResource("Curve_7i4kp")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sswu8"]
@@ -31,7 +31,7 @@ initial_velocity_min = 23.82
 initial_velocity_max = 332.26
 radial_velocity_min = -1000.0
 radial_velocity_max = -1000.0
-radial_velocity_curve = SubResource("CurveTexture_7tjio")
+radial_velocity_curve = SubResource("CurveTexture_4406j")
 gravity = Vector3(0, 0, 0)
 radial_accel_min = 100.0
 radial_accel_max = 100.0
@@ -39,8 +39,8 @@ tangential_accel_min = -100.0
 tangential_accel_max = 100.0
 scale_min = 10.0
 scale_max = 10.0
-scale_curve = SubResource("CurveTexture_ndwpt")
-color_ramp = SubResource("GradientTexture1D_2ff6q")
+scale_curve = SubResource("CurveTexture_66lx0")
+color_ramp = SubResource("GradientTexture1D_53hia")
 hue_variation_min = -0.1
 hue_variation_max = 0.1
 

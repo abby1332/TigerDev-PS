@@ -37,8 +37,8 @@ scale_max = 0.3
 color_ramp = SubResource("GradientTexture1D_oug36")
 
 [sub_resource type="Gradient" id="Gradient_ll8b2"]
-offsets = PackedFloat32Array(0, 0.372951, 1)
-colors = PackedColorArray(1.13107e-05, 0.890167, 0, 1, 0, 0.611765, 0, 1, 0, 0.168627, 1, 1)
+offsets = PackedFloat32Array(0, 0.25, 0.77459)
+colors = PackedColorArray(0, 0.658824, 0.317647, 1, 0, 0.611765, 0, 1, 0, 0.317647, 0.662745, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_p57sn"]
 gradient = SubResource("Gradient_ll8b2")
@@ -70,10 +70,10 @@ curve = SubResource("Curve_yduui")
 particle_flag_disable_z = true
 emission_shape_scale = Vector3(0, 0, 0)
 spread = 180.0
-initial_velocity_min = 171.67
-initial_velocity_max = 308.06
-orbit_velocity_min = 0.0970001
-orbit_velocity_max = 0.0970001
+initial_velocity_min = 80.28
+initial_velocity_max = 481.18
+orbit_velocity_min = 1.861
+orbit_velocity_max = 1.861
 orbit_velocity_curve = SubResource("CurveTexture_d5mop")
 radial_velocity_min = -1000.0
 radial_velocity_max = -1000.0
@@ -83,8 +83,8 @@ radial_accel_min = 100.0
 radial_accel_max = 100.0
 tangential_accel_min = -100.0
 tangential_accel_max = 100.0
-scale_min = 30.0
-scale_max = 30.0
+scale_min = 100.0
+scale_max = 100.0
 scale_curve = SubResource("CurveTexture_ndwpt")
 color_initial_ramp = SubResource("GradientTexture1D_p57sn")
 hue_variation_min = -0.01
@@ -130,21 +130,21 @@ trail_lifetime = 0.1
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
 z_index = -1
-scale = Vector2(-0.035, -0.035)
+scale = Vector2(-0.015, -0.015)
 emitting = false
 amount = 150
 process_material = SubResource("ParticleProcessMaterial_l5usw")
 lifetime = 10.0
 one_shot = true
-speed_scale = 1.5
+speed_scale = 3.0
 explosiveness = 1.0
 fixed_fps = 60
 visibility_rect = Rect2(-5000, -5000, 10000, 10000)
 local_coords = true
 draw_order = 0
 trail_enabled = true
-trail_lifetime = 2.2
-trail_sections = 10
+trail_lifetime = 0.8
+trail_sections = 14
 trail_section_subdivisions = 3
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

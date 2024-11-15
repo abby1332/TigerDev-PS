@@ -1,11 +1,16 @@
-extends Node2D
+extends Card
+class_name StompCard
 
+var active: bool = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func use(player: Player) -> void:
+	sprite.queue_free()
+	active = true
+	player.is_stomping = true
+	player.kill_everything_mode = true
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _physics_process(delta: float) -> void:
+	if (active or Player.player.is_stomping) and Player.player.is_on_floor():
+		Player.player.is_stomping = false
+		active = false
+		Player.player.kill_everything_mode = false

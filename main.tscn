@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://d38yynx22ev4y"]
+[gd_scene load_steps=13 format=4 uid="uid://d38yynx22ev4y"]
 
 [ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://player.tscn" id="1_p0mxc"]
 [ext_resource type="PackedScene" uid="uid://bjtvsvry3dapy" path="res://enemy.tscn" id="2_3wa2d"]
@@ -11,11 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://fl6siaxv6op2" path="res://card_spawner.tscn" id="9_8chcu"]
 [ext_resource type="PackedScene" uid="uid://c8vh87q0rdp11" path="res://slice_card.tscn" id="10_0i7dp"]
 [ext_resource type="PackedScene" uid="uid://bepyetyir6wh7" path="res://pause_menu.tscn" id="11_brn5f"]
+[ext_resource type="PackedScene" uid="uid://bb1xdtxvr8q4n" path="res://stomp_card.tscn" id="12_nosi1"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_p0mxc")]
-position = Vector2(-39, -148)
+position = Vector2(78, -431)
 spawn_point = NodePath("../SpawnPoint")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -73,7 +74,7 @@ position = Vector2(0, -25)
 position = Vector2(80, -54)
 
 [node name="RespawnPoint2" parent="." instance=ExtResource("6_kiqvl")]
-position = Vector2(35, -458)
+position = Vector2(23, -443)
 
 [node name="CardSpawner3" parent="." instance=ExtResource("9_8chcu")]
 position = Vector2(-27, -172)
@@ -91,10 +92,10 @@ card_scene = ExtResource("10_0i7dp")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_brn5f")]
 
-[node name="Enemy2" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(78, -15)
-scale = Vector2(0.5, 0.5)
+[node name="CardSpawner4" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(-73, -496)
+card_scene = ExtResource("12_nosi1")
 
-[node name="Enemy3" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(112, -14)
-scale = Vector2(0.5, 0.5)
+[node name="CardSpawner5" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(-178.142, -441.897)
+card_scene = ExtResource("12_nosi1")

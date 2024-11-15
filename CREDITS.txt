@@ -1,1 +1,5 @@
 Monogram font by datagoblin: https://datagoblin.itch.io/monogram
+Better Terrain Addon by PortPonky: https://github.com/Portponky/better-terrain
+
+Sounds:
+	Metal Clank (Hitting the Lid of the Pan) by Mish7913 -- https://freesound.org/s/741357/ -- License: Creative Commons 0

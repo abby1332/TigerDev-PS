@@ -1,25 +1,37 @@
-[gd_scene load_steps=14 format=4 uid="uid://d38yynx22ev4y"]
+[gd_scene load_steps=22 format=3 uid="uid://d38yynx22ev4y"]
 
-[ext_resource type="PackedScene" uid="uid://dy423abcukasp" path="res://explosion_manager.tscn" id="1_i5eie"]
 [ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://player.tscn" id="1_p0mxc"]
+[ext_resource type="AudioStream" uid="uid://crt5pp77a4l32" path="res://resources/TLVL EXTRAS/Forest Level.ogg" id="1_q4p1t"]
 [ext_resource type="PackedScene" uid="uid://bjtvsvry3dapy" path="res://enemy.tscn" id="2_3wa2d"]
-[ext_resource type="PackedScene" uid="uid://i6ptj3fncpgt" path="res://floor.tscn" id="2_8f8hk"]
-[ext_resource type="PackedScene" uid="uid://bvdu5v28yulr0" path="res://climbable_wall.tscn" id="3_04c0g"]
-[ext_resource type="PackedScene" uid="uid://be1mbm2trdwj2" path="res://test_tile_map.tscn" id="4_eo0di"]
 [ext_resource type="PackedScene" uid="uid://dmijlu5x8oc8w" path="res://spawn_point.tscn" id="5_sh2bk"]
 [ext_resource type="PackedScene" uid="uid://p80u057lknov" path="res://spike_trap.tscn" id="6_6l2wc"]
 [ext_resource type="PackedScene" uid="uid://b6ugxlnqk3o76" path="res://respawn_point.tscn" id="6_kiqvl"]
 [ext_resource type="PackedScene" uid="uid://fl6siaxv6op2" path="res://card_spawner.tscn" id="9_8chcu"]
+[ext_resource type="PackedScene" uid="uid://cjytebfkliisk" path="res://tlvl23.tscn" id="9_sjiuu"]
 [ext_resource type="PackedScene" uid="uid://c8vh87q0rdp11" path="res://slice_card.tscn" id="10_0i7dp"]
+[ext_resource type="Texture2D" uid="uid://cgu6xucp53i8y" path="res://resources/TLVL EXTRAS/sky.png" id="10_5e7u8"]
+[ext_resource type="Texture2D" uid="uid://ci1oaqr1im5m4" path="res://resources/TLVL EXTRAS/princess.png" id="11_588x3"]
 [ext_resource type="PackedScene" uid="uid://bepyetyir6wh7" path="res://pause_menu.tscn" id="11_brn5f"]
-[ext_resource type="PackedScene" uid="uid://bb1xdtxvr8q4n" path="res://stomp_card.tscn" id="12_nosi1"]
+[ext_resource type="Texture2D" uid="uid://ogewexap8d82" path="res://resources/TLVL EXTRAS/RMB.png" id="13_q7tkc"]
+[ext_resource type="Texture2D" uid="uid://k33mnf6us026" path="res://resources/TLVL EXTRAS/Arrow DI.png" id="14_ws553"]
+[ext_resource type="Texture2D" uid="uid://c3qi8qu2cjduw" path="res://resources/TLVL EXTRAS/Plus Sign.png" id="15_stm7o"]
+[ext_resource type="Texture2D" uid="uid://ct8xbqn8hbscf" path="res://resources/TLVL EXTRAS/Arrow DIM.png" id="16_y3h5h"]
+[ext_resource type="PackedScene" uid="uid://cp544257x4a4e" path="res://resources/all spring stuff/Spring_vertical.tscn" id="17_r6u5s"]
+[ext_resource type="Texture2D" uid="uid://ci510y3nev70b" path="res://resources/BG/parallax-01.png" id="18_kjkuu"]
+[ext_resource type="Texture2D" uid="uid://dpsjswoe0dspe" path="res://resources/BG/parallax-02.png" id="19_swuis"]
+[ext_resource type="Texture2D" uid="uid://bne85na381aab" path="res://resources/BG/parallax-03.png" id="20_h80gs"]
+[ext_resource type="Texture2D" uid="uid://dh8khbejw4yd0" path="res://resources/BG/parallax-04.png" id="21_a024w"]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(-42, -1101)
 
-[node name="ExplosionManager" parent="." instance=ExtResource("1_i5eie")]
+[node name="ForestLevel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_q4p1t")
+volume_db = -25.927
+autoplay = true
 
 [node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_p0mxc")]
-position = Vector2(78, -431)
+position = Vector2(-536, 30)
 spawn_point = NodePath("../SpawnPoint")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -36,69 +48,1073 @@ drag_right_margin = 0.1
 position = Vector2(43, -15)
 scale = Vector2(0.5, 0.5)
 
-[node name="Floor" parent="." instance=ExtResource("2_8f8hk")]
-
-[node name="StaticBody2D" parent="." instance=ExtResource("3_04c0g")]
-position = Vector2(-177, -1)
-
-[node name="StaticBody2D2" parent="." instance=ExtResource("3_04c0g")]
-position = Vector2(-72, -54)
-
-[node name="ClimbableWall" parent="." instance=ExtResource("3_04c0g")]
-position = Vector2(177, 0)
-
-[node name="ClimbableWall2" parent="." instance=ExtResource("3_04c0g")]
-position = Vector2(142, -7)
-
-[node name="test_tile_map_no_terrain" parent="." instance=ExtResource("4_eo0di")]
-tile_map_data = PackedByteArray("AADp/+f/AAAAAAMAAADp/+j/AAAAAAMAAADp/+n/AAAAAAMAAADp/+r/AAAAAAMAAADp/+v/AAAAAAMAAADp/+z/AAAAAAMAAADp/+3/AAAAAAMAAADp/+7/AAAAAAMAAADq/+f/AAAAAAMAAADq/+j/AAAAAAMAAADq/+n/AAAAAAMAAADq/+r/AAAAAAMAAADq/+v/AAAAAAMAAADq/+z/AAAAAAMAAADq/+3/AAAAAAMAAADq/+7/AAAAAAMAAADr/+f/AAAAAAMAAADr/+j/AAAAAAMAAADr/+n/AAAAAAMAAADr/+r/AAAAAAMAAADr/+v/AAAAAAMAAADr/+z/AAAAAAMAAADr/+3/AAAAAAMAAADr/+7/AAAAAAMAAADs/+f/AAAAAAMAAADs/+j/AAAAAAMAAADs/+n/AAAAAAMAAADs/+r/AAAAAAMAAADs/+v/AAAAAAMAAADs/+z/AAAAAAMAAADs/+3/AAAAAAMAAADs/+7/AAAAAAMAAADt/+f/AAAAAAMAAADt/+j/AAAAAAMAAADt/+n/AAAAAAMAAADt/+r/AAAAAAMAAADt/+v/AAAAAAMAAADt/+z/AAAAAAMAAADt/+3/AAAAAAMAAADt/+7/AAAAAAMAAADu/+f/AAAAAAMAAADu/+j/AAAAAAMAAADu/+n/AAAAAAMAAADu/+r/AAAAAAMAAADu/+v/AAAAAAMAAADu/+z/AAAAAAMAAADu/+3/AAAAAAMAAADu/+7/AAAAAAMAAADv/+f/AAAAAAMAAADv/+j/AAAAAAMAAADv/+n/AAAAAAMAAADv/+r/AAAAAAMAAADv/+v/AAAAAAMAAADv/+z/AAAAAAMAAADv/+3/AAAAAAMAAADv/+7/AAAAAAMAAADw/+f/AAAAAAMAAADw/+j/AAAAAAMAAADw/+n/AAAAAAMAAADw/+r/AAAAAAMAAADw/+v/AAAAAAMAAADw/+z/AAAAAAMAAADw/+3/AAAAAAMAAADw/+7/AAAAAAMAAADx/+f/AAAAAAMAAADx/+j/AAAAAAMAAADx/+n/AAAAAAMAAADx/+r/AAAAAAMAAADx/+v/AAAAAAMAAADx/+z/AAAAAAMAAADx/+3/AAAAAAMAAADx/+7/AAAAAAMAAADy/+f/AAAAAAMAAADy/+j/AAAAAAMAAADy/+n/AAAAAAMAAADy/+r/AAAAAAMAAADy/+v/AAAAAAMAAADy/+z/AAAAAAMAAADy/+3/AAAAAAMAAADy/+7/AAAAAAMAAADz/+f/AAAAAAMAAADz/+j/AAAAAAMAAADz/+n/AAAAAAMAAADz/+r/AAAAAAMAAADz/+v/AAAAAAMAAADz/+z/AAAAAAMAAADz/+3/AAAAAAMAAADz/+7/AAAAAAMAAADq/+D/AAAAAAMAAgDq/+H/AAAAAAMAAgDq/+L/AAAAAAMAAgDq/+P/AAAAAAMAAgDq/+T/AAAAAAMAAgDq/+X/AAAAAAMAAgDq/+b/AAAAAAMAAgDu/97/AAAAAAMAAgDu/9//AAAAAAMAAgDu/+D/AAAAAAMAAgDu/+H/AAAAAAMAAgDu/+L/AAAAAAMAAgDu/+P/AAAAAAMAAgDq/9j/AAAAAAMAAADq/9n/AAAAAAMAAgDq/9r/AAAAAAMAAgDq/9v/AAAAAAMAAgDq/9z/AAAAAAMAAgDq/93/AAAAAAMAAgDq/97/AAAAAAMAAgDq/9//AAAAAAMAAgDu/9j/AAAAAAMAAADu/9n/AAAAAAMAAgDu/9r/AAAAAAMAAgDu/9v/AAAAAAMAAgDu/9z/AAAAAAMAAgDu/93/AAAAAAMAAgDw/9v/AAAAAAEAAADw/9z/AAAAAAIAAADx/9v/AAABAAEAAADx/9z/AAABAAIAAADy/9v/AAAAAAEAAADy/9z/AAAAAAIAAADz/9v/AAABAAEAAADz/9z/AAABAAIAAADx/97/AAACAAEAAADy/97/AAADAAEAAADw/+T/AAACAAIAAADx/+T/AAADAAIAAAD8//v/AAABAAMAAAD9//v/AAABAAMAAAD+//v/AAABAAMAAAD///v/AAABAAMAAAACAPn/AAABAAMAAAADAPn/AAABAAMAAAAEAPn/AAABAAMAAAAFAPn/AAABAAMAAAAGAPn/AAABAAMAAAAHAPn/AAABAAMAAAD8//f/AAADAAMAAAD9//f/AAADAAMAAAD+//f/AAADAAMAAAD///f/AAADAAMAAAADAPT/AAACAAMAAAAEAPT/AAACAAMAAAAFAPT/AAACAAMAAAAGAPT/AAACAAMAAAAHAPT/AAACAAMAAADr/9j/AAAAAAMAAQDs/9j/AAAAAAMAAQDt/9j/AAAAAAMAAQDw/+H/AAACAAIAAADx/+H/AAADAAIAAADw/+L/AAACAAIAAADx/+L/AAADAAIAAADw/+P/AAACAAIAAADx/+P/AAADAAIAAADs/+b/AAAAAAAAAADt/+b/AAABAAAAAADu/+b/AAACAAAAAADv/+b/AAADAAAAAAD9/+7/AAAAAAMAAAD9/+//AAAAAAMAAAD9//D/AAAAAAMAAAD+/+7/AAAAAAMAAAD+/+//AAAAAAMAAAD+//D/AAAAAAMAAAD//+7/AAAAAAMAAAD//+//AAAAAAMAAAD///D/AAAAAAMAAAAAAO7/AAAAAAMAAAAAAO//AAAAAAMAAAAAAPD/AAAAAAMAAAADAO7/AAAAAAMAAgADAO//AAAAAAMAAgADAPD/AAAAAAMAAgADAPH/AAAAAAMAAgAHAO7/AAAAAAMAAgAHAO//AAAAAAMAAgAHAPD/AAAAAAMAAgAHAPH/AAAAAAMAAgAHAPL/AAAAAAMAAgAHAPP/AAAAAAMAAgD//+v/AAAAAAEAAAAAAOr/AAAAAAEAAAABAOn/AAAAAAEAAAACAOj/AAAAAAEAAAADAOf/AAAAAAEAAAAEAOb/AAAAAAEAAAAFAOX/AAAAAAEAAAAAAOv/AAAAAAMAAAABAOr/AAAAAAMAAAACAOn/AAAAAAMAAAADAOj/AAAAAAMAAAAEAOf/AAAAAAMAAAAFAOb/AAAAAAMAAAD9/+T/AAAAAAMAAAD9/+X/AAAAAAMAAAD9/+b/AAAAAAMAAAD9/+f/AAAAAAMAAAD9/+j/AAAAAAMAAAD9/+r/AAAAAAMAAAAXAOb/AAAAAAMAAAAYAOb/AAAAAAMAAAAZAOb/AAAAAAMAAAAaAOb/AAAAAAMAAAAbAOb/AAAAAAMAAAAcAOb/AAAAAAMAAAAdAOb/AAAAAAMAAAAeAOb/AAAAAAMAAAAfAOb/AAAAAAMAAAAgAOb/AAAAAAMAAAAhAOb/AAAAAAMAAAAiAOb/AAAAAAMAAAAjAOb/AAAAAAMAAAAkAOb/AAAAAAMAAAAlAOb/AAAAAAMAAAAmAOb/AAAAAAMAAAAnAOb/AAAAAAMAAAAoAOb/AAAAAAMAAAApAOb/AAAAAAMAAAAqAOb/AAAAAAMAAAArAOb/AAAAAAMAAAA=")
-
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="SpikeTrap" parent="Node2D" instance=ExtResource("6_6l2wc")]
-position = Vector2(-71, 0)
+position = Vector2(1497, -359)
+
+[node name="SpikeTrap17" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(6, 0)
+
+[node name="SpikeTrap18" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(9, 0)
+
+[node name="SpikeTrap19" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(12, 0)
+
+[node name="SpikeTrap20" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(15, 0)
+
+[node name="SpikeTrap21" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(18, 0)
+
+[node name="SpikeTrap22" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(21, 0)
+
+[node name="SpikeTrap23" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(24, 0)
+
+[node name="SpikeTrap24" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(27, 0)
+
+[node name="SpikeTrap25" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(30, 0)
+
+[node name="SpikeTrap26" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(33, 0)
+
+[node name="SpikeTrap27" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(36, 0)
+
+[node name="SpikeTrap28" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(39, 0)
+
+[node name="SpikeTrap29" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(42, 0)
+
+[node name="SpikeTrap30" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(45, 0)
+
+[node name="SpikeTrap31" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(48, 0)
+
+[node name="SpikeTrap32" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(51, 0)
+
+[node name="SpikeTrap33" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(54, 0)
+
+[node name="SpikeTrap34" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(57, 0)
+
+[node name="SpikeTrap35" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(60, 0)
+
+[node name="SpikeTrap36" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(63, 0)
+
+[node name="SpikeTrap37" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(66, 0)
+
+[node name="SpikeTrap38" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(69, 0)
+
+[node name="SpikeTrap39" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(72, 0)
+
+[node name="SpikeTrap40" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(75, 0)
+
+[node name="SpikeTrap41" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(78, 0)
+
+[node name="SpikeTrap42" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(81, 0)
+
+[node name="SpikeTrap43" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(84, 0)
+
+[node name="SpikeTrap44" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(87, 0)
+
+[node name="SpikeTrap45" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(90, 0)
+
+[node name="SpikeTrap46" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(93, 0)
+
+[node name="SpikeTrap47" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(96, 0)
+
+[node name="SpikeTrap48" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(99, 0)
+
+[node name="SpikeTrap49" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(102, 0)
+
+[node name="SpikeTrap50" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(105, 0)
+
+[node name="SpikeTrap51" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(108, 0)
+
+[node name="SpikeTrap52" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(111, 0)
+
+[node name="SpikeTrap53" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(114, 0)
+
+[node name="SpikeTrap54" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(117, 0)
+
+[node name="SpikeTrap55" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(120, 0)
+
+[node name="SpikeTrap56" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(123, 0)
+
+[node name="SpikeTrap57" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(126, 0)
+
+[node name="SpikeTrap58" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(129, 0)
+
+[node name="SpikeTrap59" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(132, 0)
+
+[node name="SpikeTrap60" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(135, 0)
+
+[node name="SpikeTrap61" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(138, 0)
+
+[node name="SpikeTrap62" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(141, 0)
+
+[node name="SpikeTrap63" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(144, 0)
+
+[node name="SpikeTrap64" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(147, 0)
+
+[node name="SpikeTrap65" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(150, 0)
+
+[node name="SpikeTrap66" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(153, 0)
+
+[node name="SpikeTrap67" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(156, 0)
+
+[node name="SpikeTrap68" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(159, 0)
+
+[node name="SpikeTrap69" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(162, 0)
+
+[node name="SpikeTrap70" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(165, 0)
+
+[node name="SpikeTrap71" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(168, 0)
+
+[node name="SpikeTrap72" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(171, 0)
+
+[node name="SpikeTrap73" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(174, 0)
+
+[node name="SpikeTrap74" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(177, 0)
+
+[node name="SpikeTrap75" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(180, 0)
+
+[node name="SpikeTrap76" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(183, 0)
+
+[node name="SpikeTrap77" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(186, 0)
+
+[node name="SpikeTrap78" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(189, 0)
+
+[node name="SpikeTrap79" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(192, 0)
+
+[node name="SpikeTrap80" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(195, 0)
+
+[node name="SpikeTrap81" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(198, 0)
+
+[node name="SpikeTrap82" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(201, 0)
+
+[node name="SpikeTrap83" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(204, 0)
+
+[node name="SpikeTrap84" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(207, 0)
+
+[node name="SpikeTrap85" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(210, 0)
+
+[node name="SpikeTrap86" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(213, 0)
+
+[node name="SpikeTrap87" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(216, 0)
+
+[node name="SpikeTrap88" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(219, 0)
+
+[node name="SpikeTrap89" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(222, 0)
+
+[node name="SpikeTrap90" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(225, 0)
+
+[node name="SpikeTrap91" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(228, 0)
+
+[node name="SpikeTrap92" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(231, 0)
+
+[node name="SpikeTrap93" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(234, 0)
+
+[node name="SpikeTrap94" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(237, 0)
+
+[node name="SpikeTrap95" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(240, 0)
+
+[node name="SpikeTrap96" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(243, 0)
+
+[node name="SpikeTrap97" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(246, 0)
+
+[node name="SpikeTrap98" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(249, 0)
+
+[node name="SpikeTrap99" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(252, 0)
+
+[node name="SpikeTrap100" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(255, 0)
+
+[node name="SpikeTrap101" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(258, 0)
+
+[node name="SpikeTrap102" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(261, 0)
+
+[node name="SpikeTrap103" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(264, 0)
+
+[node name="SpikeTrap104" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(267, 0)
+
+[node name="SpikeTrap105" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(270, 0)
+
+[node name="SpikeTrap106" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(273, 0)
+
+[node name="SpikeTrap107" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(276, 0)
+
+[node name="SpikeTrap108" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(279, 0)
+
+[node name="SpikeTrap109" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(282, 0)
+
+[node name="SpikeTrap110" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(285, 0)
+
+[node name="SpikeTrap111" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(288, 0)
+
+[node name="SpikeTrap112" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(291, 0)
+
+[node name="SpikeTrap113" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(294, 0)
+
+[node name="SpikeTrap114" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(297, 0)
+
+[node name="SpikeTrap115" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(300, 0)
+
+[node name="SpikeTrap116" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(303, 0)
+
+[node name="SpikeTrap117" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(306, 0)
+
+[node name="SpikeTrap118" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(309, 0)
+
+[node name="SpikeTrap119" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(312, 0)
+
+[node name="SpikeTrap120" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(315, 0)
+
+[node name="SpikeTrap121" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(318, 0)
+
+[node name="SpikeTrap122" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(321, 0)
+
+[node name="SpikeTrap123" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(324, 0)
+
+[node name="SpikeTrap124" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(327, 0)
+
+[node name="SpikeTrap125" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(330, 0)
+
+[node name="SpikeTrap126" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(333, 0)
+
+[node name="SpikeTrap127" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(336, 0)
+
+[node name="SpikeTrap128" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(339, 0)
+
+[node name="SpikeTrap129" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(342, 0)
+
+[node name="SpikeTrap130" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(345, 0)
+
+[node name="SpikeTrap131" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(348, 0)
+
+[node name="SpikeTrap132" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(351, 0)
+
+[node name="SpikeTrap133" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(354, 0)
+
+[node name="SpikeTrap134" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(357, 0)
+
+[node name="SpikeTrap135" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(360, 0)
+
+[node name="SpikeTrap136" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(363, 0)
+
+[node name="SpikeTrap137" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(366, 0)
+
+[node name="SpikeTrap138" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(369, 0)
+
+[node name="SpikeTrap139" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(372, 0)
+
+[node name="SpikeTrap140" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(375, 0)
+
+[node name="SpikeTrap141" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(378, 0)
+
+[node name="SpikeTrap142" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(381, 0)
+
+[node name="SpikeTrap143" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(384, 0)
+
+[node name="SpikeTrap144" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(387, 0)
+
+[node name="SpikeTrap145" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(390, 0)
+
+[node name="SpikeTrap146" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(393, 0)
+
+[node name="SpikeTrap147" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(396, 0)
+
+[node name="SpikeTrap148" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(399, 0)
+
+[node name="SpikeTrap149" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(402, 0)
+
+[node name="SpikeTrap150" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(405, 0)
+
+[node name="SpikeTrap151" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(408, 0)
+
+[node name="SpikeTrap152" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(411, 0)
+
+[node name="SpikeTrap153" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(414, 0)
+
+[node name="SpikeTrap154" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(417, 0)
+
+[node name="SpikeTrap155" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(420, 0)
+
+[node name="SpikeTrap156" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(423, 0)
+
+[node name="SpikeTrap157" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(426, 0)
+
+[node name="SpikeTrap158" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(429, 0)
+
+[node name="SpikeTrap159" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(432, 0)
+
+[node name="SpikeTrap160" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(435, 0)
+
+[node name="SpikeTrap161" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(438, 0)
+
+[node name="SpikeTrap162" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(441, 0)
+
+[node name="SpikeTrap163" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(444, 0)
+
+[node name="SpikeTrap164" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(447, 0)
+
+[node name="SpikeTrap165" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(450, 0)
+
+[node name="SpikeTrap166" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(453, 0)
+
+[node name="SpikeTrap167" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(456, 0)
+
+[node name="SpikeTrap168" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(459, 0)
+
+[node name="SpikeTrap169" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(462, 0)
+
+[node name="SpikeTrap170" parent="Node2D/SpikeTrap" instance=ExtResource("6_6l2wc")]
+position = Vector2(465, 0)
 
 [node name="SpikeTrap2" parent="Node2D" instance=ExtResource("6_6l2wc")]
-position = Vector2(-167, -48)
-rotation = 1.5708
-
-[node name="SpikeTrap3" parent="Node2D" instance=ExtResource("6_6l2wc")]
-position = Vector2(-4, -76)
-rotation = -3.14159
-
-[node name="SpikeTrap4" parent="Node2D" instance=ExtResource("6_6l2wc")]
-position = Vector2(132, -420)
-rotation = -1.5708
+position = Vector2(1500, -359)
 
 [node name="SpawnPoint" parent="." instance=ExtResource("5_sh2bk")]
-position = Vector2(0, -25)
+position = Vector2(1985, -467)
 
 [node name="RespawnPoint" parent="." instance=ExtResource("6_kiqvl")]
-position = Vector2(80, -54)
+position = Vector2(1406, -447)
 
-[node name="RespawnPoint2" parent="." instance=ExtResource("6_kiqvl")]
-position = Vector2(23, -443)
+[node name="CardSpawner4" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(1275, -447)
+card_scene = ExtResource("10_0i7dp")
 
 [node name="CardSpawner3" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(-27, -172)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner2" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(82, -139)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(-48, -98)
+position = Vector2(-406, 11)
 card_scene = ExtResource("10_0i7dp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_brn5f")]
 
-[node name="CardSpawner4" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(-73, -496)
-card_scene = ExtResource("12_nosi1")
+[node name="Node2D2" parent="." instance=ExtResource("9_sjiuu")]
+position = Vector2(-247, 7)
 
 [node name="CardSpawner5" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(-178.142, -441.897)
-card_scene = ExtResource("12_nosi1")
+position = Vector2(2606, -518)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner6" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(3047, -540)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner7" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(3425, -554)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner8" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(2019, -469)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner9" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(4632, -572)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner10" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(5243, -519)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner11" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(5776, -502)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner12" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(6260, -528)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner13" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(3561, 37)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner14" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(6981, 262)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner15" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(5077, -212)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="RespawnPoint2" parent="." instance=ExtResource("6_kiqvl")]
+position = Vector2(4363, -158)
+
+[node name="RespawnPoint3" parent="." instance=ExtResource("6_kiqvl")]
+position = Vector2(3927, -522)
+
+[node name="RespawnPoint4" parent="." instance=ExtResource("6_kiqvl")]
+position = Vector2(3812, 336)
+
+[node name="CardSpawner16" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(4105, 431)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner17" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(5023, 381)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner18" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(5768, 339)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="Enemy2" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(3475, -556)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy2" parent="Enemy2" instance=ExtResource("2_3wa2d")]
+position = Vector2(2106, -472)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy3" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(2876, 183)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy4" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(3121, 151)
+scale = Vector2(0.5, 0.5)
+
+[node name="CardSpawner19" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(3895, -114)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner20" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(538, -20)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner21" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(649, -116)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner22" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(11969, 696)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner23" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(11970, 458)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner24" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(11970, 580)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="RespawnPoint5" parent="." instance=ExtResource("6_kiqvl")]
+position = Vector2(7450, 80)
+
+[node name="CardSpawner25" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(7575, 74)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner26" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(8318, -110)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner27" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(8647, -120)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner28" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(9168, -21)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner29" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(9537, -26)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner30" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(10084, -49)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner31" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(10593, -40)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner32" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(10934, -11)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner33" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(8143, 418)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner34" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(8401, 778)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner35" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(9153, 809)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner36" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(10611, 723)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="RespawnPoint6" parent="." instance=ExtResource("6_kiqvl")]
+position = Vector2(12355, 14)
+
+[node name="Enemy5" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(4593, -148)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy6" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(4262, 463)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy7" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(4302, 463)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy8" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(4348, 466)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy9" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(5292, 373)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy10" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(5379, 359)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy11" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(5476, 361)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy12" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(7611, 102)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy13" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(8440, -99)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy14" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(7268, -24)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy15" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(7034, 293)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy16" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(5997, -116)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy17" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(5496, -189)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy18" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(4700, -549)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy20" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(5172, -270)
+scale = Vector2(0.5, 0.5)
+
+[node name="CardSpawner37" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(4708, 359)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner38" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(4709, 8)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner39" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(4708, 266)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner40" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(4708, 146)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner41" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(16559, -65)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner42" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(16756, -182)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner43" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(16956, -284)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner44" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(17192, -350)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="Enemy19" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(8812, 694)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy21" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(8817, 761)
+scale = Vector2(0.5, 0.5)
+
+[node name="CardSpawner45" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(8710, 688)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="Enemy22" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(9956, 880)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy23" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(9863, 892)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy24" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(10420, 1002)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy25" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(10458, 1002)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy26" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(10513, 1001)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy27" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(10551, 1001)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy28" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(10752, 985)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy29" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(10790, 985)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy30" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(10833, 984)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy31" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(10871, 984)
+scale = Vector2(0.5, 0.5)
+
+[node name="CardSpawner46" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(10286, 973)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner47" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(10084, 926)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner48" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(10665, 985)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="Sky" type="Sprite2D" parent="."]
+visible = false
+z_index = -50
+position = Vector2(8708, 123.5)
+scale = Vector2(12.6187, 3.01083)
+texture = ExtResource("10_5e7u8")
+
+[node name="ArrowDi" type="Sprite2D" parent="Sky"]
+position = Vector2(1357, -505)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("14_ws553")
+
+[node name="Princess" type="Sprite2D" parent="."]
+position = Vector2(17790, -320)
+texture = ExtResource("11_588x3")
+
+[node name="Enemy32" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(8859, 491)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy33" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(9350, 553)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy34" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(9433, 553)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy35" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(10101, 503)
+scale = Vector2(0.5, 0.5)
+
+[node name="CardSpawner49" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(9894, 511)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner50" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(10578, 451)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="Enemy36" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(9580, -2)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy37" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(10727, 779)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy38" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(10765, 778)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy39" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(12609, 11)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy40" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(12704, -2)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy41" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(13400, -107)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy42" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(13492, -117)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy43" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(14306, -83)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy44" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(14336, -83)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy45" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(14304, -131)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy46" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(14334, -132)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy47" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(14666, -88)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy48" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(14696, -88)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy49" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(14731, -89)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy50" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(14761, -89)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy51" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(16022, -22)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy52" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(15464, -70)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy53" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(15792, -35)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy54" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(15581, -53)
+scale = Vector2(0.5, 0.5)
+
+[node name="CardSpawner51" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(12405, 2)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner52" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(12557, -10)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner53" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(13321, -122)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner54" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(14142, -86)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner55" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(14602, -94)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner56" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(15297, -111)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner57" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(15703, -77)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner58" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(-367, 9)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner59" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(-329, 10)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="Rmb" type="Sprite2D" parent="."]
+position = Vector2(170, -107)
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("13_q7tkc")
+
+[node name="Rmb2" type="Sprite2D" parent="."]
+position = Vector2(1444, -504)
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("13_q7tkc")
+
+[node name="ArrowDi" type="Sprite2D" parent="."]
+position = Vector2(1357, -505)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("14_ws553")
+
+[node name="PlusSign" type="Sprite2D" parent="."]
+position = Vector2(1400, -502)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("15_stm7o")
+
+[node name="ArrowDi2" type="Sprite2D" parent="."]
+position = Vector2(2236, -522)
+rotation = 0.594187
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("14_ws553")
+
+[node name="ArrowDi3" type="Sprite2D" parent="."]
+position = Vector2(629, -152)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("14_ws553")
+
+[node name="ArrowDi4" type="Sprite2D" parent="."]
+position = Vector2(629, -198)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("14_ws553")
+
+[node name="ArrowDim" type="Sprite2D" parent="."]
+position = Vector2(710, -107)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("16_y3h5h")
+
+[node name="ArrowDim2" type="Sprite2D" parent="."]
+position = Vector2(714, -165)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("16_y3h5h")
+
+[node name="ArrowDi5" type="Sprite2D" parent="."]
+position = Vector2(629, -241)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("14_ws553")
+
+[node name="ArrowDim3" type="Sprite2D" parent="."]
+position = Vector2(714, -216)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("16_y3h5h")
+
+[node name="Area2D" parent="." instance=ExtResource("17_r6u5s")]
+z_index = -1
+position = Vector2(1736, -371)
+
+[node name="Area2D2" parent="." instance=ExtResource("17_r6u5s")]
+z_index = -1
+position = Vector2(3485, 143)
+
+[node name="Area2D3" parent="." instance=ExtResource("17_r6u5s")]
+z_index = -1
+position = Vector2(4704, 415)
+
+[node name="Area2D4" parent="." instance=ExtResource("17_r6u5s")]
+z_index = -1
+position = Vector2(4410, -146)
+
+[node name="Area2D5" parent="." instance=ExtResource("17_r6u5s")]
+z_index = -1
+position = Vector2(5350, -257)
+
+[node name="Area2D6" parent="." instance=ExtResource("17_r6u5s")]
+z_index = -1
+position = Vector2(8191, 335)
+
+[node name="Area2D7" parent="." instance=ExtResource("17_r6u5s")]
+z_index = -1
+position = Vector2(8985, 833)
+
+[node name="RespawnPoint7" parent="." instance=ExtResource("6_kiqvl")]
+position = Vector2(16351, -66)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-429, -1219)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("18_kjkuu")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-429, -1219)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("19_swuis")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-429, -1219)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("20_h80gs")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-429, -1219)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource("21_a024w")

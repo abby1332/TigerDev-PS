@@ -19,8 +19,9 @@ var time_falling: float = 0.0
 
 func set_animation_special_state(state: SpecialState, duration: float) -> void:
 	current_special_state = state
-	if state_timer != null and state_timer.time_left > 0:
-		state_timer.free()
+	if state_timer != null and is_instance_valid(state_timer) and state_timer.time_left > 0:
+		for dict in state_timer.timeout.get_connections():
+			state_timer.timeout.disconnect(dict.callable)
 	state_timer = get_tree().create_timer(duration)
 	state_timer.timeout.connect(func () -> void:
 		current_special_state = SpecialState.NONE

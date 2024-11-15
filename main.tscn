@@ -15,7 +15,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_p0mxc")]
-position = Vector2(-128, -30)
+position = Vector2(-39, -148)
 spawn_point = NodePath("../SpawnPoint")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -29,7 +29,7 @@ drag_left_margin = 0.1
 drag_right_margin = 0.1
 
 [node name="Enemy" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(116, -130)
+position = Vector2(43, -15)
 scale = Vector2(0.5, 0.5)
 
 [node name="Floor" parent="." instance=ExtResource("2_8f8hk")]
@@ -90,3 +90,11 @@ card_scene = ExtResource("10_0i7dp")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_brn5f")]
+
+[node name="Enemy2" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(78, -15)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy3" parent="." instance=ExtResource("2_3wa2d")]
+position = Vector2(112, -14)
+scale = Vector2(0.5, 0.5)

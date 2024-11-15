@@ -19,4 +19,7 @@ func _physics_process(delta: float) -> void:
 		Player.player.animation_machine.current_special_state = PlayerAnimationMachine.SpecialState.LANDING_FROM_STOMP
 		await FreezeFrameManager.zoom_frame(0.05, 0.5, 1.5, false)
 		Player.player.animation_machine.current_special_state = PlayerAnimationMachine.SpecialState.NONE
-		Player.player.velocity.y = -800
+		if Input.is_action_pressed("crouch"):
+			Player.player.velocity.y = -100
+		else:
+			Player.player.velocity.y = -800

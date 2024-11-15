@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy423abcukasp"]
+
+[ext_resource type="Script" path="res://explosion_manager.gd" id="1_w2qjk"]
+[ext_resource type="PackedScene" uid="uid://cnsd4xxvgack3" path="res://explosion.tscn" id="2_dxhgo"]
+
+[node name="ExplosionManager" type="Node2D"]
+script = ExtResource("1_w2qjk")
+explosion_scene = ExtResource("2_dxhgo")

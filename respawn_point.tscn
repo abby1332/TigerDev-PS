@@ -139,6 +139,7 @@ one_shot = true
 speed_scale = 1.5
 explosiveness = 1.0
 fixed_fps = 60
+visibility_rect = Rect2(-5000, -5000, 10000, 10000)
 local_coords = true
 draw_order = 0
 trail_enabled = true

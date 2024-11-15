@@ -19,30 +19,31 @@ point_count = 4
 curve = SubResource("Curve_1ot03")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p6hjd"]
+lifetime_randomness = 0.3
 particle_flag_disable_z = true
 angle_min = -720.0
 angle_max = 720.0
 spread = 180.0
 initial_velocity_min = 5.0
-initial_velocity_max = 95.7
+initial_velocity_max = 122.58
 gravity = Vector3(0, 0, 0)
 scale_max = 5.0
 scale_curve = SubResource("CurveTexture_5737a")
 color_initial_ramp = SubResource("GradientTexture1D_2bw3p")
 
-[node name="Explosion" type="Node2D"]
+[node name="Explosion" type="Area2D"]
 script = ExtResource("1_agqgm")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vrik8")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="Particles" type="GPUParticles2D" parent="."]
+emitting = false
 amount = 200
 process_material = SubResource("ParticleProcessMaterial_p6hjd")
-lifetime = 2.0
+one_shot = true
 explosiveness = 1.0
+local_coords = true
 draw_order = 0
 trail_lifetime = 2.5
 trail_sections = 5

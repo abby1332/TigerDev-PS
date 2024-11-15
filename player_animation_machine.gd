@@ -43,8 +43,9 @@ func update(delta: float) -> void:
 			sprite.animation = rl("dash")
 			return
 		SpecialState.LANDING_FROM_STOMP:
-			sprite.speed_scale = 1
+			sprite.speed_scale = 0
 			sprite.animation = rl("land")
+			sprite.frame = 0
 			sprite.rotation = 0
 			return
 	

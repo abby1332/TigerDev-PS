@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://crt5pp77a4l32"
+path="res://.godot/imported/Forest Level.ogg-270beb8e710e80cfa787305b8d68e3d4.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/TLVL EXTRAS/Forest Level.ogg"
+dest_files=["res://.godot/imported/Forest Level.ogg-270beb8e710e80cfa787305b8d68e3d4.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -154,7 +154,7 @@ func die() -> void:
 func sliding_on_wall_check() -> WallDirection:
 	var space := get_world_2d().direct_space_state
 	var rect := regular_collider.shape.get_rect().size
-	var left_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(-rect.x, 0), climbable_wall_layer)
+	var left_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(-rect.x * scale.x, 0), climbable_wall_layer)
 	var left_intersect := space.intersect_ray(left_query)
 	if not left_intersect.is_empty():
 		# Reset stamina if we fall off one wall then cling onto another
@@ -163,7 +163,7 @@ func sliding_on_wall_check() -> WallDirection:
 		if direction < 0 and sliding_stamina > 0:
 			last_wall_clinged_to = left_intersect["collider"]
 			return WallDirection.LEFT
-	var right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(rect.x, 0), climbable_wall_layer)
+	var right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(rect.x * scale.x, 0), climbable_wall_layer)
 	var right_intersect := space.intersect_ray(right_query)
 	if not right_intersect.is_empty():
 		# Reset stamina if we fall off one wall then cling onto another

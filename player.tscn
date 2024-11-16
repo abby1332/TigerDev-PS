@@ -976,3 +976,6 @@ amount = 32
 process_material = SubResource("ParticleProcessMaterial_qca83")
 texture = ExtResource("14_puffk")
 lifetime = 2.0
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true

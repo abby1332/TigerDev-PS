@@ -5,7 +5,7 @@ class_name BasicEnemy
 @export var speed: float = 50
 
 #Is the enemy currently chasing the player? Will only chase if theyre close
-var is_chasing: bool = true 
+var is_chasing: bool = true
 #Wander around when not attacking the player
 var is_roaming: bool  = false 
 #Is the player close enough to chase

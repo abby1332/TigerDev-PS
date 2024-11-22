@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://bh1eb0gnrkdsf" path="res://resources/audio/explosion_stomp.ogg" id="2_w7bf0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vrik8"]
+radius = 15.0
 
 [sub_resource type="Gradient" id="Gradient_dr3w2"]
 offsets = PackedFloat32Array(0, 0.327869, 0.561475, 1)
@@ -33,6 +34,8 @@ scale_curve = SubResource("CurveTexture_5737a")
 color_initial_ramp = SubResource("GradientTexture1D_2bw3p")
 
 [node name="Explosion" type="Area2D"]
+collision_layer = 16
+collision_mask = 255
 script = ExtResource("1_agqgm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -53,3 +56,5 @@ trail_section_subdivisions = 1
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_w7bf0")
 volume_db = 5.211
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

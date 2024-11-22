@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 RespawnManager="*res://respawn_manager.gd"
 OptionsManager="*res://options_manager.gd"
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
+FreezeFrameManager="*res://freeze_frame_manager.gd"
 
 [debug]
 

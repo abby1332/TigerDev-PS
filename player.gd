@@ -14,6 +14,8 @@ var respawn_point: RespawnPoint = null
 
 @onready var animation_machine: PlayerAnimationMachine = $PlayerAnimationMachine
 
+@onready var screen_flash_canvas_layer: CanvasLayer = $ScreenFlash
+
 @export var speed: float = 300.0
 @export var jump_velocity: float = -400.0
 

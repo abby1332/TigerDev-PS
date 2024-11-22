@@ -45,7 +45,7 @@ drag_left_margin = 0.1
 drag_right_margin = 0.1
 
 [node name="Enemy" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(263, -69)
+position = Vector2(43, -15)
 scale = Vector2(0.5, 0.5)
 
 [node name="Node2D" type="Node2D" parent="."]

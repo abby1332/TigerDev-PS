@@ -22,13 +22,14 @@ size = Vector2(28, 30)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 8
-collision_mask = 15
+collision_mask = 63
 script = ExtResource("1_xhxef")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xlacx")
 
 [node name="DealDamageArea" type="Area2D" parent="."]
+collision_mask = 63
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamageArea"]
 shape = SubResource("RectangleShape2D_7mjne")
@@ -41,7 +42,7 @@ shape = SubResource("RectangleShape2D_7ilne")
 
 [node name="GeneralCollision" type="Area2D" parent="."]
 collision_layer = 8
-collision_mask = 15
+collision_mask = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GeneralCollision"]
 shape = SubResource("RectangleShape2D_7ilne")

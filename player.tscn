@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://oskm0n4w5tpe"]
+[gd_scene load_steps=121 format=3 uid="uid://oskm0n4w5tpe"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_lroia"]
 [ext_resource type="Texture2D" uid="uid://w4o213qf87uv" path="res://resources/sprites/red_box_test_player_crouch.png" id="2_d21u6"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://be8ybrdxegilk" path="res://resources/spritesheets/player_run.png" id="6_namog"]
 [ext_resource type="Texture2D" uid="uid://rqkt53w5hopi" path="res://resources/spritesheets/player_slide.png" id="7_xuj7u"]
 [ext_resource type="Script" path="res://player_animation_machine.gd" id="11_oyrvp"]
+[ext_resource type="Script" path="res://player_sound_machine.gd" id="12_q7fwi"]
+[ext_resource type="AudioStream" uid="uid://cehbj4l84v2wj" path="res://resources/audio/hit_enemy.ogg" id="12_qc2c6"]
+[ext_resource type="Texture2D" uid="uid://bg0oisuynedo5" path="res://resources/sprites/particles/line.png" id="14_puffk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wdrxx"]
 atlas = ExtResource("2_gno13")
@@ -822,9 +825,31 @@ orbit_velocity_max = 0.116
 gravity = Vector3(0, 0, 0)
 color = Color(1, 0, 0, 1)
 
+[sub_resource type="Gradient" id="Gradient_w7dd6"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 1, 0.196078, 1, 1, 1, 0.435294, 1, 1, 1, 0.196078)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bh22l"]
+gradient = SubResource("Gradient_w7dd6")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qca83"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 30, 0)
+emission_shape = 3
+emission_box_extents = Vector3(40, 40, 1)
+angle_min = 90.0
+angle_max = 90.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, -18, 0)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("card_manager", "animation_manager", "regular_collider", "crouching_collider", "sliding_particles", "death_particles", "death_text", "respawn_effects", "welcome_back_message", "camera_manager")]
 scale = Vector2(2, 2)
-collision_mask = 7
+collision_mask = 23
 script = ExtResource("1_lroia")
 card_manager = NodePath("CardManager")
 animation_manager = NodePath("PlayerSprite")
@@ -845,9 +870,8 @@ sprite = NodePath("../PlayerSprite")
 position = Vector2(0, -4)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sq1mr")
-animation = &"R_dash"
+animation = &"R_idle"
 autoplay = "R_idle"
-frame_progress = 0.291052
 
 [node name="StandingCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
@@ -912,3 +936,46 @@ visible = false
 
 [node name="CameraManager" type="Node2D" parent="."]
 script = ExtResource("5_2hta7")
+
+[node name="ScreenFlash" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ScreenFlashControl" type="Control" parent="ScreenFlash"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScreenFlash/ScreenFlashControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_bh22l")
+
+[node name="Sounds" type="Node" parent="."]
+script = ExtResource("12_q7fwi")
+
+[node name="EnemyHitSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("12_qc2c6")
+volume_db = 6.0
+attenuation = 0.0769465
+
+[node name="StompPoint" type="Node2D" parent="."]
+position = Vector2(0, 4)
+
+[node name="StompParticles" type="GPUParticles2D" parent="."]
+visible = false
+z_index = -1
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_qca83")
+texture = ExtResource("14_puffk")
+lifetime = 2.0
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true

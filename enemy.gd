@@ -5,7 +5,7 @@ class_name BasicEnemy
 @export var speed: float = 50
 
 #Is the enemy currently chasing the player? Will only chase if theyre close
-var is_chasing: bool = true 
+var is_chasing: bool = true
 #Wander around when not attacking the player
 var is_roaming: bool  = false 
 #Is the player close enough to chase
@@ -117,6 +117,8 @@ func disable_movement(seconds: float) -> void:
 	timer.timeout.connect(timeout)
 	timer.start()
 
+var being_murdered: bool = false
+
 func die() -> void:
 	queue_free()
 
@@ -130,7 +132,10 @@ func die() -> void:
 func _on_deal_damage_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		var player := body as Player
-		if player.kill_everything_mode:
+		if player.kill_everything_mode and not being_murdered:
+			being_murdered = true
+			await FreezeFrameManager.zoom_frame(0.05, 0.5, 1.5)
+			PlayerSoundMachine.main.stream("EnemyHitSound").play()
 			die()
 			return
 		player.die()

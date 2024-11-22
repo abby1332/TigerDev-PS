@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d38yynx22ev4y"]
+[gd_scene load_steps=24 format=3 uid="uid://d38yynx22ev4y"]
 
 [ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://player.tscn" id="1_p0mxc"]
 [ext_resource type="AudioStream" uid="uid://crt5pp77a4l32" path="res://resources/TLVL EXTRAS/Forest Level.ogg" id="1_q4p1t"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c8vh87q0rdp11" path="res://slice_card.tscn" id="10_0i7dp"]
 [ext_resource type="Texture2D" uid="uid://cgu6xucp53i8y" path="res://resources/TLVL EXTRAS/sky.png" id="10_5e7u8"]
 [ext_resource type="Texture2D" uid="uid://ci1oaqr1im5m4" path="res://resources/TLVL EXTRAS/princess.png" id="11_588x3"]
+[ext_resource type="PackedScene" uid="uid://bb1xdtxvr8q4n" path="res://stomp_card.tscn" id="11_autdo"]
 [ext_resource type="PackedScene" uid="uid://bepyetyir6wh7" path="res://pause_menu.tscn" id="11_brn5f"]
 [ext_resource type="Texture2D" uid="uid://ogewexap8d82" path="res://resources/TLVL EXTRAS/RMB.png" id="13_q7tkc"]
 [ext_resource type="Texture2D" uid="uid://k33mnf6us026" path="res://resources/TLVL EXTRAS/Arrow DI.png" id="14_ws553"]
@@ -21,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dpsjswoe0dspe" path="res://resources/BG/parallax-02.png" id="19_swuis"]
 [ext_resource type="Texture2D" uid="uid://bne85na381aab" path="res://resources/BG/parallax-03.png" id="20_h80gs"]
 [ext_resource type="Texture2D" uid="uid://dh8khbejw4yd0" path="res://resources/BG/parallax-04.png" id="21_a024w"]
+[ext_resource type="PackedScene" uid="uid://dy423abcukasp" path="res://explosion_manager.tscn" id="23_hmw8q"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-42, -1101)
@@ -629,8 +631,8 @@ position = Vector2(538, -20)
 card_scene = ExtResource("10_0i7dp")
 
 [node name="CardSpawner21" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(649, -116)
-card_scene = ExtResource("10_0i7dp")
+position = Vector2(673, -83)
+card_scene = ExtResource("11_autdo")
 
 [node name="CardSpawner22" parent="." instance=ExtResource("9_8chcu")]
 position = Vector2(11969, 696)
@@ -1118,3 +1120,5 @@ position = Vector2(-429, -1219)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 texture = ExtResource("21_a024w")
+
+[node name="ExplosionManager" parent="." instance=ExtResource("23_hmw8q")]

@@ -3,7 +3,8 @@ class_name PlayerAnimationMachine
 
 enum SpecialState {
 	NONE,
-	DASH
+	DASH,
+	LANDING_FROM_STOMP
 }
 
 var current_special_state: SpecialState = SpecialState.NONE
@@ -41,6 +42,12 @@ func update(delta: float) -> void:
 			sprite.speed_scale = 1
 			sprite.look_at(sprite.global_position + Vector2(0, player.last_look_direction.y))
 			sprite.animation = rl("dash")
+			return
+		SpecialState.LANDING_FROM_STOMP:
+			sprite.speed_scale = 0
+			sprite.animation = rl("land")
+			sprite.frame = 0
+			sprite.rotation = 0
 			return
 	
 	if player.crouch_state == Player.CrouchState.SLIDING:

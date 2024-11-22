@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://oskm0n4w5tpe"]
+[gd_scene load_steps=121 format=3 uid="uid://oskm0n4w5tpe"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_lroia"]
 [ext_resource type="Texture2D" uid="uid://w4o213qf87uv" path="res://resources/sprites/red_box_test_player_crouch.png" id="2_d21u6"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://player_animation_machine.gd" id="11_oyrvp"]
 [ext_resource type="Script" path="res://player_sound_machine.gd" id="12_q7fwi"]
 [ext_resource type="AudioStream" uid="uid://cehbj4l84v2wj" path="res://resources/audio/hit_enemy.ogg" id="12_qc2c6"]
+[ext_resource type="Texture2D" uid="uid://bg0oisuynedo5" path="res://resources/sprites/particles/line.png" id="14_puffk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wdrxx"]
 atlas = ExtResource("2_gno13")
@@ -833,6 +834,19 @@ gradient = SubResource("Gradient_w7dd6")
 fill_from = Vector2(1, 1)
 fill_to = Vector2(0, 0)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qca83"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 30, 0)
+emission_shape = 3
+emission_box_extents = Vector3(40, 40, 1)
+angle_min = 90.0
+angle_max = 90.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, -18, 0)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("card_manager", "animation_manager", "regular_collider", "crouching_collider", "sliding_particles", "death_particles", "death_text", "respawn_effects", "welcome_back_message", "camera_manager")]
 scale = Vector2(2, 2)
 collision_mask = 7
@@ -856,9 +870,8 @@ sprite = NodePath("../PlayerSprite")
 position = Vector2(0, -4)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sq1mr")
-animation = &"R_dash"
+animation = &"R_idle"
 autoplay = "R_idle"
-frame_progress = 0.291052
 
 [node name="StandingCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
@@ -951,3 +964,18 @@ script = ExtResource("12_q7fwi")
 stream = ExtResource("12_qc2c6")
 volume_db = 6.0
 attenuation = 0.0769465
+
+[node name="StompPoint" type="Node2D" parent="."]
+position = Vector2(0, 4)
+
+[node name="StompParticles" type="GPUParticles2D" parent="."]
+visible = false
+z_index = -1
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_qca83")
+texture = ExtResource("14_puffk")
+lifetime = 2.0
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true

@@ -116,6 +116,8 @@ func activate_kill_everything_mode(seconds: float) -> void:
 	kill_everything_timer.timeout.connect(timeout)
 	kill_everything_timer.start()
 
+var is_stomping: bool = false
+
 func _ready() -> void:
 	player = self
 	camera_manager.start()
@@ -152,7 +154,7 @@ func die() -> void:
 func sliding_on_wall_check() -> WallDirection:
 	var space := get_world_2d().direct_space_state
 	var rect := regular_collider.shape.get_rect().size
-	var left_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(-rect.x, 0), climbable_wall_layer)
+	var left_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(-rect.x * scale.x, 0), climbable_wall_layer)
 	var left_intersect := space.intersect_ray(left_query)
 	if not left_intersect.is_empty():
 		# Reset stamina if we fall off one wall then cling onto another
@@ -161,7 +163,7 @@ func sliding_on_wall_check() -> WallDirection:
 		if direction < 0 and sliding_stamina > 0:
 			last_wall_clinged_to = left_intersect["collider"]
 			return WallDirection.LEFT
-	var right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(rect.x, 0), climbable_wall_layer)
+	var right_query := PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(rect.x * scale.x, 0), climbable_wall_layer)
 	var right_intersect := space.intersect_ray(right_query)
 	if not right_intersect.is_empty():
 		# Reset stamina if we fall off one wall then cling onto another
@@ -262,6 +264,9 @@ func _physics_process(delta: float) -> void:
 		last_look_direction.x = look_direction.x
 	last_look_direction.y = look_direction.y
 	
+	if is_stomping:
+		direction = 0
+	
 	sliding_on_wall = sliding_on_wall_check()
 	
 	var updated_crouch_state := crouch_state_check()
@@ -286,7 +291,7 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if !is_on_floor() and !is_ignoring_gravity:
 		if sliding_on_wall == WallDirection.NONE:
-			if Input.is_action_pressed("crouch"):
+			if Input.is_action_pressed("crouch") or is_stomping:
 				velocity += get_gravity() * 2 * delta
 			else:
 				velocity += get_gravity() * delta

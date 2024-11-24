@@ -14,9 +14,11 @@ var state_timer: SceneTreeTimer
 
 @export var sprite: AnimatedSprite2D
 
+# TODO: there is a better way to do this i just know there is
 var time_sliding: float = 0.0
 var time_falling: float = 0.0
 var time_wall_sliding: float = 0.0
+var time_crouching: float = 0.0
 
 func set_animation_special_state(state: SpecialState, duration: float) -> void:
 	current_special_state = state
@@ -82,6 +84,14 @@ func update(delta: float) -> void:
 		time_wall_sliding = 0
 		sprite.speed_scale = 1
 		sprite.animation = rl("slide_end")
+	elif player.crouch_state == Player.CrouchState.CROUCHING and abs(player.velocity.x) < 0.3:
+		time_crouching += delta
+		time_sliding = 0
+		time_wall_sliding = 0
+		if time_crouching < 0.3:
+			sprite.animation = rl("crouch_start")
+		else:
+			sprite.animation = rl("crouch_cont")
 	elif !player.is_on_floor():
 		sprite.animation = rl("jump")
 		sprite.speed_scale = 1

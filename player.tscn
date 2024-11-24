@@ -16,6 +16,10 @@
 [ext_resource type="AudioStream" uid="uid://cehbj4l84v2wj" path="res://resources/audio/hit_enemy.ogg" id="12_qc2c6"]
 [ext_resource type="Texture2D" uid="uid://bg0oisuynedo5" path="res://resources/sprites/particles/line.png" id="14_puffk"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lve8v"]
+atlas = ExtResource("3_w6a4s")
+region = Rect2(64, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_xbdpn"]
 atlas = ExtResource("3_w6a4s")
 region = Rect2(0, 0, 32, 32)
@@ -23,10 +27,6 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1gvr2"]
 atlas = ExtResource("3_w6a4s")
 region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lve8v"]
-atlas = ExtResource("3_w6a4s")
-region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wdrxx"]
 atlas = ExtResource("2_gno13")
@@ -236,6 +236,10 @@ region = Rect2(0, 32, 32, 32)
 atlas = ExtResource("10_5ixnd")
 region = Rect2(32, 32, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_veofd"]
+atlas = ExtResource("3_w6a4s")
+region = Rect2(64, 32, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_4fhbg"]
 atlas = ExtResource("3_w6a4s")
 region = Rect2(0, 32, 32, 32)
@@ -243,10 +247,6 @@ region = Rect2(0, 32, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6vgb"]
 atlas = ExtResource("3_w6a4s")
 region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_veofd"]
-atlas = ExtResource("3_w6a4s")
-region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u40ir"]
 atlas = ExtResource("2_gno13")
@@ -460,6 +460,14 @@ region = Rect2(32, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_lve8v")
+}],
+"loop": true,
+"name": &"L_crouch_cont",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xbdpn")
 }, {
 "duration": 1.0,
@@ -469,7 +477,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_lve8v")
 }],
 "loop": true,
-"name": &"L_crouch",
+"name": &"L_crouch_start",
 "speed": 5.0
 }, {
 "frames": [{
@@ -683,6 +691,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_veofd")
+}],
+"loop": true,
+"name": &"R_crouch_cont",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4fhbg")
 }, {
 "duration": 1.0,
@@ -692,7 +708,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_veofd")
 }],
 "loop": true,
-"name": &"R_crouch",
+"name": &"R_crouch_start",
 "speed": 5.0
 }, {
 "frames": [{
@@ -983,7 +999,7 @@ sprite = NodePath("../PlayerSprite")
 position = Vector2(0, -4)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sq1mr")
-animation = &"L_crouch"
+animation = &"R_crouch_cont"
 autoplay = "R_idle"
 
 [node name="StandingCollider" type="CollisionShape2D" parent="."]

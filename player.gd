@@ -143,11 +143,12 @@ func respawn(_point: RespawnPoint = respawn_point) -> void:
 func die() -> void:
 	if dead:
 		return
-	death_particles.show()
-	death_particles.emitting = true
-	death_particles.restart()
-	animation_manager.hide()
-	death_text.show()
+	#death_particles.show()
+	#death_particles.emitting = true
+	#death_particles.restart()
+	#animation_manager.hide()
+	#death_text.show()
+	camera.zoom *= 3
 	dead = true
 
 # Checks which side of the player is sliding on a wall.

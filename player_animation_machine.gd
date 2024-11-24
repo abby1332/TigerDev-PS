@@ -43,6 +43,13 @@ func rl_rev(anim_name: String) -> String:
 		return "R_" + anim_name
 
 func update(delta: float) -> void:
+	if player.dead:
+		sprite.speed_scale = 1
+		sprite.rotation = 0
+		sprite.animation = rl("die")
+		sprite.sprite_frames.set_animation_loop(rl("die"), false)
+		return
+	
 	match current_special_state:
 		SpecialState.NONE:
 			sprite.rotation = 0

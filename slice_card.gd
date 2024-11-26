@@ -16,6 +16,9 @@ func _reset() -> void:
 
 func use(plyr: Player) -> void:
 	plyr.activate_kill_everything_mode(duration * 4)
+	plyr.animation_machine.set_animation_special_state(PlayerAnimationMachine.SpecialState.DASH, duration * 4)
+	
+	plyr.is_stomping = false
 	
 	active = true
 	player = plyr

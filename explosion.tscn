@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnsd4xxvgack3"]
+
+[ext_resource type="Script" path="res://explosion.gd" id="1_agqgm"]
+[ext_resource type="AudioStream" uid="uid://bh1eb0gnrkdsf" path="res://resources/audio/explosion_stomp.ogg" id="2_w7bf0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vrik8"]
+radius = 15.0
+
+[sub_resource type="Gradient" id="Gradient_dr3w2"]
+offsets = PackedFloat32Array(0, 0.327869, 0.561475, 1)
+colors = PackedColorArray(1, 0.847059, 0, 1, 1, 0.643137, 0, 1, 1, 0.0509804, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2bw3p"]
+gradient = SubResource("Gradient_dr3w2")
+
+[sub_resource type="Curve" id="Curve_1ot03"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.486755, 1), 0.0, 0.0, 0, 0, Vector2(0.807947, 0.750141), -0.113489, -0.113489, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_5737a"]
+curve = SubResource("Curve_1ot03")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p6hjd"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 122.58
+gravity = Vector3(0, 0, 0)
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_5737a")
+color_initial_ramp = SubResource("GradientTexture1D_2bw3p")
+
+[node name="Explosion" type="Area2D"]
+collision_layer = 16
+collision_mask = 255
+script = ExtResource("1_agqgm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vrik8")
+
+[node name="Particles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_p6hjd")
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+draw_order = 0
+trail_lifetime = 2.5
+trail_sections = 5
+trail_section_subdivisions = 1
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_w7bf0")
+volume_db = 5.211
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

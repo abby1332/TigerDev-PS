@@ -667,9 +667,9 @@ rotation = -0.785398
 position = Vector2(730, -172)
 rotation = 3.92699
 
-[node name="Area2D12" parent="." instance=ExtResource("23_lwndp")]
-position = Vector2(616, -221)
-
 [node name="Area2D8" parent="." instance=ExtResource("23_lwndp")]
-position = Vector2(574, 7)
+position = Vector2(471, -1)
 rotation = -1.5708
+
+[node name="Area2D12" parent="." instance=ExtResource("23_lwndp")]
+position = Vector2(617, -209)

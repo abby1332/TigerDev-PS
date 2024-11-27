@@ -271,8 +271,7 @@ func _physics_process(delta: float) -> void:
 	
 	if is_stomping:
 		direction = 0
-	if is_bouncing_on_spring:
-		direction = 0
+
 	sliding_on_wall = sliding_on_wall_check()
 	
 	var updated_crouch_state := crouch_state_check()
@@ -316,7 +315,7 @@ func _physics_process(delta: float) -> void:
 		sliding_stamina -= 1
 
 	# Handle the movement/deceleration.
-	if direction and not wall_jumping and crouch_state != CrouchState.SLIDING:
+	if direction and not wall_jumping and crouch_state != CrouchState.SLIDING and !is_bouncing_on_spring:
 		if crouch_state == CrouchState.CROUCHING:
 			velocity.x += direction * speed * crouch_speed_multiplier
 			velocity.x = clampf(velocity.x, -speed * crouch_speed_multiplier, speed * crouch_speed_multiplier)
@@ -328,6 +327,8 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, jump_from_wall_directional_velocity, speed)
 		else:
 			velocity.x = move_toward(velocity.x, -jump_from_wall_directional_velocity, speed)
+	elif is_bouncing_on_spring:
+		velocity.x += move_toward(velocity.x, 0, speed)
 	else:
 		if crouch_state != CrouchState.SLIDING:
 			velocity.x *= 0.6

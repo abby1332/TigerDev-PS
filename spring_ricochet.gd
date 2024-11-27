@@ -13,5 +13,5 @@ func _on_body_entered(body: Node2D) -> void:
 	stime.timeout.connect(func(): player.toggle_bounce())
 	stime.start()
 	var rotato: float = get_rotation()
-	player.velocity.y = 1100 * sin(rotato)
-	player.velocity.x += 1200 * cos(rotato)
+	player.velocity.y = 700 * sin(rotato)
+	player.velocity.x += 400 * cos(rotato)

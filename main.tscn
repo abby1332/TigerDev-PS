@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d38yynx22ev4y"]
+[gd_scene load_steps=24 format=3 uid="uid://d38yynx22ev4y"]
 
 [ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://player.tscn" id="1_p0mxc"]
 [ext_resource type="AudioStream" uid="uid://crt5pp77a4l32" path="res://resources/TLVL EXTRAS/Forest Level.ogg" id="1_q4p1t"]
@@ -16,12 +16,13 @@
 [ext_resource type="Texture2D" uid="uid://k33mnf6us026" path="res://resources/TLVL EXTRAS/Arrow DI.png" id="14_ws553"]
 [ext_resource type="Texture2D" uid="uid://c3qi8qu2cjduw" path="res://resources/TLVL EXTRAS/Plus Sign.png" id="15_stm7o"]
 [ext_resource type="Texture2D" uid="uid://ct8xbqn8hbscf" path="res://resources/TLVL EXTRAS/Arrow DIM.png" id="16_y3h5h"]
-[ext_resource type="PackedScene" uid="uid://cp544257x4a4e" path="res://resources/all spring stuff/Spring_vertical.tscn" id="17_r6u5s"]
+[ext_resource type="PackedScene" uid="uid://cp544257x4a4e" path="res://Spring_vertical.tscn" id="17_r6u5s"]
 [ext_resource type="Texture2D" uid="uid://ci510y3nev70b" path="res://resources/BG/parallax-01.png" id="18_kjkuu"]
 [ext_resource type="Texture2D" uid="uid://dpsjswoe0dspe" path="res://resources/BG/parallax-02.png" id="19_swuis"]
 [ext_resource type="Texture2D" uid="uid://bne85na381aab" path="res://resources/BG/parallax-03.png" id="20_h80gs"]
 [ext_resource type="Texture2D" uid="uid://dh8khbejw4yd0" path="res://resources/BG/parallax-04.png" id="21_a024w"]
 [ext_resource type="PackedScene" uid="uid://dy423abcukasp" path="res://explosion_manager.tscn" id="23_hmw8q"]
+[ext_resource type="PackedScene" uid="uid://87iajlg52byd" path="res://spring_horizontal.tscn" id="23_lwndp"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-42, -1101)
@@ -653,3 +654,22 @@ texture = ExtResource("21_a024w")
 
 [node name="RespawnPoint" parent="." instance=ExtResource("6_kiqvl")]
 position = Vector2(1401, -458)
+
+[node name="Area2D9" parent="." instance=ExtResource("23_lwndp")]
+position = Vector2(728, -89)
+rotation = -2.35619
+
+[node name="Area2D10" parent="." instance=ExtResource("23_lwndp")]
+position = Vector2(615, -134)
+rotation = -0.785398
+
+[node name="Area2D11" parent="." instance=ExtResource("23_lwndp")]
+position = Vector2(730, -172)
+rotation = 3.92699
+
+[node name="Area2D12" parent="." instance=ExtResource("23_lwndp")]
+position = Vector2(616, -221)
+
+[node name="Area2D8" parent="." instance=ExtResource("23_lwndp")]
+position = Vector2(574, 7)
+rotation = -1.5708

@@ -117,6 +117,7 @@ func activate_kill_everything_mode(seconds: float) -> void:
 	kill_everything_timer.start()
 
 var is_stomping: bool = false
+var is_bouncing_on_spring: bool = false
 
 func _ready() -> void:
 	player = self
@@ -241,6 +242,9 @@ func is_below_death_plane() -> bool:
 				break
 		return is_below_death_plane()
 	return global_position.y > camera.limit_bottom
+	
+func toggle_bounce() -> void:
+	is_bouncing_on_spring = !is_bouncing_on_spring
 
 func _physics_process(delta: float) -> void:
 	
@@ -256,6 +260,7 @@ func _physics_process(delta: float) -> void:
 		die()
 		return
 	
+	
 	# Get input movement direction.
 	direction = Input.get_axis("left", "right")
 
@@ -266,7 +271,8 @@ func _physics_process(delta: float) -> void:
 	
 	if is_stomping:
 		direction = 0
-	
+	if is_bouncing_on_spring:
+		direction = 0
 	sliding_on_wall = sliding_on_wall_check()
 	
 	var updated_crouch_state := crouch_state_check()

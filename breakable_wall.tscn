@@ -17,7 +17,7 @@ initial_velocity_max = 369.19
 gravity = Vector3(0, 1000, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7hjx"]
-size = Vector2(19, 34)
+size = Vector2(19, 36)
 
 [node name="BreakableWall" type="StaticBody2D"]
 script = ExtResource("2_0xwhk")
@@ -43,3 +43,4 @@ randomness = 1.0
 shape = SubResource("RectangleShape2D_u7hjx")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

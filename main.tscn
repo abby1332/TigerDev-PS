@@ -650,8 +650,13 @@ position = Vector2(-429, -1219)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 texture = ExtResource("21_a024w")
 
+[node name="BreakableWall2" parent="." instance=ExtResource("23_pwdi6")]
+position = Vector2(-196, -56)
+collision_layer = 4
+collision_mask = 3
+
 [node name="BreakableWall" parent="." instance=ExtResource("23_pwdi6")]
-position = Vector2(-435, -8)
+position = Vector2(-196, -24)
 collision_layer = 4
 collision_mask = 3
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://d38yynx22ev4y"]
+[gd_scene load_steps=24 format=3 uid="uid://d38yynx22ev4y"]
 
 [ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://player.tscn" id="1_p0mxc"]
 [ext_resource type="AudioStream" uid="uid://crt5pp77a4l32" path="res://resources/TLVL EXTRAS/Forest Level.ogg" id="1_q4p1t"]
 [ext_resource type="PackedScene" uid="uid://bjtvsvry3dapy" path="res://enemy.tscn" id="2_3wa2d"]
+[ext_resource type="Script" path="res://music_manager.gd" id="2_agjr5"]
 [ext_resource type="PackedScene" uid="uid://dmijlu5x8oc8w" path="res://spawn_point.tscn" id="5_sh2bk"]
 [ext_resource type="PackedScene" uid="uid://b6ugxlnqk3o76" path="res://respawn_point.tscn" id="6_kiqvl"]
 [ext_resource type="PackedScene" uid="uid://fl6siaxv6op2" path="res://card_spawner.tscn" id="9_8chcu"]
@@ -30,6 +31,7 @@ position = Vector2(-42, -1101)
 stream = ExtResource("1_q4p1t")
 volume_db = -25.927
 autoplay = true
+script = ExtResource("2_agjr5")
 
 [node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_p0mxc")]
 position = Vector2(-536, 30)

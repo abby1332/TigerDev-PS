@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://d38yynx22ev4y"]
 
+[ext_resource type="AudioStream" uid="uid://bgjfq50lcxl85" path="res://resources/audio/Forest Level V2.ogg" id="1_a5yo2"]
 [ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://player.tscn" id="1_p0mxc"]
-[ext_resource type="AudioStream" uid="uid://crt5pp77a4l32" path="res://resources/TLVL EXTRAS/Forest Level.ogg" id="1_q4p1t"]
 [ext_resource type="PackedScene" uid="uid://bjtvsvry3dapy" path="res://enemy.tscn" id="2_3wa2d"]
 [ext_resource type="Script" path="res://music_manager.gd" id="2_agjr5"]
 [ext_resource type="PackedScene" uid="uid://dmijlu5x8oc8w" path="res://spawn_point.tscn" id="5_sh2bk"]
@@ -19,16 +19,16 @@
 [ext_resource type="Texture2D" uid="uid://ct8xbqn8hbscf" path="res://resources/TLVL EXTRAS/Arrow DIM.png" id="16_y3h5h"]
 [ext_resource type="PackedScene" uid="uid://cp544257x4a4e" path="res://resources/all spring stuff/Spring_vertical.tscn" id="17_r6u5s"]
 [ext_resource type="Texture2D" uid="uid://ci510y3nev70b" path="res://resources/BG/parallax-01.png" id="18_kjkuu"]
+[ext_resource type="Texture2D" uid="uid://c6land5e5dpcj" path="res://resources/BG/parallax-00.png" id="19_b0gs6"]
 [ext_resource type="Texture2D" uid="uid://dpsjswoe0dspe" path="res://resources/BG/parallax-02.png" id="19_swuis"]
 [ext_resource type="Texture2D" uid="uid://bne85na381aab" path="res://resources/BG/parallax-03.png" id="20_h80gs"]
-[ext_resource type="Texture2D" uid="uid://dh8khbejw4yd0" path="res://resources/BG/parallax-04.png" id="21_a024w"]
 [ext_resource type="PackedScene" uid="uid://dy423abcukasp" path="res://explosion_manager.tscn" id="23_hmw8q"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-42, -1101)
 
 [node name="ForestLevel" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_q4p1t")
+stream = ExtResource("1_a5yo2")
 volume_db = -25.927
 autoplay = true
 script = ExtResource("2_agjr5")
@@ -266,10 +266,6 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(8440, -99)
 scale = Vector2(0.5, 0.5)
 
-[node name="Enemy14" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(7268, -24)
-scale = Vector2(0.5, 0.5)
-
 [node name="Enemy15" parent="." instance=ExtResource("2_3wa2d")]
 position = Vector2(7034, 293)
 scale = Vector2(0.5, 0.5)
@@ -359,11 +355,11 @@ position = Vector2(10551, 1001)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy28" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(10752, 985)
+position = Vector2(10598, 1005)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy29" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(10790, 985)
+position = Vector2(10646, 1005)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy30" parent="." instance=ExtResource("2_3wa2d")]
@@ -407,11 +403,11 @@ position = Vector2(8859, 491)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy33" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(9350, 553)
+position = Vector2(9345, 518)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy34" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(9433, 553)
+position = Vector2(9454, 521)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy35" parent="." instance=ExtResource("2_3wa2d")]
@@ -455,19 +451,19 @@ position = Vector2(13492, -117)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy43" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(14306, -83)
+position = Vector2(14311, -95)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy44" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(14336, -83)
+position = Vector2(14337, -95)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy45" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(14304, -131)
+position = Vector2(14365, -95)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy46" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(14334, -132)
+position = Vector2(14287, -95)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy47" parent="." instance=ExtResource("2_3wa2d")]
@@ -629,27 +625,38 @@ position = Vector2(16351, -66)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-429, -1219)
+motion_mirroring = Vector2(1440, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("18_kjkuu")
+scale = Vector2(20, 20)
+texture = ExtResource("19_b0gs6")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-429, -1219)
+motion_scale = Vector2(0, 1)
+motion_mirroring = Vector2(1440, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-texture = ExtResource("19_swuis")
+position = Vector2(-3, 165)
+texture = ExtResource("18_kjkuu")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-429, -1219)
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(1440, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-texture = ExtResource("20_h80gs")
+position = Vector2(21, 878)
+texture = ExtResource("19_swuis")
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-429, -1219)
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(1440, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-texture = ExtResource("21_a024w")
+position = Vector2(24, 918)
+texture = ExtResource("20_h80gs")
 
 [node name="ExplosionManager" parent="." instance=ExtResource("23_hmw8q")]
 

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwmgln1nufimt"]
+
+[ext_resource type="PackedScene" uid="uid://xtmbg7gogosp" path="res://resources/TileMaps/tile_grass.tscn" id="1_0gp8q"]
+[ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://player.tscn" id="2_gywc4"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileGrass" parent="." instance=ExtResource("1_0gp8q")]
+position = Vector2(302, 402)
+
+[node name="Player" parent="." instance=ExtResource("2_gywc4")]
+position = Vector2(-536, 30)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2.5, 2.5)
+limit_bottom = 50
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+drag_horizontal_enabled = true
+drag_horizontal_offset = 0.2
+drag_left_margin = 0.1
+drag_right_margin = 0.1

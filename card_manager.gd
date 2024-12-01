@@ -114,7 +114,8 @@ func instant_update_card_positions() -> void:
 # Fixes the z_index of each of the cards
 func update_card_order() -> void:
 	for i in range(0, cards.size()):
-		cards[i].sprite.z_index = cards.size() - i
+		if is_instance_valid(cards[i].sprite):
+			cards[i].sprite.z_index = cards.size() - i
 
 func use_card(card_index: int) -> bool:
 	if card_index >= cards.size() or cards[card_index] == null:

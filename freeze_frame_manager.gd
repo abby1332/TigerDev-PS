@@ -3,6 +3,9 @@ extends Node
 var active: bool = false
 
 func freeze_frame(time_scale: float, duration: float) -> bool:
+	#Prevent freeze frame from double activating
+	if active:
+		return false
 	active = true
 	Engine.time_scale = time_scale
 	await get_tree().create_timer(duration * time_scale).timeout

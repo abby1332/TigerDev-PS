@@ -100,7 +100,7 @@ var direction: float = 0.0
 var look_direction: Vector2 = Vector2.ZERO
 var last_look_direction: Vector2 = Vector2.ZERO
 
-var kill_everything_mode: bool = false
+@export var kill_everything_mode: bool = false
 var kill_everything_timer: Timer = null
 
 func activate_kill_everything_mode(seconds: float) -> void:

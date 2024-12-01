@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dpsjswoe0dspe" path="res://resources/BG/parallax-02.png" id="19_swuis"]
 [ext_resource type="Texture2D" uid="uid://bne85na381aab" path="res://resources/BG/parallax-03.png" id="20_h80gs"]
 [ext_resource type="PackedScene" uid="uid://dy423abcukasp" path="res://explosion_manager.tscn" id="23_hmw8q"]
+[ext_resource type="PackedScene" uid="uid://cv2xy0sds8mtg" path="res://breakable_wall.tscn" id="23_pwdi6"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-42, -1101)
@@ -445,6 +446,16 @@ motion_mirroring = Vector2(1440, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 position = Vector2(13, 954)
 texture = ExtResource("20_h80gs")
+
+[node name="BreakableWall2" parent="." instance=ExtResource("23_pwdi6")]
+position = Vector2(-196, -56)
+collision_layer = 4
+collision_mask = 3
+
+[node name="BreakableWall" parent="." instance=ExtResource("23_pwdi6")]
+position = Vector2(-196, -24)
+collision_layer = 4
+collision_mask = 3
 
 [node name="ExplosionManager" parent="." instance=ExtResource("23_hmw8q")]
 

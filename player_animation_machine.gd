@@ -70,6 +70,7 @@ func update(delta: float) -> void:
 		sprite.speed_scale = 1
 		time_wall_sliding += delta
 		time_wall_sliding = minf(time_wall_sliding, 0.2)
+		time_crouching = 0
 		if time_wall_sliding < 0.2:
 			sprite.animation = rl_rev("wall_slide_start")
 		else:
@@ -78,6 +79,7 @@ func update(delta: float) -> void:
 		sprite.speed_scale = 1
 		time_sliding += delta
 		time_sliding = minf(time_sliding, 0.2)
+		time_crouching = 0
 		time_wall_sliding = 0
 		if time_sliding < 0.2:
 			sprite.animation = rl("slide_start")
@@ -89,35 +91,41 @@ func update(delta: float) -> void:
 			return
 		time_sliding -= delta
 		time_wall_sliding = 0
+		time_crouching = 0
 		sprite.speed_scale = 1
 		sprite.animation = rl("slide_end")
-	elif player.crouch_state == Player.CrouchState.CROUCHING and abs(player.velocity.x) < 0.3:
+	elif player.crouch_state == Player.CrouchState.CROUCHING:
 		time_crouching += delta
 		time_sliding = 0
 		time_wall_sliding = 0
 		if time_crouching < 0.3:
 			sprite.animation = rl("crouch_start")
 		else:
+			sprite.speed_scale = abs(player.velocity.x / 100)
 			sprite.animation = rl("crouch_cont")
 	elif !player.is_on_floor():
 		sprite.animation = rl("jump")
 		sprite.speed_scale = 1
 		time_wall_sliding = 0
 		time_falling += delta
+		time_crouching = 0
 		if time_falling >= 0.6:
 			sprite.speed_scale = 0
 	elif player.is_on_floor() and abs(player.velocity.x) > 0.3:
 		time_falling = 0.0
 		time_wall_sliding = 0
+		time_crouching = 0
 		sprite.animation = rl("run")
 		sprite.speed_scale = abs(player.velocity.x / 100)
 	elif player.is_on_floor() and time_falling > 0.0:
 		time_falling -= delta * 2
 		time_wall_sliding = 0
+		time_crouching = 0
 		sprite.animation = rl("land")
 		sprite.speed_scale = 1
 	else:
 		time_wall_sliding = 0
+		time_crouching = 0
 		sprite.animation = rl("idle")
 		sprite.speed_scale = 1
 

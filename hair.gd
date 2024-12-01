@@ -22,6 +22,7 @@ func _process(delta: float) -> void:
 	var direction = owner.last_look_direction
 	var running = animation_machine.sprite.animation == animation_machine.rl("run")
 	var left = false
+	var slide = false
 	
 	if (direction.x < 0.0):
 		left = true
@@ -33,7 +34,145 @@ func _process(delta: float) -> void:
 	else:
 		animation_offset.x = 1.2
 		
-	if (direction.x < 0.0):
+	if (animation_machine.sprite.animation == animation_machine.rl("dash")): # Evil and unnatural
+		var frame = animation_machine.sprite.frame
+		if left:
+			match frame:
+				0:
+					animation_offset.x = -2.0
+				1:
+					animation_offset.x = -1.5
+					animation_offset.y = -9.5
+				2:
+					animation_offset.x = -1.5
+					animation_offset.y = -9.5
+				3:
+					animation_offset.x = -1.5
+					animation_offset.y = -9.5
+				4:
+					animation_offset.x = -1.5
+					animation_offset.y = -9.5
+				5:
+					animation_offset.x = -1.5
+					animation_offset.y = -9.5
+				6:
+					animation_offset.x = 0.5
+					animation_offset.y = -9.0
+				7:
+					animation_offset.x = 0.5
+					animation_offset.y = -9.5
+				8:
+					animation_offset.x = 1.2
+					animation_offset.y = -10.0
+				9:
+					animation_offset.x = 1.2
+					animation_offset.y = -10.0
+		else:
+			match frame:
+				0:
+					animation_offset.x = 2.0
+				1:
+					animation_offset.x = 1.5
+					animation_offset.y = -9.5
+				2:
+					animation_offset.x = 1.5
+					animation_offset.y = -9.5
+				3:
+					animation_offset.x = 1.5
+					animation_offset.y = -9.5
+				4:
+					animation_offset.x = 1.5
+					animation_offset.y = -9.5
+				5:
+					animation_offset.x = 1.5
+					animation_offset.y = -9.5
+				6:
+					animation_offset.x = -0.5
+					animation_offset.y = -9.0
+				7:
+					animation_offset.x = -0.5
+					animation_offset.y = -9.5
+				8:
+					animation_offset.x = -1.2
+					animation_offset.y = -10.0
+				9:
+					animation_offset.x = -1.2
+					animation_offset.y = -10.0
+		
+	elif (animation_machine.sprite.animation == animation_machine.rl("slide_start")):
+		var frame = animation_machine.sprite.frame
+		slide = true
+		if left:
+			match frame:
+				0:
+					animation_offset.y = -5.0
+					animation_offset.x = 4.5
+				1:
+					animation_offset.y = -4.5
+					animation_offset.x = 5.0
+		else:
+			match frame:
+				0:
+					animation_offset.y = -5.0
+					animation_offset.x = -4.0
+				1:
+					animation_offset.y = -4.5
+					animation_offset.y = -5.0
+		
+	elif (animation_machine.sprite.animation == animation_machine.rl("slide_cont")):
+		var frame = animation_machine.sprite.frame
+		slide = true
+		if left:
+			animation_offset.x = 5.0
+			match frame:
+				0:
+					animation_offset.y = -4.0
+				1:
+					animation_offset.y = -4.5
+				2:
+					animation_offset.y = -4.0
+				3:
+					animation_offset.y = -4.5
+		else:
+			animation_offset.x = -5.0
+			match frame:
+				0:
+					animation_offset.y = -4.0
+				1:
+					animation_offset.y = -4.5
+				2:
+					animation_offset.y = -4.0
+				3:
+					animation_offset.y = -4.5
+		
+	elif (animation_machine.sprite.animation == animation_machine.rl("slide_end")):
+		var frame = animation_machine.sprite.frame
+		slide = true
+		if left:
+			match frame:
+				0:
+					animation_offset.y = -4.5
+					animation_offset.x = 4.0
+				1:
+					animation_offset.y = -6.5
+					animation_offset.x = 2.5
+				2:
+					animation_offset.y = -8.0
+					animation_offset.x = 1.2
+		else:
+			match frame:
+				0:
+					animation_offset.y = -4.5
+					animation_offset.x = -4.0
+				1:
+					animation_offset.y = -6.5
+					animation_offset.x = -2.5
+				2:
+					animation_offset.y = -8.0
+					animation_offset.x = -1.2
+		
+		
+	elif (direction.x < 0.0):
 		animation_offset.x = abs(animation_offset.x)
 	elif (direction.x > 0.0):
 		animation_offset.x = abs(animation_offset.x) * -1.0
@@ -74,11 +213,11 @@ func _process(delta: float) -> void:
 				animation_offset.y = -9.5
 			8:
 				animation_offset.y = -10
-	else:
+	elif not slide:
 		animation_offset.y = -10
 		
 	
-	
+	# Proper hair code
 	for j in range(sprite_count):
 		for i in range(len(points)-1, -1, -1):
 			if i == 0:

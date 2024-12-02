@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=3 uid="uid://oskm0n4w5tpe"]
+[gd_scene load_steps=170 format=3 uid="uid://oskm0n4w5tpe"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_lroia"]
 [ext_resource type="Texture2D" uid="uid://djy257kdd7frh" path="res://resources/spritesheets/player_idle.png" id="2_hkjpp"]
@@ -17,6 +17,10 @@
 [ext_resource type="Script" path="res://player_sound_machine.gd" id="12_q7fwi"]
 [ext_resource type="AudioStream" uid="uid://cehbj4l84v2wj" path="res://resources/audio/hit_enemy.ogg" id="12_qc2c6"]
 [ext_resource type="Texture2D" uid="uid://bg0oisuynedo5" path="res://resources/sprites/particles/line.png" id="14_puffk"]
+[ext_resource type="AudioStream" uid="uid://bounaitq3wvt0" path="res://resources/audio/slash.wav" id="17_eoncl"]
+[ext_resource type="AudioStream" uid="uid://chkuw4acfn32d" path="res://resources/audio/Slide.wav" id="18_mh38m"]
+[ext_resource type="AudioStream" uid="uid://7n1emjoq0qqv" path="res://resources/audio/Wall Slide.wav" id="19_hwkeu"]
+[ext_resource type="AudioStream" uid="uid://7807hugta12k" path="res://resources/audio/Death.wav" id="20_80hn8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dhkbs"]
 atlas = ExtResource("3_hbrdf")
@@ -1215,10 +1219,9 @@ sprite = NodePath("../PlayerSprite")
 position = Vector2(0, -4)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sq1mr")
-animation = &"L_crouch_cont"
+animation = &"L_crouch_start"
 autoplay = "R_idle"
-frame = 4
-frame_progress = 0.692764
+frame = 2
 
 [node name="StandingCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
@@ -1311,6 +1314,20 @@ script = ExtResource("12_q7fwi")
 stream = ExtResource("12_qc2c6")
 volume_db = 6.0
 attenuation = 0.0769465
+
+[node name="Slide" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("18_mh38m")
+volume_db = 3.0
+
+[node name="WallSlide" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("19_hwkeu")
+volume_db = 3.0
+
+[node name="Death" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("20_80hn8")
+
+[node name="Slash" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("17_eoncl")
 
 [node name="StompPoint" type="Node2D" parent="."]
 position = Vector2(0, 4)

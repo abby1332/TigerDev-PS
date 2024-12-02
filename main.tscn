@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d38yynx22ev4y"]
+[gd_scene load_steps=25 format=3 uid="uid://d38yynx22ev4y"]
 
 [ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://player.tscn" id="1_p0mxc"]
 [ext_resource type="AudioStream" uid="uid://crt5pp77a4l32" path="res://resources/TLVL EXTRAS/Forest Level.ogg" id="1_q4p1t"]
@@ -597,7 +597,7 @@ texture = ExtResource("16_y3h5h")
 
 [node name="Area2D" parent="." instance=ExtResource("17_r6u5s")]
 z_index = -1
-position = Vector2(1735, -372)
+position = Vector2(1735, -377)
 
 [node name="Area2D2" parent="." instance=ExtResource("17_r6u5s")]
 z_index = -1
@@ -666,3 +666,10 @@ collision_mask = 3
 
 [node name="RespawnPoint" parent="." instance=ExtResource("6_kiqvl")]
 position = Vector2(1401, -458)
+
+[node name="Area2D8" parent="." instance=ExtResource("17_r6u5s")]
+position = Vector2(-443, 16)
+
+[node name="CardSpawner60" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(651, -48)
+card_scene = ExtResource("11_autdo")

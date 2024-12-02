@@ -37,6 +37,7 @@ var dir: Vector2
 
 @onready var general_area: Area2D = $GeneralCollision
 @onready var general_collider: CollisionShape2D = $GeneralCollision/CollisionShape2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _physics_process(delta):
 	if !is_on_floor():
@@ -45,6 +46,14 @@ func _physics_process(delta):
 	check_player_distance()
 	move(delta)
 	move_and_slide()
+	update_animation()
+
+#Update animation based on direction
+func update_animation() -> void:
+	if dir.x < 0: #Move left
+		sprite.play("L_tree")
+	else:
+		sprite.play("R_tree")
 
 # -1 for approaching left edge, 0 for none, 1 for approaching right edge
 func approaching_edge() -> int:

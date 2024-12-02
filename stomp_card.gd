@@ -14,7 +14,7 @@ func use(player: Player) -> void:
 func _physics_process(_delta: float) -> void:
 	if (active or Player.player.is_stomping) and Player.player.is_on_floor():
 		# Delay resetting the states
-		await get_tree().create_timer(0.1).timeout
+		#await get_tree().create_timer(0.1).timeout
 		active = false
 		Player.player.kill_everything_mode = false
 		Player.player.is_stomping = false

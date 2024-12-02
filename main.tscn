@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d38yynx22ev4y"]
+[gd_scene load_steps=25 format=3 uid="uid://d38yynx22ev4y"]
 
 [ext_resource type="AudioStream" uid="uid://bgjfq50lcxl85" path="res://resources/audio/Forest Level V2.ogg" id="1_a5yo2"]
 [ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://player.tscn" id="1_p0mxc"]
@@ -406,10 +406,6 @@ position = Vector2(8985, 833)
 [node name="RespawnPoint7" parent="." instance=ExtResource("6_kiqvl")]
 position = Vector2(16351, -66)
 
-[node name="CardSpawner" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(605, -47)
-card_scene = ExtResource("11_autdo")
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -446,16 +442,6 @@ motion_mirroring = Vector2(1440, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 position = Vector2(13, 954)
 texture = ExtResource("20_h80gs")
-
-[node name="BreakableWall2" parent="." instance=ExtResource("23_pwdi6")]
-position = Vector2(-196, -56)
-collision_layer = 4
-collision_mask = 3
-
-[node name="BreakableWall" parent="." instance=ExtResource("23_pwdi6")]
-position = Vector2(-196, -24)
-collision_layer = 4
-collision_mask = 3
 
 [node name="ExplosionManager" parent="." instance=ExtResource("23_hmw8q")]
 
@@ -691,3 +677,10 @@ card_scene = ExtResource("10_0i7dp")
 [node name="CardSpawner15" parent="CardSpawners" instance=ExtResource("9_8chcu")]
 position = Vector2(5077, -212)
 card_scene = ExtResource("10_0i7dp")
+
+[node name="Breakable" type="Node2D" parent="."]
+
+[node name="BreakableWall2" parent="Breakable" instance=ExtResource("23_pwdi6")]
+position = Vector2(-241, -356)
+collision_layer = 4
+collision_mask = 3

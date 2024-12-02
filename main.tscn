@@ -20,8 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://cp544257x4a4e" path="res://resources/all spring stuff/Spring_vertical.tscn" id="17_r6u5s"]
 [ext_resource type="Texture2D" uid="uid://ci510y3nev70b" path="res://resources/BG/parallax-01.png" id="18_kjkuu"]
 [ext_resource type="Texture2D" uid="uid://c6land5e5dpcj" path="res://resources/BG/parallax-00.png" id="19_b0gs6"]
-[ext_resource type="Texture2D" uid="uid://dpsjswoe0dspe" path="res://resources/BG/parallax-02.png" id="19_swuis"]
-[ext_resource type="Texture2D" uid="uid://bne85na381aab" path="res://resources/BG/parallax-03.png" id="20_h80gs"]
+[ext_resource type="Texture2D" uid="uid://j8w54gqjxny0" path="res://resources/BG/forest1morelength.png" id="21_3o04j"]
+[ext_resource type="Texture2D" uid="uid://dwym8vyyf56h8" path="res://resources/BG/forest2morelength.png" id="21_kea3y"]
 [ext_resource type="PackedScene" uid="uid://dy423abcukasp" path="res://explosion_manager.tscn" id="23_hmw8q"]
 [ext_resource type="PackedScene" uid="uid://cv2xy0sds8mtg" path="res://breakable_wall.tscn" id="23_pwdi6"]
 
@@ -419,29 +419,29 @@ texture = ExtResource("19_b0gs6")
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-429, -1219)
 motion_scale = Vector2(0, 1)
-motion_mirroring = Vector2(1440, 0)
+motion_mirroring = Vector2(320, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(-3, 86)
+position = Vector2(37, -246)
 texture = ExtResource("18_kjkuu")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-429, -1219)
 motion_scale = Vector2(0.1, 1)
-motion_mirroring = Vector2(1440, 0)
+motion_mirroring = Vector2(1390, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-position = Vector2(38, 918)
-texture = ExtResource("19_swuis")
+position = Vector2(1, 77)
+texture = ExtResource("21_kea3y")
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-429, -1219)
 motion_scale = Vector2(0.2, 1)
-motion_mirroring = Vector2(1440, 0)
+motion_mirroring = Vector2(1390, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-position = Vector2(13, 954)
-texture = ExtResource("20_h80gs")
+position = Vector2(-37, 895)
+texture = ExtResource("21_3o04j")
 
 [node name="ExplosionManager" parent="." instance=ExtResource("23_hmw8q")]
 

@@ -669,3 +669,7 @@ position = Vector2(1401, -458)
 
 [node name="Area2D8" parent="." instance=ExtResource("17_r6u5s")]
 position = Vector2(-443, 16)
+
+[node name="CardSpawner60" parent="." instance=ExtResource("9_8chcu")]
+position = Vector2(651, -48)
+card_scene = ExtResource("11_autdo")

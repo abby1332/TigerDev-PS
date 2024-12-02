@@ -146,6 +146,7 @@ func die() -> void:
 	if dead:
 		return
 	death.emit()
+	$Sounds/Death.play()
 	#death_particles.show()
 	#death_particles.emitting = true
 	#death_particles.restart()
@@ -178,6 +179,7 @@ func sliding_on_wall_check() -> WallDirection:
 			return WallDirection.RIGHT
 	if sliding_on_wall != WallDirection.NONE:
 		leaving_wall = sliding_on_wall
+		$Sounds/WallSlide.play()
 		var leaving_wall_timer := Timer.new()
 		add_child(leaving_wall_timer)
 		leaving_wall_timer.wait_time = leaving_wall_jump_grace_period
@@ -281,6 +283,7 @@ func _physics_process(delta: float) -> void:
 	if crouch_state == CrouchState.SLIDING:
 		time_sliding += delta
 		if abs(velocity.x) > 5:
+			$Sounds/Slide.play()
 			sliding_particles.emitting = true
 		else:
 			sliding_particles.emitting = false

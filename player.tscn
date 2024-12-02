@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://player_sound_machine.gd" id="12_q7fwi"]
 [ext_resource type="AudioStream" uid="uid://cehbj4l84v2wj" path="res://resources/audio/hit_enemy.ogg" id="12_qc2c6"]
 [ext_resource type="Texture2D" uid="uid://bg0oisuynedo5" path="res://resources/sprites/particles/line.png" id="14_puffk"]
+[ext_resource type="Script" path="res://hair.gd" id="15_55il6"]
 [ext_resource type="AudioStream" uid="uid://bounaitq3wvt0" path="res://resources/audio/slash.wav" id="17_eoncl"]
 [ext_resource type="AudioStream" uid="uid://chkuw4acfn32d" path="res://resources/audio/Slide.wav" id="18_mh38m"]
 [ext_resource type="AudioStream" uid="uid://7n1emjoq0qqv" path="res://resources/audio/Wall Slide.wav" id="19_hwkeu"]
@@ -1343,3 +1344,7 @@ lifetime = 2.0
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
+
+[node name="Hair" type="Node2D" parent="."]
+z_index = -1
+script = ExtResource("15_55il6")

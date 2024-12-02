@@ -1,4 +1,4 @@
-[gd_scene load_steps=170 format=3 uid="uid://oskm0n4w5tpe"]
+[gd_scene load_steps=171 format=3 uid="uid://oskm0n4w5tpe"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_lroia"]
 [ext_resource type="Texture2D" uid="uid://djy257kdd7frh" path="res://resources/sprites/spritesheets/player_idle.png" id="2_hkjpp"]
@@ -22,7 +22,6 @@
 [ext_resource type="AudioStream" uid="uid://chkuw4acfn32d" path="res://resources/audio/Slide.wav" id="18_mh38m"]
 [ext_resource type="AudioStream" uid="uid://7n1emjoq0qqv" path="res://resources/audio/Wall Slide.wav" id="19_hwkeu"]
 [ext_resource type="AudioStream" uid="uid://7807hugta12k" path="res://resources/audio/Death.wav" id="20_80hn8"]
-
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dhkbs"]
 atlas = ExtResource("3_hbrdf")

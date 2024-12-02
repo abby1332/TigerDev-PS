@@ -100,7 +100,7 @@ var direction: float = 0.0
 var look_direction: Vector2 = Vector2.ZERO
 var last_look_direction: Vector2 = Vector2.ZERO
 
-var kill_everything_mode: bool = false
+@export var kill_everything_mode: bool = false
 var kill_everything_timer: Timer = null
 
 func activate_kill_everything_mode(seconds: float) -> void:
@@ -117,6 +117,8 @@ func activate_kill_everything_mode(seconds: float) -> void:
 	kill_everything_timer.start()
 
 var is_stomping: bool = false
+
+signal death
 
 func _ready() -> void:
 	player = self
@@ -143,11 +145,13 @@ func respawn(_point: RespawnPoint = respawn_point) -> void:
 func die() -> void:
 	if dead:
 		return
-	death_particles.show()
-	death_particles.emitting = true
-	death_particles.restart()
-	animation_manager.hide()
-	death_text.show()
+	death.emit()
+	#death_particles.show()
+	#death_particles.emitting = true
+	#death_particles.restart()
+	#animation_manager.hide()
+	#death_text.show()
+	camera.zoom *= 3
 	dead = true
 
 # Checks which side of the player is sliding on a wall.

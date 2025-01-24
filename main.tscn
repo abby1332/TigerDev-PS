@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://d38yynx22ev4y"]
 
+[ext_resource type="AudioStream" uid="uid://bgjfq50lcxl85" path="res://resources/audio/Forest Level V2.ogg" id="1_a5yo2"]
 [ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://player.tscn" id="1_p0mxc"]
-[ext_resource type="AudioStream" uid="uid://crt5pp77a4l32" path="res://resources/TLVL EXTRAS/Forest Level.ogg" id="1_q4p1t"]
 [ext_resource type="PackedScene" uid="uid://bjtvsvry3dapy" path="res://enemy.tscn" id="2_3wa2d"]
 [ext_resource type="Script" path="res://music_manager.gd" id="2_agjr5"]
 [ext_resource type="PackedScene" uid="uid://dmijlu5x8oc8w" path="res://spawn_point.tscn" id="5_sh2bk"]
@@ -19,9 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://ct8xbqn8hbscf" path="res://resources/TLVL EXTRAS/Arrow DIM.png" id="16_y3h5h"]
 [ext_resource type="PackedScene" uid="uid://cp544257x4a4e" path="res://resources/all spring stuff/Spring_vertical.tscn" id="17_r6u5s"]
 [ext_resource type="Texture2D" uid="uid://ci510y3nev70b" path="res://resources/BG/parallax-01.png" id="18_kjkuu"]
-[ext_resource type="Texture2D" uid="uid://dpsjswoe0dspe" path="res://resources/BG/parallax-02.png" id="19_swuis"]
-[ext_resource type="Texture2D" uid="uid://bne85na381aab" path="res://resources/BG/parallax-03.png" id="20_h80gs"]
-[ext_resource type="Texture2D" uid="uid://dh8khbejw4yd0" path="res://resources/BG/parallax-04.png" id="21_a024w"]
+[ext_resource type="Texture2D" uid="uid://c6land5e5dpcj" path="res://resources/BG/parallax-00.png" id="19_b0gs6"]
+[ext_resource type="Texture2D" uid="uid://j8w54gqjxny0" path="res://resources/BG/forest1morelength.png" id="21_3o04j"]
+[ext_resource type="Texture2D" uid="uid://dwym8vyyf56h8" path="res://resources/BG/forest2morelength.png" id="21_kea3y"]
 [ext_resource type="PackedScene" uid="uid://dy423abcukasp" path="res://explosion_manager.tscn" id="23_hmw8q"]
 [ext_resource type="PackedScene" uid="uid://cv2xy0sds8mtg" path="res://breakable_wall.tscn" id="23_pwdi6"]
 
@@ -29,7 +29,7 @@
 position = Vector2(-42, -1101)
 
 [node name="ForestLevel" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_q4p1t")
+stream = ExtResource("1_a5yo2")
 volume_db = -25.927
 autoplay = true
 script = ExtResource("2_agjr5")
@@ -57,64 +57,12 @@ scale = Vector2(0.5, 0.5)
 [node name="SpawnPoint" parent="." instance=ExtResource("5_sh2bk")]
 position = Vector2(1985, -467)
 
-[node name="CardSpawner4" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(1275, -447)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner3" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(-406, 11)
-card_scene = ExtResource("10_0i7dp")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_brn5f")]
 
 [node name="Node2D2" parent="." instance=ExtResource("9_sjiuu")]
 position = Vector2(-247, 7)
-
-[node name="CardSpawner5" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(2606, -518)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner6" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(3047, -540)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner7" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(3425, -554)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner8" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(2019, -469)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner9" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(4632, -572)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner10" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(5243, -519)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner11" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(5776, -502)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner12" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(6260, -528)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner13" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(3561, 37)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner14" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(6981, 262)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner15" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(5077, -212)
-card_scene = ExtResource("10_0i7dp")
 
 [node name="RespawnPoint2" parent="." instance=ExtResource("6_kiqvl")]
 position = Vector2(4363, -158)
@@ -124,18 +72,6 @@ position = Vector2(3927, -522)
 
 [node name="RespawnPoint4" parent="." instance=ExtResource("6_kiqvl")]
 position = Vector2(3812, 336)
-
-[node name="CardSpawner16" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(4105, 431)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner17" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(5023, 381)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner18" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(5768, 339)
-card_scene = ExtResource("10_0i7dp")
 
 [node name="Enemy2" parent="." instance=ExtResource("2_3wa2d")]
 position = Vector2(3475, -556)
@@ -153,80 +89,8 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(3121, 151)
 scale = Vector2(0.5, 0.5)
 
-[node name="CardSpawner19" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(3895, -114)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner20" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(538, -20)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner21" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(673, -83)
-card_scene = ExtResource("11_autdo")
-
-[node name="CardSpawner22" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(11969, 696)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner23" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(11970, 458)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner24" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(11970, 580)
-card_scene = ExtResource("10_0i7dp")
-
 [node name="RespawnPoint5" parent="." instance=ExtResource("6_kiqvl")]
 position = Vector2(7450, 80)
-
-[node name="CardSpawner25" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(7575, 74)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner26" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(8318, -110)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner27" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(8647, -120)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner28" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(9168, -21)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner29" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(9537, -26)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner30" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(10084, -49)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner31" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(10593, -40)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner32" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(10934, -11)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner33" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(8143, 418)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner34" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(8401, 778)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner35" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(9153, 809)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner36" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(10611, 723)
-card_scene = ExtResource("10_0i7dp")
 
 [node name="RespawnPoint6" parent="." instance=ExtResource("6_kiqvl")]
 position = Vector2(12355, 14)
@@ -267,10 +131,6 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(8440, -99)
 scale = Vector2(0.5, 0.5)
 
-[node name="Enemy14" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(7268, -24)
-scale = Vector2(0.5, 0.5)
-
 [node name="Enemy15" parent="." instance=ExtResource("2_3wa2d")]
 position = Vector2(7034, 293)
 scale = Vector2(0.5, 0.5)
@@ -290,38 +150,6 @@ scale = Vector2(0.5, 0.5)
 [node name="Enemy20" parent="." instance=ExtResource("2_3wa2d")]
 position = Vector2(5172, -270)
 scale = Vector2(0.5, 0.5)
-
-[node name="CardSpawner37" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(4708, 359)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner38" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(4709, 8)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner39" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(4708, 266)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner40" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(4708, 146)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner41" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(16559, -65)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner42" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(16756, -182)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner43" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(16956, -284)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner44" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(17192, -350)
-card_scene = ExtResource("10_0i7dp")
 
 [node name="Enemy19" parent="." instance=ExtResource("2_3wa2d")]
 position = Vector2(8812, 694)
@@ -360,11 +188,11 @@ position = Vector2(10551, 1001)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy28" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(10752, 985)
+position = Vector2(10598, 1005)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy29" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(10790, 985)
+position = Vector2(10646, 1005)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy30" parent="." instance=ExtResource("2_3wa2d")]
@@ -374,18 +202,6 @@ scale = Vector2(0.5, 0.5)
 [node name="Enemy31" parent="." instance=ExtResource("2_3wa2d")]
 position = Vector2(10871, 984)
 scale = Vector2(0.5, 0.5)
-
-[node name="CardSpawner46" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(10286, 973)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner47" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(10084, 926)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner48" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(10665, 985)
-card_scene = ExtResource("10_0i7dp")
 
 [node name="Sky" type="Sprite2D" parent="."]
 visible = false
@@ -408,11 +224,11 @@ position = Vector2(8859, 491)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy33" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(9350, 553)
+position = Vector2(9345, 518)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy34" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(9433, 553)
+position = Vector2(9454, 521)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy35" parent="." instance=ExtResource("2_3wa2d")]
@@ -456,19 +272,19 @@ position = Vector2(13492, -117)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy43" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(14306, -83)
+position = Vector2(14311, -95)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy44" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(14336, -83)
+position = Vector2(14337, -95)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy45" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(14304, -131)
+position = Vector2(14365, -95)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy46" parent="." instance=ExtResource("2_3wa2d")]
-position = Vector2(14334, -132)
+position = Vector2(14287, -95)
 scale = Vector2(0.5, 0.5)
 
 [node name="Enemy47" parent="." instance=ExtResource("2_3wa2d")]
@@ -502,42 +318,6 @@ scale = Vector2(0.5, 0.5)
 [node name="Enemy54" parent="." instance=ExtResource("2_3wa2d")]
 position = Vector2(15581, -53)
 scale = Vector2(0.5, 0.5)
-
-[node name="CardSpawner51" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(12405, 2)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner52" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(12557, -10)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner53" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(13321, -122)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner54" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(14142, -86)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner55" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(14602, -94)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner56" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(15297, -111)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner57" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(15703, -77)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner58" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(-367, 9)
-card_scene = ExtResource("10_0i7dp")
-
-[node name="CardSpawner59" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(-329, 10)
-card_scene = ExtResource("10_0i7dp")
 
 [node name="Rmb" type="Sprite2D" parent="."]
 position = Vector2(170, -107)
@@ -630,46 +410,277 @@ position = Vector2(16351, -66)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-429, -1219)
+motion_mirroring = Vector2(1440, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("18_kjkuu")
+scale = Vector2(20, 20)
+texture = ExtResource("19_b0gs6")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-429, -1219)
+motion_scale = Vector2(0, 1)
+motion_mirroring = Vector2(320, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-texture = ExtResource("19_swuis")
+position = Vector2(37, -246)
+texture = ExtResource("18_kjkuu")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-429, -1219)
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(1390, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-texture = ExtResource("20_h80gs")
+position = Vector2(1, 77)
+texture = ExtResource("21_kea3y")
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-429, -1219)
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(1390, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-texture = ExtResource("21_a024w")
-
-[node name="BreakableWall2" parent="." instance=ExtResource("23_pwdi6")]
-position = Vector2(-196, -56)
-collision_layer = 4
-collision_mask = 3
-
-[node name="BreakableWall" parent="." instance=ExtResource("23_pwdi6")]
-position = Vector2(-196, -24)
-collision_layer = 4
-collision_mask = 3
+position = Vector2(-37, 895)
+texture = ExtResource("21_3o04j")
 
 [node name="ExplosionManager" parent="." instance=ExtResource("23_hmw8q")]
 
 [node name="RespawnPoint" parent="." instance=ExtResource("6_kiqvl")]
 position = Vector2(1401, -458)
 
-[node name="Area2D8" parent="." instance=ExtResource("17_r6u5s")]
-position = Vector2(-443, 16)
+[node name="CardSpawners" type="Node2D" parent="."]
 
-[node name="CardSpawner60" parent="." instance=ExtResource("9_8chcu")]
-position = Vector2(651, -48)
+[node name="CardSpawner4" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(1275, -447)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner3" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(-406, 11)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner16" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(4105, 431)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner17" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(5023, 381)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner18" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(5768, 339)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner25" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(7575, 74)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner26" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(8318, -110)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner27" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(8647, -120)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner28" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(9168, -21)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner29" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(9537, -26)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner30" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(10084, -49)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner31" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(10593, -40)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner32" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(10934, -11)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner33" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(8143, 418)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner34" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(8401, 778)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner35" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(9153, 809)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner36" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(10611, 723)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner37" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(4708, 359)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner38" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(4709, 8)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner39" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(4708, 266)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner40" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(4708, 146)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner41" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(16559, -65)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner42" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(16756, -182)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner43" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(16956, -284)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner44" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(17192, -350)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner19" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(3895, -114)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner21" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(673, -83)
 card_scene = ExtResource("11_autdo")
+
+[node name="CardSpawner22" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(11969, 696)
+card_scene = ExtResource("11_autdo")
+
+[node name="CardSpawner23" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(11970, 458)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner24" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(11970, 580)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner46" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(10286, 973)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner47" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(10084, 926)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner48" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(10665, 985)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner51" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(12405, 2)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner52" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(12557, -10)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner53" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(13321, -122)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner54" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(14142, -86)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner55" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(14602, -94)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner56" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(15297, -111)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner57" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(15703, -77)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner58" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(-367, 9)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner59" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(-329, 10)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner2" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(3774, -462)
+card_scene = ExtResource("11_autdo")
+
+[node name="CardSpawner20" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(7508, 79)
+card_scene = ExtResource("11_autdo")
+
+[node name="CardSpawner60" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(7888, 416)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner61" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(8028, 417)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner5" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(2606, -518)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner6" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(3047, -540)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner7" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(3425, -554)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner8" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(2019, -469)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner9" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(4632, -572)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner10" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(5243, -519)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner11" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(5776, -502)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner12" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(6260, -528)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner13" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(3561, 37)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner14" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(6981, 262)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="CardSpawner15" parent="CardSpawners" instance=ExtResource("9_8chcu")]
+position = Vector2(5077, -212)
+card_scene = ExtResource("10_0i7dp")
+
+[node name="Breakable" type="Node2D" parent="."]
+
+[node name="BreakableWall2" parent="Breakable" instance=ExtResource("23_pwdi6")]
+position = Vector2(-241, -356)
+collision_layer = 4
+collision_mask = 3

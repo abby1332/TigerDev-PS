@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bb1xdtxvr8q4n"]
 
-[ext_resource type="Script" path="res://stomp_card.gd" id="1_gaqs4"]
+[ext_resource type="Script" path="res://content/cards/stomp_card.gd" id="1_gaqs4"]
 [ext_resource type="Texture2D" uid="uid://dird17q76sekp" path="res://resources/sprites/stomp_card.png" id="2_xy7b0"]
 
 [node name="StompCard" type="Node2D"]

@@ -1,23 +1,23 @@
 [gd_scene load_steps=171 format=3 uid="uid://oskm0n4w5tpe"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_lroia"]
+[ext_resource type="Script" path="res://content/player/player.gd" id="1_lroia"]
 [ext_resource type="Texture2D" uid="uid://djy257kdd7frh" path="res://resources/sprites/spritesheets/player_idle.png" id="2_hkjpp"]
 [ext_resource type="Texture2D" uid="uid://dbt65qkp6o5fu" path="res://resources/sprites/spritesheets/crouch-walk-Sheet.png" id="3_hbrdf"]
 [ext_resource type="Texture2D" uid="uid://6ikfw4t8whft" path="res://resources/sprites/spritesheets/crouch.png" id="3_w6a4s"]
-[ext_resource type="PackedScene" uid="uid://orv0xlp8qaqf" path="res://card_manager.tscn" id="4_4rsrk"]
+[ext_resource type="PackedScene" uid="uid://orv0xlp8qaqf" path="res://content/cards/card_manager.tscn" id="4_4rsrk"]
 [ext_resource type="Texture2D" uid="uid://bu8dvexx8jyt8" path="res://resources/sprites/spritesheets/slice-Sheet.png" id="4_rbcyh"]
 [ext_resource type="Texture2D" uid="uid://c40a6wihej4yo" path="res://resources/sprites/spritesheets/player_jump.png" id="4_ttq7i"]
-[ext_resource type="Script" path="res://camera_manager.gd" id="5_2hta7"]
 [ext_resource type="Texture2D" uid="uid://b43gradskrmr5" path="res://resources/sprites/spritesheets/player_jump_land.png" id="5_6b2vy"]
 [ext_resource type="Texture2D" uid="uid://be8ybrdxegilk" path="res://resources/sprites/spritesheets/player_run.png" id="6_namog"]
 [ext_resource type="Texture2D" uid="uid://rqkt53w5hopi" path="res://resources/sprites/spritesheets/player_slide.png" id="7_xuj7u"]
 [ext_resource type="Texture2D" uid="uid://fihxjoh4cwv6" path="res://resources/sprites/spritesheets/wall_land-Sheet.png" id="10_5ixnd"]
 [ext_resource type="Texture2D" uid="uid://csf641e3j2nqi" path="res://resources/sprites/spritesheets/death-Sheet.png" id="11_6d2a2"]
-[ext_resource type="Script" path="res://player_animation_machine.gd" id="11_oyrvp"]
-[ext_resource type="Script" path="res://player_sound_machine.gd" id="12_q7fwi"]
+[ext_resource type="Script" path="res://content/player/player_animation_machine.gd" id="11_oyrvp"]
+[ext_resource type="Script" path="res://content/player/player_sound_machine.gd" id="12_q7fwi"]
 [ext_resource type="AudioStream" uid="uid://cehbj4l84v2wj" path="res://resources/audio/hit_enemy.ogg" id="12_qc2c6"]
+[ext_resource type="Script" path="res://content/management/camera_manager.gd" id="14_ns5m4"]
 [ext_resource type="Texture2D" uid="uid://bg0oisuynedo5" path="res://resources/sprites/particles/line.png" id="14_puffk"]
-[ext_resource type="Script" path="res://hair.gd" id="15_55il6"]
+[ext_resource type="Script" path="res://content/effects/hair.gd" id="15_55il6"]
 [ext_resource type="AudioStream" uid="uid://bounaitq3wvt0" path="res://resources/audio/slash.wav" id="17_eoncl"]
 [ext_resource type="AudioStream" uid="uid://chkuw4acfn32d" path="res://resources/audio/Slide.wav" id="18_mh38m"]
 [ext_resource type="AudioStream" uid="uid://7n1emjoq0qqv" path="res://resources/audio/Wall Slide.wav" id="19_hwkeu"]
@@ -1286,7 +1286,7 @@ visible = false
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CameraManager" type="Node2D" parent="."]
-script = ExtResource("5_2hta7")
+script = ExtResource("14_ns5m4")
 
 [node name="ScreenFlash" type="CanvasLayer" parent="."]
 visible = false

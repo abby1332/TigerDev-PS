@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://xtmbg7gogosp"]
 
 [ext_resource type="Texture2D" uid="uid://bak2kusxsm6id" path="res://resources/TileMaps/Placek_tileset_forest_v1.png" id="1_v4bt8"]
-[ext_resource type="PackedScene" uid="uid://b20ds3cjgi62c" path="res://spike_strip.tscn" id="2_m044j"]
+[ext_resource type="PackedScene" uid="uid://b20ds3cjgi62c" path="res://content/environment/tiles/spike_strip.tscn" id="2_m044j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yg62b"]
 texture = ExtResource("1_v4bt8")

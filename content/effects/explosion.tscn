@@ -1,7 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://cnsd4xxvgack3"]
 
-[ext_resource type="Script" path="res://explosion.gd" id="1_agqgm"]
+[ext_resource type="Script" path="res://content/effects/explosion.gd" id="1_agqgm"]
 [ext_resource type="AudioStream" uid="uid://bh1eb0gnrkdsf" path="res://resources/audio/explosion_stomp.ogg" id="2_w7bf0"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vrik8"]
 radius = 15.0

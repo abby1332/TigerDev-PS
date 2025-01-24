@@ -1,10 +1,11 @@
 [gd_scene load_steps=19 format=3 uid="uid://b6ugxlnqk3o76"]
 
-[ext_resource type="Script" path="res://spawn_point.gd" id="1_lwm3y"]
-[ext_resource type="Script" path="res://respawn_point.gd" id="1_omnlx"]
+[ext_resource type="Script" path="res://content/environment/entities/spawn_point.gd" id="1_lwm3y"]
+[ext_resource type="Script" path="res://content/environment/entities/respawn_point.gd" id="1_omnlx"]
 [ext_resource type="Texture2D" uid="uid://18gnny251y3r" path="res://resources/sprites/respawn_active.png" id="3_6tse7"]
 [ext_resource type="Texture2D" uid="uid://11pgpx3wh53q" path="res://resources/sprites/respawn_inactive.png" id="4_nia8s"]
 [ext_resource type="Texture2D" uid="uid://jm2a5564r3qi" path="res://resources/sprites/particles/hollow_circle.png" id="5_j52hs"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpexs"]
 size = Vector2(4, 4)

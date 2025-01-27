@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=4 uid="uid://1vlcvlhwkxmy"]
 
-[ext_resource type="PackedScene" uid="uid://be1mbm2trdwj2" path="res://test_tile_map.tscn" id="1_c3w8q"]
-[ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://player.tscn" id="2_iijn2"]
-[ext_resource type="PackedScene" uid="uid://dmijlu5x8oc8w" path="res://spawn_point.tscn" id="3_xmvok"]
-[ext_resource type="PackedScene" uid="uid://chrk5vdwtw0j" path="res://death_plane.tscn" id="4_nuoat"]
+[ext_resource type="PackedScene" uid="uid://be1mbm2trdwj2" path="res://content/environment/tiles/test_tile_map.tscn" id="1_c3w8q"]
+[ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://content/player/player.tscn" id="2_iijn2"]
+[ext_resource type="PackedScene" uid="uid://dmijlu5x8oc8w" path="res://content/environment/entities/spawn_point.tscn" id="3_xmvok"]
+[ext_resource type="PackedScene" path="res://death_plane.tscn" id="4_nuoat"]
+
 
 [node name="Tlvl" type="Node2D"]
 

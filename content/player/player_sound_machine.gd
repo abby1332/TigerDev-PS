@@ -1,5 +1,6 @@
 extends Node
 class_name PlayerSoundMachine
+## Provides easy access to audio streams that are connected to the player
 
 static var main: PlayerSoundMachine
 

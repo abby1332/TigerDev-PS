@@ -1,21 +1,24 @@
 extends Card
 class_name SliceCard
+## Slice/Slash/Dash/Whatever card that launches the character and damages enemies
 
+## Duration that force will kept being applied to the player
 @export var duration: float = 0.1
 
+## If the card is active and being applied
 var active: bool = false
 
 var player: Player
 var last_look_direction: Vector2
 
-
+## Resets and destroys the object
 func _reset() -> void:
 	active = false
 	player.is_ignoring_gravity = false
 
 	queue_free()
 
-
+## Uses the card
 func use(plyr: Player) -> void:
 	plyr.activate_kill_everything_mode(duration * 4)
 	plyr.animation_machine.set_animation_special_state(
@@ -40,8 +43,8 @@ func use(plyr: Player) -> void:
 
 	sprite.queue_free()
 
-
 func _physics_process(delta: float) -> void:
+	# Applies force to the player while the card is active
 	if active and not player.dead:
 		player.velocity.x += last_look_direction.x * player.speed * delta * 10
 		player.velocity.y += last_look_direction.y * player.speed * delta * 10

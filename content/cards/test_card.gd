@@ -1,5 +1,6 @@
 extends Card
 class_name TestCard
+## Disregard this file. I don't care.
 
 @export var duration: float = 0.2
 

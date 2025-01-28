@@ -1,5 +1,8 @@
 extends CharacterBody2D
 class_name Player
+## The primary player control and management script
+##
+## ABANDON HOPE ALL YE WHO ENTER HERE
 
 static var player: Player = self
 
@@ -123,22 +126,7 @@ func _ready() -> void:
 
 
 func respawn(_point: RespawnPoint = respawn_point) -> void:
-	#var where_to_spawn: Vector2
-	#if respawn_point == null:
-	#where_to_spawn = spawn_point.global_position
-	#else:
-	#where_to_spawn = respawn_point.global_position
 	RespawnManager.respawn()
-	#death_particles.hide()
-	#death_particles.emitting = false
-	#if point != null:
-	#point.spawn_point.teleport(self)
-	#else:
-	#spawn_point.teleport(self)
-	#animation_manager.show()
-	#death_text.hide()
-	#dead = false
-	#velocity = Vector2(0.0, 0.0)
 
 
 func die() -> void:
@@ -146,11 +134,6 @@ func die() -> void:
 		return
 	death.emit()
 	$Sounds/Death.play()
-	#death_particles.show()
-	#death_particles.emitting = true
-	#death_particles.restart()
-	#animation_manager.hide()
-	#death_text.show()
 	camera.zoom *= 3
 	dead = true
 
@@ -235,14 +218,6 @@ func crouch_state_check() -> CrouchState:
 		if sliding_on_wall != WallDirection.NONE:
 			return CrouchState.NORMAL
 		return CrouchState.CROUCHING
-
-
-#func animation_state_machine_update() -> void:
-#if crouch_state == CrouchState.NORMAL:
-#animation_manager.play(animation_idle)
-#else:
-#animation_manager.play(animation_crouch)
-
 
 func update_crouch_state(_old_state: CrouchState, new_state: CrouchState) -> void:
 	time_sliding = 0.0
@@ -410,7 +385,5 @@ func _physics_process(delta: float) -> void:
 
 	if abs(velocity.x) > speed:
 		velocity.x *= 0.95
-
-	#animation_state_machine_update()
 
 	move_and_slide()

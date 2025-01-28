@@ -1,9 +1,11 @@
 extends Area2D
 class_name DroppedCard
+## Manages collision with player to provide a card
 
+## Card that will be granted when the player touches the Area2D
 @export var card: Card
 
-
+## Picks up the card and adds it to the players hand, destroying this object in the process
 func pickup_card(player: Player) -> void:
 	if player.card_manager.give_card(card):
 		if get_parent() is CardSpawner:

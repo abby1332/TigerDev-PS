@@ -1,15 +1,19 @@
 extends Node
+## Makes respawn mechanics work
 
+## The current level/scene/whatever
 var active_scene: Node
+## The current player instance
 var player: Player
 
-
+## Saves select data currently in the session
 class SaveState:
 	var player: Player
 	var cards: Array[String]
 	var used_card_spawners: Array[String] = []
 	var active_respawn_point: String
 
+	## Creates a save with all of the current data
 	func _init(plyr: Player) -> void:
 		player = plyr
 		var card_manager := player.card_manager
@@ -19,6 +23,7 @@ class SaveState:
 
 		active_respawn_point = player.respawn_point.name
 
+	## Sets all data currently to that of this save state
 	func load_save(plyr: Player, scene: Node) -> void:
 		var card_manager := plyr.card_manager
 		for path: String in cards:
@@ -35,7 +40,7 @@ class SaveState:
 	func _to_string() -> String:
 		return " ".join(cards)
 
-
+## The current save
 var current_save: SaveState
 
 var _welcome_back_message_template: String = """[pulse freq=3.0 color=#00FFF  ease=-1][color=FF0000][outline_size=5][font_size=100][center][font=res://resources/fonts/monogram-extended.ttf]{text}[/font][/center][/font_size][/outline_size][/color][/pulse]"""
@@ -55,7 +60,7 @@ var _welcome_back_messages: Array[String] = [
 
 var _welcome_back_message_respawn_count: int = 0
 
-
+## Puts a red flashing message at the top of the screen when the player respawns
 func random_welcome_back_message() -> void:
 	if _welcome_back_message_respawn_count == 0:
 		player.welcome_back_message.text = _welcome_back_message_template.replace(

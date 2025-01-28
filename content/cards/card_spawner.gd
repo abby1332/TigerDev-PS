@@ -1,12 +1,18 @@
 extends Node2D
 class_name CardSpawner
+## Simple class that spawns in a dropped card.
+##
+## Spawns in dropped_card_scene with card_scene at the current position when the scene is loaded and this cardspawner is not used.
 
+## The dropped_card_scene which will hold the card_scene
 @export var dropped_card_scene: PackedScene
+## The card to spawn
 @export var card_scene: PackedScene
 
+## The spawned dropped_card_scene
 var spawned_dropped_card: DroppedCard = null
 
-
+## Actually spawns in the card
 func spawn() -> bool:
 	if spawned_dropped_card != null and spawned_dropped_card.get_parent() == self:
 		return false

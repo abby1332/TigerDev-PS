@@ -1,11 +1,14 @@
 extends Area2D
 class_name Explosion
+## An explosion. Like the thing cybertrucks do.
 
 @onready var particles: GPUParticles2D = $Particles
 @onready var sound: AudioStreamPlayer2D = $Sound
 @onready var collider: CollisionShape2D = $CollisionShape2D
 
+## Whether the explosion will damage the player or not
 var hurts_player: bool = true
+## Size. Don't remember if I actually made this work.
 var size: float = 1.0
 
 signal finished

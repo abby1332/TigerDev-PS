@@ -6,6 +6,7 @@ class_name CardSpawner
 
 var spawned_dropped_card: DroppedCard = null
 
+
 func spawn() -> bool:
 	if spawned_dropped_card != null and spawned_dropped_card.get_parent() == self:
 		return false
@@ -15,6 +16,7 @@ func spawn() -> bool:
 	spawned_dropped_card.add_child(spawned_card)
 	spawned_dropped_card.card = spawned_card
 	return true
+
 
 func _ready() -> void:
 	if RespawnManager.current_save != null:

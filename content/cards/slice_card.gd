@@ -8,21 +8,25 @@ var active: bool = false
 var player: Player
 var last_look_direction: Vector2
 
+
 func _reset() -> void:
 	active = false
 	player.is_ignoring_gravity = false
-	
+
 	queue_free()
+
 
 func use(plyr: Player) -> void:
 	plyr.activate_kill_everything_mode(duration * 4)
-	plyr.animation_machine.set_animation_special_state(PlayerAnimationMachine.SpecialState.DASH, duration * 4)
+	plyr.animation_machine.set_animation_special_state(
+		PlayerAnimationMachine.SpecialState.DASH, duration * 4
+	)
 	plyr.animation_machine.sprite.frame = 0
 	var slice = plyr.get_node("Sounds/Slash")
 	slice.play()
-	
+
 	plyr.is_stomping = false
-	
+
 	active = true
 	player = plyr
 	last_look_direction = player.last_look_direction
@@ -33,8 +37,9 @@ func use(plyr: Player) -> void:
 	timer.one_shot = true
 	timer.timeout.connect(_reset)
 	timer.start()
-	
+
 	sprite.queue_free()
+
 
 func _physics_process(delta: float) -> void:
 	if active and not player.dead:

@@ -8,6 +8,7 @@ class_name RespawnPoint
 
 @export var particles: GPUParticles2D
 
+
 func set_active_sprite(is_active: bool) -> void:
 	if is_active:
 		active_sprite.show()
@@ -20,6 +21,7 @@ func set_active_sprite(is_active: bool) -> void:
 		inactive_sprite.show()
 		particles.emitting = false
 		particles.hide()
+
 
 func _on_body_entered(body: Node2D) -> void:
 	if not body is Player:

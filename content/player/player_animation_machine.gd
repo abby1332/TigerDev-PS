@@ -18,6 +18,7 @@ var time_falling: float = 0.0
 var time_wall_sliding: float = 0.0
 var time_crouching: float = 0.0
 
+
 ## Changes the special animation being done
 func set_animation_special_state(state: SpecialState, duration: float) -> void:
 	current_special_state = state
@@ -27,12 +28,14 @@ func set_animation_special_state(state: SpecialState, duration: float) -> void:
 	state_timer = get_tree().create_timer(duration)
 	state_timer.timeout.connect(func() -> void: current_special_state = SpecialState.NONE)
 
+
 ## Automatically chooses the correct animation for the direction the player is facing
 func rl(anim_name: String) -> String:
 	if player.last_look_direction.x > 0:
 		return "R_" + anim_name
 	else:
 		return "L_" + anim_name
+
 
 ## rl but the reverse
 func rl_rev(anim_name: String) -> String:

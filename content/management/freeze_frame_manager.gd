@@ -3,6 +3,7 @@ extends Node
 
 var active: bool = false
 
+
 ## Freezes the frame
 func freeze_frame(time_scale: float, duration: float) -> bool:
 	#Prevent freeze frame from double activating
@@ -15,6 +16,7 @@ func freeze_frame(time_scale: float, duration: float) -> bool:
 	active = false
 	return true
 
+
 ## Freezes the frame but with zoom and flash
 func zoom_frame(time_scale: float, duration: float, zoom_scale: float, flash: bool = true) -> bool:
 	flash_frame(0.05)
@@ -24,6 +26,7 @@ func zoom_frame(time_scale: float, duration: float, zoom_scale: float, flash: bo
 	RespawnManager.player.camera.zoom /= Vector2(zoom_scale, zoom_scale)
 	RespawnManager.player.camera.position_smoothing_enabled = true
 	return true
+
 
 ## Freezes the frame but with flash
 func flash_frame(duration: float) -> void:

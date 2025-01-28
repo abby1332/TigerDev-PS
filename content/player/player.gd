@@ -219,6 +219,7 @@ func crouch_state_check() -> CrouchState:
 			return CrouchState.NORMAL
 		return CrouchState.CROUCHING
 
+
 func update_crouch_state(_old_state: CrouchState, new_state: CrouchState) -> void:
 	time_sliding = 0.0
 	if new_state == CrouchState.NORMAL:

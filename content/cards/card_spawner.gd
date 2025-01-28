@@ -12,6 +12,7 @@ class_name CardSpawner
 ## The spawned dropped_card_scene
 var spawned_dropped_card: DroppedCard = null
 
+
 ## Actually spawns in the card
 func spawn() -> bool:
 	if spawned_dropped_card != null and spawned_dropped_card.get_parent() == self:

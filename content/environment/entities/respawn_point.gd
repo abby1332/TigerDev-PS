@@ -13,6 +13,7 @@ class_name RespawnPoint
 ## Special effects!!! :DDDDD
 @export var particles: GPUParticles2D
 
+
 ## Changes the active sprite
 func set_active_sprite(is_active: bool) -> void:
 	if is_active:
@@ -26,6 +27,7 @@ func set_active_sprite(is_active: bool) -> void:
 		inactive_sprite.show()
 		particles.emitting = false
 		particles.hide()
+
 
 ## When the player touches the respawn point activate it
 func _on_body_entered(body: Node2D) -> void:

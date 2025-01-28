@@ -6,6 +6,7 @@ var active_scene: Node
 ## The current player instance
 var player: Player
 
+
 ## Saves select data currently in the session
 class SaveState:
 	var player: Player
@@ -40,6 +41,7 @@ class SaveState:
 	func _to_string() -> String:
 		return " ".join(cards)
 
+
 ## The current save
 var current_save: SaveState
 
@@ -59,6 +61,7 @@ var _welcome_back_messages: Array[String] = [
 ]
 
 var _welcome_back_message_respawn_count: int = 0
+
 
 ## Puts a red flashing message at the top of the screen when the player respawns
 func random_welcome_back_message() -> void:

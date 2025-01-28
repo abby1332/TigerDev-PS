@@ -7,6 +7,7 @@ class_name StompCard
 ## Is the card active
 var active: bool = false
 
+
 ## Uses the card. I'm so tired.
 func use(player: Player) -> void:
 	sprite.queue_free()
@@ -15,6 +16,7 @@ func use(player: Player) -> void:
 	player.kill_everything_mode = true
 	(player.get_node("StompParticles") as GPUParticles2D).emitting = true
 	(player.get_node("StompParticles") as GPUParticles2D).show()
+
 
 func _physics_process(_delta: float) -> void:
 	# If the card is still active and the player is on the floor

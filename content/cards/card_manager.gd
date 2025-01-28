@@ -150,6 +150,7 @@ class CardAnimationInstance:
 			cm.initial_card_position.position.y
 		)
 
+
 ## Adds the card to the dictionary of animated cards
 func add_card_to_animated_cards(card: Card, type: String) -> void:
 	# Erases any CardAnimationInstances that have this card
@@ -160,13 +161,16 @@ func add_card_to_animated_cards(card: Card, type: String) -> void:
 	animated_cards[CardAnimationInstance.new(card, type, self)] = 0
 	update_card_order()
 
+
 ## If the hand is full returns true
 func is_full() -> bool:
 	return cards.size() >= max_cards
 
+
 ## If the hand is empty returns false
 func is_empty() -> bool:
 	return cards.size() == 0
+
 
 ## Gives the player a card and places it in their hand. Returns false if the player already has the max cards
 func give_card(card: Card) -> bool:
@@ -185,6 +189,7 @@ func give_card(card: Card) -> bool:
 	add_card_to_animated_cards(card, "rise")
 	return true
 
+
 ## Do not use this function except for when the cards need to have their positions updated instantly (which should be never)
 func instant_update_card_positions() -> void:
 	for i in range(0, cards.size()):
@@ -198,6 +203,7 @@ func update_card_order() -> void:
 			if is_instance_valid(cards[i].sprite):
 				cards[i].sprite.z_index = cards.size() - i
 
+
 ## Uses a card and destroys it, shifting all cards that were to the right of the card to the left
 func use_card(card_index: int) -> bool:
 	if card_index >= cards.size() or cards[card_index] == null:
@@ -209,6 +215,7 @@ func use_card(card_index: int) -> bool:
 	for i in range(card_index, cards.size()):
 		add_card_to_animated_cards(cards[i], "slide_left")
 	return true
+
 
 ## Moves the "top" (leftmost) card to the "back" (right end) and animates it accordingly
 func send_top_card_to_back() -> void:
@@ -222,6 +229,7 @@ func send_top_card_to_back() -> void:
 		add_card_to_animated_cards(c, "slide_left")
 	add_card_to_animated_cards(card, "scroll_to_back")
 
+
 ## Moves the "back" (rightmost) card to the "top" (left end) and animates it accordingly
 func send_back_card_to_top() -> void:
 	if cards.size() < 2:
@@ -234,7 +242,8 @@ func send_back_card_to_top() -> void:
 		add_card_to_animated_cards(c, "slide_right")
 	add_card_to_animated_cards(card, "scroll_to_front")
 
-## Gets the card input being pressed this frame. 
+
+## Gets the card input being pressed this frame.
 ##If multiple are being pressed at once, it prioritizes the leftmost one (lower numbers on the keyboard)
 func get_card_input() -> int:
 	# This looks more elegant than 5 if statements but is probably less efficient.
@@ -243,9 +252,11 @@ func get_card_input() -> int:
 			return i
 	return -1
 
+
 ## Resets the scroll, after begin_scroll_reset_timer()
 func reset_scroll() -> void:
 	scroll_ready = true
+
 
 ## Resets the scroll after a 0.2 sec delay
 func begin_scroll_reset_timer() -> void:
@@ -260,6 +271,7 @@ func begin_scroll_reset_timer() -> void:
 
 func _ready() -> void:
 	show()
+
 
 func _process(delta: float) -> void:
 	# Updates the animations for each animated card

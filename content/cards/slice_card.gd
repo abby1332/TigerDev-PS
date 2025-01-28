@@ -11,12 +11,14 @@ var active: bool = false
 var player: Player
 var last_look_direction: Vector2
 
+
 ## Resets and destroys the object
 func _reset() -> void:
 	active = false
 	player.is_ignoring_gravity = false
 
 	queue_free()
+
 
 ## Uses the card
 func use(plyr: Player) -> void:
@@ -42,6 +44,7 @@ func use(plyr: Player) -> void:
 	timer.start()
 
 	sprite.queue_free()
+
 
 func _physics_process(delta: float) -> void:
 	# Applies force to the player while the card is active

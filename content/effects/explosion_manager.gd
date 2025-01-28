@@ -10,6 +10,7 @@ static var main: ExplosionManager
 func _ready() -> void:
 	main = self
 
+
 ## Creates an explosion at the global position of location.
 func create_explosion(location: Vector2, hurts_player: bool = true, size: float = 1.0) -> void:
 	var explosion := explosion_scene.instantiate() as Explosion

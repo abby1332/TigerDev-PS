@@ -1,6 +1,7 @@
 extends Area2D
 class_name spring_hori
 
+
 func _on_body_entered(body: Node2D) -> void:
 	if not body is Player:
 		return
@@ -12,7 +13,7 @@ func _on_body_entered(body: Node2D) -> void:
 	stime.autostart = false
 	stime.wait_time = 1.2
 	stime.timeout.connect(func(): player.set_process_input(true))
-	var rebound_velocity : int
+	var rebound_velocity: int
 	if player.velocity.x > 0:
 		if player.velocity.x > 600:
 			if player.velocity.x > 1000:
@@ -31,7 +32,7 @@ func _on_body_entered(body: Node2D) -> void:
 			stime.start()
 			rebound_velocity = player.velocity.x
 			player.velocity.x = lerp(rebound_velocity, rebound_velocity - 400, stime.time_left)
-	else :
+	else:
 		if player.velocity.x < -600:
 			if player.velocity.x < -1000:
 				player.velocity.x *= -1
@@ -49,4 +50,3 @@ func _on_body_entered(body: Node2D) -> void:
 			stime.start()
 			rebound_velocity = player.velocity.x
 			player.velocity.x = lerp(rebound_velocity, rebound_velocity + 400, stime.time_left)
-	

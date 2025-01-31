@@ -1,11 +1,9 @@
 extends Node2D
 class_name PlayerAnimationMachine
+## Manages player animations
 
-enum SpecialState {
-	NONE,
-	DASH,
-	LANDING_FROM_STOMP
-}
+## The types of special animations the player can do
+enum SpecialState { NONE, DASH, LANDING_FROM_STOMP }
 
 var current_special_state: SpecialState = SpecialState.NONE
 var state_timer: SceneTreeTimer
@@ -20,27 +18,32 @@ var time_falling: float = 0.0
 var time_wall_sliding: float = 0.0
 var time_crouching: float = 0.0
 
+
+## Changes the special animation being done
 func set_animation_special_state(state: SpecialState, duration: float) -> void:
 	current_special_state = state
 	if state_timer != null and is_instance_valid(state_timer) and state_timer.time_left > 0:
 		for dict in state_timer.timeout.get_connections():
 			state_timer.timeout.disconnect(dict.callable)
 	state_timer = get_tree().create_timer(duration)
-	state_timer.timeout.connect(func () -> void:
-		current_special_state = SpecialState.NONE
-		)
+	state_timer.timeout.connect(func() -> void: current_special_state = SpecialState.NONE)
 
+
+## Automatically chooses the correct animation for the direction the player is facing
 func rl(anim_name: String) -> String:
 	if player.last_look_direction.x > 0:
 		return "R_" + anim_name
 	else:
 		return "L_" + anim_name
 
+
+## rl but the reverse
 func rl_rev(anim_name: String) -> String:
 	if player.last_look_direction.x > 0:
 		return "L_" + anim_name
 	else:
 		return "R_" + anim_name
+
 
 func update(delta: float) -> void:
 	if player.dead:
@@ -49,7 +52,7 @@ func update(delta: float) -> void:
 		sprite.animation = rl("die")
 		sprite.sprite_frames.set_animation_loop(rl("die"), false)
 		return
-	
+
 	match current_special_state:
 		SpecialState.NONE:
 			sprite.rotation = 0
@@ -65,7 +68,7 @@ func update(delta: float) -> void:
 			sprite.frame = 0
 			sprite.rotation = 0
 			return
-	
+
 	if player.sliding_on_wall != Player.WallDirection.NONE and !player.is_on_floor():
 		sprite.speed_scale = 1
 		time_wall_sliding += delta
@@ -128,6 +131,7 @@ func update(delta: float) -> void:
 		time_crouching = 0
 		sprite.animation = rl("idle")
 		sprite.speed_scale = 1
+
 
 func _process(delta: float) -> void:
 	update(delta)

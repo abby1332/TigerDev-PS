@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bgjfq50lcxl85"
+path="res://.godot/imported/Forest Level V2.ogg-eebaa1dec2c1139fae2d9ec80c5128ef.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/audio/music/Forest Level V2.ogg"
+dest_files=["res://.godot/imported/Forest Level V2.ogg-eebaa1dec2c1139fae2d9ec80c5128ef.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

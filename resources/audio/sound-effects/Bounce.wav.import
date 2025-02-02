@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dpuys3gmgok8i"
-path="res://.godot/imported/Bounce.wav-458672ba7b276a3750bd3ff32d5286fe.sample"
+path="res://.godot/imported/Bounce.wav-0db6df58c1f7308c6c175af4a20a7ed8.sample"
 
 [deps]
 
-source_file="res://resources/audio/Bounce.wav"
-dest_files=["res://.godot/imported/Bounce.wav-458672ba7b276a3750bd3ff32d5286fe.sample"]
+source_file="res://resources/audio/sound-effects/Bounce.wav"
+dest_files=["res://.godot/imported/Bounce.wav-0db6df58c1f7308c6c175af4a20a7ed8.sample"]
 
 [params]
 

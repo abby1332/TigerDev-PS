@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://d38yynx22ev4y"]
 
-[ext_resource type="AudioStream" uid="uid://bgjfq50lcxl85" path="res://resources/audio/Forest Level V2.ogg" id="1_envyj"]
+[ext_resource type="AudioStream" uid="uid://bgjfq50lcxl85" path="res://resources/audio/music/Forest Level V2.ogg" id="1_envyj"]
 [ext_resource type="Script" path="res://content/management/music_manager.gd" id="2_1xn5v"]
 [ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://content/player/player.tscn" id="3_pwybp"]
 [ext_resource type="PackedScene" uid="uid://bjtvsvry3dapy" path="res://content/environment/entities/enemy.tscn" id="4_l6y2u"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dy423abcukasp" path="res://content/effects/explosion_manager.tscn" id="22_p8h3x"]
 [ext_resource type="PackedScene" uid="uid://bb1xdtxvr8q4n" path="res://content/cards/stomp_card.tscn" id="23_dlno5"]
 [ext_resource type="PackedScene" uid="uid://cv2xy0sds8mtg" path="res://content/environment/entities/breakable_wall.tscn" id="24_fj4ri"]
+
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-42, -1101)

@@ -30,6 +30,10 @@ gdscript/warnings/untyped_declaration=1
 
 window/stretch/mode="viewport"
 
+[editor]
+
+version_control/autoload_on_startup=true
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")

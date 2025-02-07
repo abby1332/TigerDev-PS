@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://resources/3d/rotating_title.gd" id="5_6prxi"]
 [ext_resource type="PackedScene" uid="uid://bb1w2xxvmfld1" path="res://resources/3d/Placekreal.glb" id="8_1gwu8"]
 
-
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15

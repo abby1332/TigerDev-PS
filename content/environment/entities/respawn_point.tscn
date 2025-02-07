@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://11pgpx3wh53q" path="res://resources/sprites/respawn_inactive.png" id="4_nia8s"]
 [ext_resource type="Texture2D" uid="uid://jm2a5564r3qi" path="res://resources/sprites/particles/hollow_circle.png" id="5_j52hs"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpexs"]
 size = Vector2(4, 4)
 

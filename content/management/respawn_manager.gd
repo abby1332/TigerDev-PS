@@ -131,7 +131,11 @@ func respawn() -> void:
 	player = active_scene.find_child("Player") as Player
 	load_save()
 	show_respawn_effects()
+	
 
+#Calls the entire respawn process.
+func respawn_player() -> void:
+	TransitionScreen.respawn_scene()
 
 func load_scene(path: String) -> void:
 	deferred_load_scene(path)

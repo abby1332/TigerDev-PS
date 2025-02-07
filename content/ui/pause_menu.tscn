@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://content/ui/pause_menu.gd" id="1_mtyi0"]
 
-
 [node name="PauseMenu" type="Control"]
 process_mode = 3
 visible = false

@@ -125,8 +125,8 @@ func _ready() -> void:
 	camera_manager.start()
 
 
-func respawn(_point: RespawnPoint = respawn_point) -> void:
-	RespawnManager.respawn()
+#func respawn(_point: RespawnPoint = respawn_point) -> void:
+	#RespawnManager.respawn()
 
 
 func die() -> void:
@@ -136,6 +136,7 @@ func die() -> void:
 	$Sounds/Death.play()
 	camera.zoom *= 3
 	dead = true
+	RespawnManager.respawn_player()
 
 
 # Checks which side of the player is sliding on a wall.
@@ -245,7 +246,7 @@ func is_below_death_plane() -> bool:
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug_respawn"):
-		respawn()
+		RespawnManager.respawn()
 	elif Input.is_action_just_pressed("debug_die"):
 		die()
 

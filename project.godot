@@ -21,6 +21,7 @@ RespawnManager="*res://content/management/respawn_manager.gd"
 OptionsManager="*res://content/ui/options_manager.gd"
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 FreezeFrameManager="*res://content/management/freeze_frame_manager.gd"
+TransitionScreen="*res://content/ui/transition_screen.tscn"
 
 [debug]
 

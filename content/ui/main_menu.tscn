@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://c45w12qbqt8p0"]
 
 [ext_resource type="Texture2D" uid="uid://cg4uasacwppjb" path="res://resources/sprites/gui/Placek_LOGO.png" id="1_1whhs"]
-[ext_resource type="Script" path="res://content/ui/main_menu_button_manager.gd" id="2_wk6rj"]
-[ext_resource type="Script" path="res://content/ui/main_menu_button.gd" id="3_rbpxv"]
+[ext_resource type="Script" uid="uid://bemx8kxc3fmlw" path="res://content/ui/main_menu_button_manager.gd" id="2_wk6rj"]
+[ext_resource type="Script" uid="uid://cj51yps1a0h5a" path="res://content/ui/main_menu_button.gd" id="3_rbpxv"]
 [ext_resource type="Theme" uid="uid://cd3c80nfki0s0" path="res://theme.tres" id="4_bcpts"]
-[ext_resource type="Script" path="res://content/ui/options_panel.gd" id="4_jnuoe"]
-[ext_resource type="Script" path="res://resources/3d/rotating_title.gd" id="5_6prxi"]
+[ext_resource type="Script" uid="uid://bfu4nikmqv6bm" path="res://content/ui/options_panel.gd" id="4_jnuoe"]
+[ext_resource type="Script" uid="uid://cu7eu2sbcnhxm" path="res://resources/3d/rotating_title.gd" id="5_6prxi"]
 [ext_resource type="PackedScene" uid="uid://bb1w2xxvmfld1" path="res://resources/3d/Placekreal.glb" id="8_1gwu8"]
 
 [node name="MainMenu" type="Control"]

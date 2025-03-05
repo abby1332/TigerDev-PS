@@ -16,13 +16,12 @@
 [ext_resource type="Texture2D" uid="uid://13smgi57qsqx" path="res://resources/BG/darkbg.png" id="14_q6jdn"]
 [ext_resource type="Texture2D" uid="uid://do0tvcjug18fq" path="res://resources/BG/Space more.png" id="15_wvwvh"]
 [ext_resource type="AudioStream" uid="uid://bgjfq50lcxl85" path="res://resources/audio/Forest Level V2.ogg" id="16_os3e1"]
-[ext_resource type="Script" path="res://content/management/music_manager.gd" id="17_xod8h"]
+[ext_resource type="Script" uid="uid://cmphwui7sm2x4" path="res://content/management/music_manager.gd" id="17_xod8h"]
 [ext_resource type="PackedScene" uid="uid://bepyetyir6wh7" path="res://content/ui/pause_menu.tscn" id="18_5dbc0"]
 [ext_resource type="Texture2D" uid="uid://c40rp4krbnehh" path="res://resources/BG/Thank you mario.png" id="19_weo2u"]
 [ext_resource type="Texture2D" uid="uid://xhokjlc25rvj" path="res://resources/BG/i-need-your-best-sol-badguy-images-because-google-just-isnt-v0-wfhgb3lml5vc1.webp" id="20_ja670"]
 [ext_resource type="Texture2D" uid="uid://byjyx8ro54hev" path="res://resources/BG/tumblr_7a5917a6e9f26274377844ad180e02a7_c701f58f_1280.jpg" id="21_unsxo"]
 [ext_resource type="Texture2D" uid="uid://l8rf80kq1lnq" path="res://resources/BG/tumblr_bbc6a32beb740ea1d8810641eae9ffc3_8719bf78_2048.jpg" id="22_qiab7"]
-
 
 [node name="Node2D" type="Node2D"]
 

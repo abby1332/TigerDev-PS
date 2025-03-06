@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://5hhseccpguog"
-path="res://.godot/imported/monogram-extended-italic.ttf-29036be44ad28c7361d3df8778b8ab37.fontdata"
+path="res://.godot/imported/monogram_extended_italic.ttf-cc4e084a0fad42926a3e3ace0ca482bd.fontdata"
 
 [deps]
 
-source_file="res://resources/fonts/monogram-extended-italic.ttf"
-dest_files=["res://.godot/imported/monogram-extended-italic.ttf-29036be44ad28c7361d3df8778b8ab37.fontdata"]
+source_file="res://Assets/Fonts/monogram_extended_italic.ttf"
+dest_files=["res://.godot/imported/monogram_extended_italic.ttf-cc4e084a0fad42926a3e3ace0ca482bd.fontdata"]
 
 [params]
 

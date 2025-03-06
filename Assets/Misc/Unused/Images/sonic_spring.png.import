@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x5t260ps3dro"
-path="res://.godot/imported/sonic_spring.png-1c9cea59e1315464377950c2e6b2578b.ctex"
+uid="uid://csdt00voucj6g"
+path="res://.godot/imported/sonic_spring.png-cf3359295678aeec06346357110761da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/all spring stuff/sonic_spring.png"
-dest_files=["res://.godot/imported/sonic_spring.png-1c9cea59e1315464377950c2e6b2578b.ctex"]
+source_file="res://Assets/Misc/Unused/Images/sonic_spring.png"
+dest_files=["res://.godot/imported/sonic_spring.png-cf3359295678aeec06346357110761da.ctex"]
 
 [params]
 

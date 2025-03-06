@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://drfdlbmde7hh2"]
 
-[ext_resource type="Texture2D" uid="uid://x5t260ps3dro" path="res://resources/all spring stuff/sonic_spring.png" id="1_awvav"]
+[ext_resource type="Texture2D" uid="uid://x5t260ps3dro" path="res://Assets/Misc/Unused/Images/sonic_spring_diagonal.png" id="1_awvav"]
 
 [sub_resource type="Resource" id="Resource_1hj7x"]
 metadata/__load_path__ = "res://spring_diag_back.gd"

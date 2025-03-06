@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csdt00voucj6g"
-path="res://.godot/imported/Spring_temp_sonic_rush2.png-d1db5b3cf643e1f7453b6d21718abda7.ctex"
+uid="uid://x5t260ps3dro"
+path="res://.godot/imported/sonic_spring_diagonal.png-d3df72b3ddc35bba48f5c75c126fc6ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/all spring stuff/Spring_temp_sonic_rush2.png"
-dest_files=["res://.godot/imported/Spring_temp_sonic_rush2.png-d1db5b3cf643e1f7453b6d21718abda7.ctex"]
+source_file="res://Assets/Misc/Unused/Images/sonic_spring_diagonal.png"
+dest_files=["res://.godot/imported/sonic_spring_diagonal.png-d3df72b3ddc35bba48f5c75c126fc6ff.ctex"]
 
 [params]
 

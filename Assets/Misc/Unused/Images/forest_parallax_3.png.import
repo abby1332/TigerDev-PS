@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j8w54gqjxny0"
-path="res://.godot/imported/forest_parallax_bg.png-39e90cd0bdf9e886ea54a5f075068d0e.ctex"
+uid="uid://dk7a1yisi5red"
+path="res://.godot/imported/forest_parallax_3.png-d0d50516814a103dd2c22cbfd23c45f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Backgrounds/forest_parallax_bg.png"
-dest_files=["res://.godot/imported/forest_parallax_bg.png-39e90cd0bdf9e886ea54a5f075068d0e.ctex"]
+source_file="res://Assets/Misc/Unused/Images/forest_parallax_3.png"
+dest_files=["res://.godot/imported/forest_parallax_3.png-d0d50516814a103dd2c22cbfd23c45f7.ctex"]
 
 [params]
 

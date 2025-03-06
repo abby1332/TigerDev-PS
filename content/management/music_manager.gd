@@ -19,15 +19,15 @@ func _ready() -> void:
 		RespawnManager.player.death.connect(on_player_death)
 	else:
 		push_error("Player is unexpectedly null!")
-	
+
 	for child in get_children():
 		if child is AudioStreamPlayer:
 			child.playing = false
 			var level_name = child.name.get_slice("_", 0).to_lower()
 			audio_stream_players.get_or_add(level_name, []).append(child)
-	
+
 	current_level_track = randi_range(0, audio_stream_players.get(level).size() - 1)
-	
+
 	get_active_track().playing = true
 
 func on_player_death() -> void:

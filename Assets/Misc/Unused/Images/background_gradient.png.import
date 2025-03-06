@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqvdi6202s0d2"
-path="res://.godot/imported/Forest 3.png-917cb97b9192e1bfcf5e91d05dbb1b6c.ctex"
+uid="uid://c65y6g7m2y6xf"
+path="res://.godot/imported/background_gradient.png-3a983b86d65377643f82b1d2b5f5349d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/BG/Forest 3.png"
-dest_files=["res://.godot/imported/Forest 3.png-917cb97b9192e1bfcf5e91d05dbb1b6c.ctex"]
+source_file="res://Assets/Misc/Unused/Images/background_gradient.png"
+dest_files=["res://.godot/imported/background_gradient.png-3a983b86d65377643f82b1d2b5f5349d.ctex"]
 
 [params]
 

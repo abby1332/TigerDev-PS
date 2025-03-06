@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c65y6g7m2y6xf"
-path="res://.godot/imported/background_gradient.png-161eefbf0895c90cc5fcc9f3df283015.ctex"
+uid="uid://b8p1ce70ydqtc"
+path="res://.godot/imported/forest_parallax_2.png-b731395b7f786152538f13f7d481974e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Misc/Unused/background_gradient.png"
-dest_files=["res://.godot/imported/background_gradient.png-161eefbf0895c90cc5fcc9f3df283015.ctex"]
+source_file="res://Assets/Misc/Unused/Images/forest_parallax_2.png"
+dest_files=["res://.godot/imported/forest_parallax_2.png-b731395b7f786152538f13f7d481974e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xhokjlc25rvj"
-path="res://.godot/imported/i-need-your-best-sol-badguy-images-because-google-just-isnt-v0-wfhgb3lml5vc1.webp-703776798c86ff9ac26292a4f7819266.ctex"
+uid="uid://dwym8vyyf56h8"
+path="res://.godot/imported/forest_parallax_trees_alt.png-85cf6169ffe599d9c2434b88787ed1b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/BG/i-need-your-best-sol-badguy-images-because-google-just-isnt-v0-wfhgb3lml5vc1.webp"
-dest_files=["res://.godot/imported/i-need-your-best-sol-badguy-images-because-google-just-isnt-v0-wfhgb3lml5vc1.webp-703776798c86ff9ac26292a4f7819266.ctex"]
+source_file="res://Assets/Images/Backgrounds/forest_parallax_trees_alt.png"
+dest_files=["res://.godot/imported/forest_parallax_trees_alt.png-85cf6169ffe599d9c2434b88787ed1b3.ctex"]
 
 [params]
 

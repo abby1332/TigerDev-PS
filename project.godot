@@ -26,12 +26,15 @@ TransitionScreen="*res://content/ui/transition_screen.tscn"
 [debug]
 
 gdscript/warnings/untyped_declaration=1
+gdscript/warnings/deprecated_keyword=2
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/sharp_corners=true
 window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
 
 [dotnet]
 
@@ -39,8 +42,7 @@ project/assembly_name="TIGER-DEV-PS"
 
 [editor]
 
-version_control/plugin_name="GitPlugin"
-version_control/autoload_on_startup=true
+naming/node_name_num_separator=2
 
 [editor_plugins]
 
@@ -129,6 +131,15 @@ pause={
 ]
 }
 
+[physics]
+
+common/physics_jitter_fix=0.0
+2d/default_gravity=9.8
+2d/default_linear_damp=0.0
+common/physics_interpolation=true
+common/enable_object_picking=false
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/lossless_compression/force_png=true

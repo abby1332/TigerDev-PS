@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cv2xy0sds8mtg" path="res://content/environment/entities/breakable_wall.tscn" id="24_fj4ri"]
 
 [node name="Node2D" type="Node2D"]
-position = Vector2(-42, -1101)
+position = Vector2(-42, -1099)
 
 [node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("3_pwybp")]
 position = Vector2(-536, 30)
@@ -46,6 +46,7 @@ position = Vector2(43, -15)
 scale = Vector2(0.5, 0.5)
 
 [node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, -1)
 
 [node name="SpawnPoint" parent="." instance=ExtResource("5_am60y")]
 position = Vector2(1985, -467)

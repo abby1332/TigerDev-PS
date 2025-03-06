@@ -1,5 +1,7 @@
 # CODE STANDARDS
 
+TODO - Add guideline for how to go about implementing new features (e.g. When to use subclasses or entire scenes for something).
+
 ### Static typing
 Use static typing any time you initially declare a variable, with some very specific exceptions. You must justify why static typing is impossible/difficult when suppressing the warning. \
 Use the following format:

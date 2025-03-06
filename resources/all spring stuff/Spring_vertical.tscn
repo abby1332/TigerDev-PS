@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4i8sjph00cjc" path="res://resources/all spring stuff/spring_vertical.gd" id="1_7vobm"]
 [ext_resource type="Texture2D" uid="uid://cgeqr5vs0cn0a" path="res://resources/sprites/mushroom_spring.png" id="2_8ssce"]
-[ext_resource type="AudioStream" uid="uid://dpuys3gmgok8i" path="res://resources/audio/Bounce.wav" id="3_appqu"]
+[ext_resource type="AudioStream" uid="uid://dpuys3gmgok8i" path="res://Assets/Audio/EFX/bounce.wav" id="3_appqu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_50lvr"]
 size = Vector2(18, 21)

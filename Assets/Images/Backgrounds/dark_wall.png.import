@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j8w54gqjxny0"
-path="res://.godot/imported/forest1morelength.png-2d41a6a87c537238f983721fe79432b5.ctex"
+uid="uid://13smgi57qsqx"
+path="res://.godot/imported/dark_wall.png-38d7781ddc7249ca2228b4096b86f69a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/BG/forest1morelength.png"
-dest_files=["res://.godot/imported/forest1morelength.png-2d41a6a87c537238f983721fe79432b5.ctex"]
+source_file="res://Assets/Images/Backgrounds/dark_wall.png"
+dest_files=["res://.godot/imported/dark_wall.png-38d7781ddc7249ca2228b4096b86f69a.ctex"]
 
 [params]
 

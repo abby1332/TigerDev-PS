@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bounaitq3wvt0"
-path="res://.godot/imported/slash.wav-17e43216d420fc096a6c21563a4c6ed0.sample"
+uid="uid://dpuys3gmgok8i"
+path="res://.godot/imported/bounce.wav-fcf7a4303ce14769f8dcfaecd98876e8.sample"
 
 [deps]
 
-source_file="res://resources/audio/slash.wav"
-dest_files=["res://.godot/imported/slash.wav-17e43216d420fc096a6c21563a4c6ed0.sample"]
+source_file="res://Assets/Audio/EFX/bounce.wav"
+dest_files=["res://.godot/imported/bounce.wav-fcf7a4303ce14769f8dcfaecd98876e8.sample"]
 
 [params]
 

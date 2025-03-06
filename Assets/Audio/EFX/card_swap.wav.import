@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dpuys3gmgok8i"
-path="res://.godot/imported/Bounce.wav-458672ba7b276a3750bd3ff32d5286fe.sample"
+uid="uid://ca4yl3btjkkfx"
+path="res://.godot/imported/card_swap.wav-ccd62bbafaef635608a8f577f92d5636.sample"
 
 [deps]
 
-source_file="res://resources/audio/Bounce.wav"
-dest_files=["res://.godot/imported/Bounce.wav-458672ba7b276a3750bd3ff32d5286fe.sample"]
+source_file="res://Assets/Audio/EFX/card_swap.wav"
+dest_files=["res://.godot/imported/card_swap.wav-ccd62bbafaef635608a8f577f92d5636.sample"]
 
 [params]
 

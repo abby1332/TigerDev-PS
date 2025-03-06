@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://7n1emjoq0qqv"
-path="res://.godot/imported/Wall Slide.wav-5f3b8da3524d22c745edb91f04821090.sample"
+path="res://.godot/imported/wall_slide.wav-61152e3a5728a0f3e3ce7f9b49ac864b.sample"
 
 [deps]
 
-source_file="res://resources/audio/Wall Slide.wav"
-dest_files=["res://.godot/imported/Wall Slide.wav-5f3b8da3524d22c745edb91f04821090.sample"]
+source_file="res://Assets/Audio/EFX/wall_slide.wav"
+dest_files=["res://.godot/imported/wall_slide.wav-61152e3a5728a0f3e3ce7f9b49ac864b.sample"]
 
 [params]
 

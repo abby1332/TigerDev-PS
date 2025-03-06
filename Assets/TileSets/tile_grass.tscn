@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://xtmbg7gogosp"]
 
 [ext_resource type="Texture2D" uid="uid://bak2kusxsm6id" path="res://Assets/Images/TileSets/forest_level.png" id="1_v4bt8"]
-[ext_resource type="PackedScene" uid="uid://b20ds3cjgi62c" path="res://content/environment/tiles/spike_strip.tscn" id="2_m044j"]
-[ext_resource type="PackedScene" uid="uid://br7h4h8l1xclc" path="res://content/environment/entities/breakable_wall_tile.tscn" id="3_frwwl"]
+[ext_resource type="PackedScene" uid="uid://b20ds3cjgi62c" path="res://Scenes/Objects/SpikeStrip.tscn" id="2_m044j"]
+[ext_resource type="PackedScene" uid="uid://br7h4h8l1xclc" path="res://Scenes/Objects/BreakableTile.tscn" id="3_frwwl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yg62b"]
 texture = ExtResource("1_v4bt8")

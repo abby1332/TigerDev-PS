@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dng35y854mon8"]
+
+[ext_resource type="Script" uid="uid://bejdodcjqhnjj" path="res://Scenes/Cards/test_card.gd" id="1_thxeu"]
+[ext_resource type="Texture2D" uid="uid://c2lg8a0ilnco6" path="res://Assets/Images/Cards/test_card.png" id="2_bao5k"]
+
+[node name="TestCard" type="Node2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_thxeu")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_bao5k")

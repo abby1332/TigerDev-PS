@@ -11,17 +11,17 @@ config_version=5
 [application]
 
 config/name="TIGER-DEV-PS"
-run/main_scene="res://content/levels/main.tscn"
+run/main_scene="res://Scenes/Levels/Forest_0.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-RespawnManager="*res://content/management/respawn_manager.gd"
-OptionsManager="*res://content/ui/options_manager.gd"
+RespawnManager="*res://Scripts/Globals/respawn_manager.gd"
+OptionsManager="*res://Scripts/Globals/options_manager.gd"
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
-FreezeFrameManager="*res://content/management/freeze_frame_manager.gd"
-TransitionScreen="*res://content/ui/transition_screen.tscn"
+FreezeFrameManager="*res://Scripts/Managers/freeze_frame_manager.gd"
+TransitionScreen="*res://Scenes/Globals/TransitionScreen.tscn"
 
 [debug]
 
@@ -42,6 +42,7 @@ project/assembly_name="TIGER-DEV-PS"
 [editor]
 
 naming/node_name_num_separator=2
+naming/default_gravity=9.8
 
 [editor_plugins]
 

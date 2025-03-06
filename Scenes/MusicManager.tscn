@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3jc1fp8r73y0"]
+
+[ext_resource type="Script" uid="uid://cmphwui7sm2x4" path="res://Scripts/Globals/music_manager.gd" id="1_6b4sy"]
+[ext_resource type="AudioStream" uid="uid://bgjfq50lcxl85" path="res://Assets/Audio/Music/forest_level.ogg" id="2_xdact"]
+
+[node name="MusicManager" type="Node2D"]
+script = ExtResource("1_6b4sy")
+
+[node name="Forest_LevelA" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xdact")
+volume_db = -25.927

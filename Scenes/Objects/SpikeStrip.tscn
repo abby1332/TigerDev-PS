@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b20ds3cjgi62c"]
+
+[ext_resource type="Script" uid="uid://bq2bg35cpw65o" path="res://Scenes/Objects/spike_trap.gd" id="1_77jsc"]
+[ext_resource type="Texture2D" uid="uid://dq6jvn73nccw" path="res://Assets/Images/Objects/terrain_spike_strip.png" id="2_c82yd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fek26"]
+size = Vector2(16, 8)
+
+[node name="SpikeStrip" type="Area2D"]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_77jsc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_fek26")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_c82yd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

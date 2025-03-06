@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://fl6siaxv6op2"]
-
-[ext_resource type="Script" uid="uid://ih5kex3uw235" path="res://content/cards/card_spawner.gd" id="1_q5pjh"]
-[ext_resource type="PackedScene" uid="uid://db1mcy4avgl01" path="res://content/cards/dropped_card.tscn" id="2_h8s0h"]
-
-[node name="CardSpawner" type="Node2D"]
-script = ExtResource("1_q5pjh")
-dropped_card_scene = ExtResource("2_h8s0h")

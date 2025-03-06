@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pi0gn28r04xs"
-path="res://.godot/imported/forest_parallax_4.png-a2cdeaf2b7894fb72aa562f718a0a6f4.ctex"
+uid="uid://w4o213qf87uv"
+path="res://.godot/imported/test_sprite_crouching.png-f22d89b6ae51986bfb5794376e2f29e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Misc/Unused/forest_parallax_4.png"
-dest_files=["res://.godot/imported/forest_parallax_4.png-a2cdeaf2b7894fb72aa562f718a0a6f4.ctex"]
+source_file="res://Assets/Images/Player/test_sprite_crouching.png"
+dest_files=["res://.godot/imported/test_sprite_crouching.png-f22d89b6ae51986bfb5794376e2f29e1.ctex"]
 
 [params]
 

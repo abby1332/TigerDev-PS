@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt2h0w2r8651r"]
+
+[ext_resource type="Texture2D" uid="uid://be83o1w3rl6wj" path="res://Assets/Misc/Memes/coderoverload.webp" id="1_c35ii"]
+[ext_resource type="Material" uid="uid://1i5oiowvlm5h" path="res://Assets/Shaders/Materials/Posterization.tres" id="2_0u0wt"]
+
+[node name="ShaderTesting" type="Node2D"]
+
+[node name="Coderoverload" type="Sprite2D" parent="."]
+position = Vector2(960, 504)
+scale = Vector2(9.54167, 6.33333)
+texture = ExtResource("1_c35ii")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = ExtResource("2_0u0wt")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,3 +1,0 @@
-0000000000000000000000000000000000000000 a1fe92258425ed8e35ddbf8834b5a2daf94e789a Ahmad Jabr <ahmadjabr3123@gmail.com> 1729827852 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: storing head
-a1fe92258425ed8e35ddbf8834b5a2daf94e789a 0c1eb0c647b940835b0f68a92100daf9e890c3fb Ahmad Jabr <ahmadjabr3123@gmail.com> 1730490539 -0500	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward
-0c1eb0c647b940835b0f68a92100daf9e890c3fb 69d4b8fe8fdd9bbec246978d6f6f495873e6b28d Ahmad Jabr <ahmadjabr3123@gmail.com> 1730754087 -0600	fetch --progress --prune --recurse-submodules=on-demand origin: fast-forward

@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dwym8vyyf56h8" path="res://Assets/Images/Backgrounds/forest_parallax_trees_alt.png" id="12_6cltm"]
 [ext_resource type="Texture2D" uid="uid://j8w54gqjxny0" path="res://Assets/Images/Backgrounds/forest_parallax_trees.png" id="13_inepg"]
 [ext_resource type="Texture2D" uid="uid://13smgi57qsqx" path="res://Assets/Images/Backgrounds/forest_dark.png" id="14_q6jdn"]
-[ext_resource type="Texture2D" uid="uid://do0tvcjug18fq" path="res://resources/BG/Space more.png" id="15_wvwvh"]
+[ext_resource type="Texture2D" uid="uid://do0tvcjug18fq" path="res://Assets/Misc/Rework/space_more.png" id="15_wvwvh"]
 [ext_resource type="AudioStream" uid="uid://bgjfq50lcxl85" path="res://Assets/Audio/Music/forest_level.ogg" id="16_os3e1"]
 [ext_resource type="Script" uid="uid://cmphwui7sm2x4" path="res://content/management/music_manager.gd" id="17_xod8h"]
 [ext_resource type="PackedScene" uid="uid://bepyetyir6wh7" path="res://content/ui/pause_menu.tscn" id="18_5dbc0"]

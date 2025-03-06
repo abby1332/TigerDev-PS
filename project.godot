@@ -34,7 +34,6 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/sharp_corners=true
 window/stretch/mode="viewport"
-window/stretch/scale_mode="integer"
 
 [dotnet]
 
@@ -133,10 +132,7 @@ pause={
 
 [physics]
 
-common/physics_jitter_fix=0.0
-2d/default_gravity=9.8
 2d/default_linear_damp=0.0
-common/physics_interpolation=true
 common/enable_object_picking=false
 
 [rendering]

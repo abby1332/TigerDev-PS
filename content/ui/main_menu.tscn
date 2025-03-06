@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c45w12qbqt8p0"]
 
-[ext_resource type="Texture2D" uid="uid://cg4uasacwppjb" path="res://resources/sprites/gui/Placek_LOGO.png" id="1_1whhs"]
+[ext_resource type="Texture2D" uid="uid://cg4uasacwppjb" path="res://Assets/Images/GUI/placek_logo.png" id="1_1whhs"]
 [ext_resource type="Script" uid="uid://bemx8kxc3fmlw" path="res://content/ui/main_menu_button_manager.gd" id="2_wk6rj"]
 [ext_resource type="Script" uid="uid://cj51yps1a0h5a" path="res://content/ui/main_menu_button.gd" id="3_rbpxv"]
 [ext_resource type="Theme" uid="uid://cd3c80nfki0s0" path="res://theme.tres" id="4_bcpts"]

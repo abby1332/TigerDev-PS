@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dp73vyrnrifm1"]
 
-[ext_resource type="Texture2D" uid="uid://x5t260ps3dro" path="res://Assets/Misc/Unused/Images/sonic_spring_diagonal.png" id="1_btncd"]
+[ext_resource type="Texture2D" uid="uid://x5t260ps3dro" path="res://Assets/Misc/Unused/sonic_spring_diagonal.png" id="1_btncd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbksg"]
 size = Vector2(24, 24)

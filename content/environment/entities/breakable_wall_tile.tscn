@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://br7h4h8l1xclc"]
 
 [ext_resource type="Script" uid="uid://dpjv2ks2sjhur" path="res://content/environment/entities/breakable_wall.gd" id="1_jwxo7"]
-[ext_resource type="Texture2D" uid="uid://g368y7m62f6k" path="res://resources/sprites/wall.png" id="2_nnmfg"]
-[ext_resource type="Texture2D" uid="uid://balrlascuogqi" path="res://resources/sprites/wall-bit.png" id="3_nkxwe"]
+[ext_resource type="Texture2D" uid="uid://g368y7m62f6k" path="res://Assets/Images/Objects/breakable_wall.png" id="2_nnmfg"]
+[ext_resource type="Texture2D" uid="uid://balrlascuogqi" path="res://Assets/Images/VFX/wall_break_particle.png" id="3_nkxwe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bfrm1"]
 size = Vector2(12, 12)

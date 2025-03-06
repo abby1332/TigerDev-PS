@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://q01wdgo132lr" path="res://content/environment/entities/spawn_point.gd" id="1_lwm3y"]
 [ext_resource type="Script" uid="uid://daxcbep1ra1q6" path="res://content/environment/entities/respawn_point.gd" id="1_omnlx"]
-[ext_resource type="Texture2D" uid="uid://18gnny251y3r" path="res://resources/sprites/respawn_active.png" id="3_6tse7"]
-[ext_resource type="Texture2D" uid="uid://11pgpx3wh53q" path="res://resources/sprites/respawn_inactive.png" id="4_nia8s"]
+[ext_resource type="Texture2D" uid="uid://18gnny251y3r" path="res://Assets/Images/Objects/respawn_point_active.png" id="3_6tse7"]
+[ext_resource type="Texture2D" uid="uid://11pgpx3wh53q" path="res://Assets/Images/Objects/respawn_point_inactive.png" id="4_nia8s"]
 [ext_resource type="Texture2D" uid="uid://jm2a5564r3qi" path="res://Assets/Images/VFX/respawn_ring_particle.png" id="5_j52hs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpexs"]

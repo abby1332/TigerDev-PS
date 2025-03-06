@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8vh87q0rdp11"]
 
 [ext_resource type="Script" uid="uid://n450miht5pbj" path="res://content/cards/slice_card.gd" id="1_o2ipn"]
-[ext_resource type="Texture2D" uid="uid://dftbvrd3h3u1" path="res://resources/sprites/slice_card.png" id="2_mvmhr"]
+[ext_resource type="Texture2D" uid="uid://dftbvrd3h3u1" path="res://Assets/Images/Cards/slice_card.png" id="2_mvmhr"]
 
 [node name="SliceCard" type="Node2D"]
 script = ExtResource("1_o2ipn")

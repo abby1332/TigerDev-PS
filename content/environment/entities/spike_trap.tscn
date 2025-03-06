@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://p80u057lknov"]
 
 [ext_resource type="Script" uid="uid://bq2bg35cpw65o" path="res://content/environment/entities/spike_trap.gd" id="1_pn003"]
-[ext_resource type="Texture2D" uid="uid://bqdvfyqps020f" path="res://resources/sprites/scary_spike.png" id="2_wb5cu"]
+[ext_resource type="Texture2D" uid="uid://bqdvfyqps020f" path="res://Assets/Images/Objects/terrain_spike_single.png" id="2_wb5cu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fek26"]
 size = Vector2(2, 6)

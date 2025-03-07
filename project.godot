@@ -11,20 +11,21 @@ config_version=5
 [application]
 
 config/name="TIGER-DEV-PS"
-run/main_scene="res://Scenes/Levels/Forest_0.tscn"
+run/main_scene="res://Resources/Levels/Forest_0.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
+Mechanics="*res://Scripts/Globals/mechanics.gd"
 GameState="*res://Scripts/Globals/game_state.gd"
 GameSettings="*res://Scripts/Globals/game_settings.gd"
 MusicMan="*res://Scripts/Globals/music_man.gd"
 RespawnManager="*res://Scripts/GlobalsOld/respawn_manager.gd"
 OptionsManager="*res://Scripts/GlobalsOld/options_manager.gd"
 FreezeFrameManager="*res://Scripts/ManagersOld/freeze_frame_manager.gd"
-TransitionScreen="*res://Scenes/TransitionScreen.tscn"
+TransitionScreen="*res://Resources/OldStuff/TransitionScreen.tscn"
 
 [debug]
 

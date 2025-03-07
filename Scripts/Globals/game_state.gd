@@ -38,28 +38,17 @@ func load_main_menu() -> void:
 	play_state = PlayState.MainMenu;
 	current_level = CurrentLevel.None;
 
-	MusicMan.end_song();
-	MusicMan.set_song(MusicMan.Song.Silence);
-
-	get_tree().change_scene_to_file("res://Scenes/Menus/MainMenu.tscn");
+	get_tree().change_scene_to_file(&"res://Scenes/Menus/MainMenu.tscn");
 
 func load_level_forest_0() -> void:
 	play_state = PlayState.InLevel;
 	current_level = CurrentLevel.Forest0;
-
-	MusicMan.end_song();
-	MusicMan.set_song(MusicMan.Song.ForestLvl);
-	MusicMan.start_song();
 
 	get_tree().change_scene_to_file(&"res://Scenes/Levels/Forest_0.tscn");
 
 func load_level_forest_1() -> void:
 	play_state = PlayState.InLevel;
 	current_level = CurrentLevel.Forest1;
-
-	MusicMan.end_song();
-	MusicMan.set_song(MusicMan.Song.ForestLvl);
-	MusicMan.start_song();
 
 	get_tree().change_scene_to_file(&"res://Scenes/Levels/Forest_1.tscn");
 

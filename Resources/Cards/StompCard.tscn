@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb1xdtxvr8q4n"]
+
+[ext_resource type="Script" uid="uid://hdnyp0x6wv0e" path="res://Resources/Cards/stomp_card.gd" id="1_gaqs4"]
+[ext_resource type="Texture2D" uid="uid://dird17q76sekp" path="res://Assets/Images/Cards/stomp_card.png" id="2_xy7b0"]
+
+[node name="StompCard" type="Node2D"]
+script = ExtResource("1_gaqs4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xy7b0")

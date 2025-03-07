@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://d38yynx22ev4y"]
 
-[ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://Resources/Player/Player.tscn" id="1_rqel4"]
+[ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://Resources/OldStuff/Player/Player.tscn" id="1_rqel4"]
 [ext_resource type="PackedScene" uid="uid://bjtvsvry3dapy" path="res://Resources/Enemies/Treenemy.tscn" id="2_6lna7"]
 [ext_resource type="PackedScene" uid="uid://dmijlu5x8oc8w" path="res://Resources/Objects/SpawnPoint.tscn" id="3_38vv7"]
 [ext_resource type="PackedScene" uid="uid://bepyetyir6wh7" path="res://Resources/Menus/PauseMenu.tscn" id="4_pbo4k"]

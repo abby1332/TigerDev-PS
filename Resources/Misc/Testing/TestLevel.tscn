@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=4 uid="uid://1vlcvlhwkxmy"]
 
 [ext_resource type="PackedScene" uid="uid://be1mbm2trdwj2" path="res://Resources/Misc/Testing/test_tile_map.tscn" id="1_d15pd"]
-[ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://Resources/Player/Player.tscn" id="2_1dj0o"]
+[ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://Resources/OldStuff/Player/Player.tscn" id="2_1dj0o"]
 [ext_resource type="PackedScene" uid="uid://dmijlu5x8oc8w" path="res://Resources/Objects/SpawnPoint.tscn" id="3_k32nr"]
 
 [node name="Tlvl" type="Node2D"]

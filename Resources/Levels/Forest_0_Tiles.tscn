@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=4 uid="uid://cjytebfkliisk"]
 
-[ext_resource type="PackedScene" uid="uid://xtmbg7gogosp" path="res://Resources/TileSets/tile_grass.tscn" id="1_mbvnx"]
+[ext_resource type="PackedScene" uid="uid://xtmbg7gogosp" path="res://Resources/OldStuff/tile_grass.tscn" id="1_mbvnx"]
 
 [node name="Node2D" type="Node2D"]
 

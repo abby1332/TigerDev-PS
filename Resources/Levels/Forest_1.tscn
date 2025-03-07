@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=4 uid="uid://cwmgln1nufimt"]
 
-[ext_resource type="PackedScene" uid="uid://xtmbg7gogosp" path="res://Resources/TileSets/tile_grass.tscn" id="1_cj0gj"]
-[ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://Resources/Player/Player.tscn" id="2_sv7g2"]
+[ext_resource type="PackedScene" uid="uid://xtmbg7gogosp" path="res://Resources/OldStuff/tile_grass.tscn" id="1_cj0gj"]
+[ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://Resources/OldStuff/Player/Player.tscn" id="2_sv7g2"]
 [ext_resource type="PackedScene" uid="uid://fl6siaxv6op2" path="res://Resources/Cards/CardSpawner.tscn" id="3_wjhcc"]
 [ext_resource type="PackedScene" uid="uid://bb1xdtxvr8q4n" path="res://Resources/Cards/StompCard.tscn" id="4_wqh7w"]
 [ext_resource type="PackedScene" uid="uid://dy423abcukasp" path="res://Resources/Effects/explosion_manager.tscn" id="5_gyxeu"]

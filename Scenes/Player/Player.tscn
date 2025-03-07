@@ -15,13 +15,14 @@
 [ext_resource type="Script" uid="uid://d33h8plcylxa8" path="res://Scenes/Player/player_animation_machine.gd" id="11_oyrvp"]
 [ext_resource type="Script" uid="uid://i5bjs38avt8l" path="res://Scenes/Player/player_audio.gd" id="12_q7fwi"]
 [ext_resource type="AudioStream" uid="uid://cehbj4l84v2wj" path="res://Assets/Audio/EFX/hit_enemy.ogg" id="12_qc2c6"]
-[ext_resource type="Script" uid="uid://c7er03hqnjswp" path="res://Scripts/Managers/camera_manager.gd" id="14_ns5m4"]
+[ext_resource type="Script" uid="uid://c7er03hqnjswp" path="res://Scripts/ManagersOld/camera_manager.gd" id="14_ns5m4"]
 [ext_resource type="Texture2D" uid="uid://bg0oisuynedo5" path="res://Assets/Images/VFX/motion_line_particle.png" id="14_puffk"]
 [ext_resource type="Script" uid="uid://bymi1ftv2oxa4" path="res://Scenes/Effects/hair.gd" id="15_55il6"]
 [ext_resource type="AudioStream" uid="uid://bounaitq3wvt0" path="res://Assets/Audio/EFX/slash.wav" id="17_eoncl"]
 [ext_resource type="AudioStream" uid="uid://chkuw4acfn32d" path="res://Assets/Audio/EFX/slide.wav" id="18_mh38m"]
 [ext_resource type="AudioStream" uid="uid://7n1emjoq0qqv" path="res://Assets/Audio/EFX/wall_slide.wav" id="19_hwkeu"]
 [ext_resource type="AudioStream" uid="uid://7807hugta12k" path="res://Assets/Audio/EFX/death.wav" id="20_80hn8"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dhkbs"]
 atlas = ExtResource("3_hbrdf")

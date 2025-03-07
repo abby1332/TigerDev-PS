@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c8rovokl5rlwy"]
 
-[ext_resource type="Script" uid="uid://bgvyoip7rttdo" path="res://Scenes/Globals/transition_screen.gd" id="1_co8a0"]
+[ext_resource type="Script" uid="uid://bgvyoip7rttdo" path="res://Scenes/transition_screen.gd" id="1_co8a0"]
 
 [sub_resource type="Animation" id="Animation_qeoi1"]
 resource_name = "RESET"
@@ -56,5 +56,5 @@ color = Color(0, 0, 0, 1)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../dissolve_rect")
 libraries = {
-"": SubResource("AnimationLibrary_i7kcl")
+&"": SubResource("AnimationLibrary_i7kcl")
 }

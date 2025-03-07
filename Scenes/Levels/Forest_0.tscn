@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dy423abcukasp" path="res://Scenes/Effects/explosion_manager.tscn" id="20_8vkns"]
 [ext_resource type="PackedScene" uid="uid://bb1xdtxvr8q4n" path="res://Scenes/Cards/StompCard.tscn" id="21_48dka"]
 [ext_resource type="PackedScene" uid="uid://cv2xy0sds8mtg" path="res://Scenes/Objects/BreakableWall.tscn" id="22_wnfge"]
-[ext_resource type="PackedScene" uid="uid://c3jc1fp8r73y0" path="res://Scenes/MusicManager.tscn" id="23_7susr"]
+[ext_resource type="PackedScene" uid="uid://c3jc1fp8r73y0" path="res://Scenes/OldStuff/MusicManager.tscn" id="23_7susr"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-42, -1099)

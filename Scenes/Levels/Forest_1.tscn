@@ -18,10 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://13smgi57qsqx" path="res://Assets/Images/Backgrounds/forest_dark.png" id="16_rgjxt"]
 [ext_resource type="Texture2D" uid="uid://do0tvcjug18fq" path="res://Assets/Misc/TenMillionPixels/ahmads_casual_last_minute_addition.png" id="17_ijwal"]
 [ext_resource type="AudioStream" uid="uid://bgjfq50lcxl85" path="res://Assets/Audio/Music/forest_level.ogg" id="18_sp7ti"]
-[ext_resource type="Script" uid="uid://cmphwui7sm2x4" path="res://Scripts/Globals/music_manager.gd" id="19_quwua"]
+[ext_resource type="Script" uid="uid://cmphwui7sm2x4" path="res://Scenes/OldStuff/music_manager.gd" id="19_quwua"]
 [ext_resource type="PackedScene" uid="uid://bepyetyir6wh7" path="res://Scenes/Menus/PauseMenu.tscn" id="20_w3sd4"]
 [ext_resource type="Texture2D" uid="uid://c40rp4krbnehh" path="res://Assets/Misc/Memes/thank_you_mario.png" id="21_3v7ll"]
 [ext_resource type="Texture2D" uid="uid://xhokjlc25rvj" path="res://Assets/Misc/Memes/i-need-your-best-sol-badguy-images-because-google-just-isnt-v0-wfhgb3lml5vc1.webp" id="22_ynmr7"]
+
 
 [node name="Node2D" type="Node2D"]
 

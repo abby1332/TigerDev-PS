@@ -1,6 +1,7 @@
 extends Node
 
 #region Audio
+
 @onready var master_bus_index: int = AudioServer.get_bus_index(&"Master");
 
 ## Master Volume (%)
@@ -32,12 +33,11 @@ var vsync_enabled: bool = true;
 
 #region Config
 
+@onready var save_data: SaveData = SaveData.load_data();
+
 func _ready() -> void:
-	var config_loader: ConfigFile = ConfigFile.new();
-	if config_loader.load(&"user://options.cfg") == OK:
-		for section: String in config_loader.get_sections():
-			for key: String in config_loader.get_section_keys(section):
-				pass
+	save_data.pull_data();
+	_apply_settings();
 
 func _apply_settings() -> void:
 	# Audio
@@ -48,10 +48,3 @@ func _apply_settings() -> void:
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if fullscreen else DisplayServer.WINDOW_MODE_WINDOWED);
 	DisplayServer.window_set_flag(DisplayServer.WindowFlags.WINDOW_FLAG_BORDERLESS, borderless);
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if vsync_enabled else DisplayServer.VSYNC_DISABLED);
-
-func _confing_to_setting(section: String, key: String, config_file: ConfigFile) -> void:
-	match section:
-		"audio": match key:
-			"master_volume":
-				var val: Variant = config_file.get_value(section, key, 0.0);
-				if val is float: master_volume = val as float;

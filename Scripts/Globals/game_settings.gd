@@ -42,7 +42,7 @@ func _ready() -> void:
 func _apply_settings() -> void:
 	# Audio
 	AudioServer.set_bus_mute(master_bus_index, is_game_muted);
-	AudioServer.set_bus_volume_linear(master_bus_index, master_volume);
+	AudioServer.set_bus_volume_db(master_bus_index, linear_to_db(master_volume));
 
 	# Graphics
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if fullscreen else DisplayServer.WINDOW_MODE_WINDOWED);

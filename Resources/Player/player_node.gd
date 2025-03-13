@@ -111,6 +111,8 @@ func _process(dt: float) -> void:
 		#the_cards.add_card(1);
 
 func _physics_process(dt: float) -> void:
+	var a: Level = Level.new();
+	
 	process_move_state();
 
 	apply_motion(dt);

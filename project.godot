@@ -36,8 +36,8 @@ gdscript/warnings/deprecated_keyword=2
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/size/sharp_corners=true
 window/stretch/mode="viewport"
+window/size/sharp_corners=true
 
 [dotnet]
 

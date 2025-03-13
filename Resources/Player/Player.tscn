@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://clp6g0bgnpify"]
 
-[ext_resource type="Script" uid="uid://c8k42vua7jf4d" path="res://Resources/Player/player_node.gd" id="1_tvlcx"]
+[ext_resource type="Script" path="res://Resources/Player/player_node.gd" id="1_tvlcx"]
 [ext_resource type="SpriteFrames" uid="uid://b20mc234drybv" path="res://Resources/Player/right_frames.tres" id="2_4aw5p"]
-[ext_resource type="Script" uid="uid://lrk11rl1s7ad" path="res://Resources/Player/player_sprite.gd" id="3_k3h5i"]
+[ext_resource type="Script" path="res://Resources/Player/player_sprite.gd" id="3_k3h5i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eno4h"]
 size = Vector2(12, 31)

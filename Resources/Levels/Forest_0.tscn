@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://ci510y3nev70b" path="res://Assets/Images/Backgrounds/forest_parallax_clouds.png" id="17_71ce3"]
 [ext_resource type="Texture2D" uid="uid://dwym8vyyf56h8" path="res://Assets/Images/Backgrounds/forest_parallax_trees_alt.png" id="18_dt6tm"]
 [ext_resource type="Texture2D" uid="uid://j8w54gqjxny0" path="res://Assets/Images/Backgrounds/forest_parallax_trees.png" id="19_lmet1"]
-[ext_resource type="PackedScene" uid="uid://dy423abcukasp" path="res://Resources/Effects/explosion_manager.tscn" id="20_8vkns"]
+[ext_resource type="PackedScene" uid="uid://dy423abcukasp" path="res://Resources/VFX/explosion_manager.tscn" id="20_8vkns"]
 [ext_resource type="PackedScene" uid="uid://bb1xdtxvr8q4n" path="res://Resources/Cards/StompCard.tscn" id="21_48dka"]
 [ext_resource type="PackedScene" uid="uid://cv2xy0sds8mtg" path="res://Resources/Objects/BreakableWall.tscn" id="22_wnfge"]
 [ext_resource type="PackedScene" uid="uid://c3jc1fp8r73y0" path="res://Resources/OldStuff/MusicManager.tscn" id="23_7susr"]

@@ -8,6 +8,10 @@
 size = Vector2(12, 31)
 
 [node name="PlayerCharacter" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "camera", "head_raycast", "leg_raycast")]
+collision_mask = 14
+floor_constant_speed = true
+platform_floor_layers = 4278190082
+platform_wall_layers = 2
 script = ExtResource("1_inoe3")
 sprite = NodePath("Sprite")
 camera = NodePath("Camera")
@@ -19,8 +23,14 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_7tqxr")
 
 [node name="HeadRay" type="RayCast2D" parent="."]
+position = Vector2(0, -6)
+target_position = Vector2(8, 0)
+collision_mask = 2
 
 [node name="LegRay" type="RayCast2D" parent="."]
+position = Vector2(0, 12)
+target_position = Vector2(8, 0)
+collision_mask = 2
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_tcraa")
@@ -29,3 +39,7 @@ script = ExtResource("3_brn3f")
 metadata/_custom_type_script = "uid://c1wpnqk5ltgmb"
 
 [node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0

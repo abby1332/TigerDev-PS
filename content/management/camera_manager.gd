@@ -8,5 +8,7 @@ var camera: Camera2D
 
 
 func start() -> void:
+	# What the actual **** is this???
+	# Why is this a thing???
 	camera = Player.player.camera
 	camera.reparent(self)

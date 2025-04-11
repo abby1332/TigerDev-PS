@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://4uox8yjlq07w"]
+
+[ext_resource type="Texture2D" uid="uid://dq6jvn73nccw" path="res://resources/sprites/spikestrip.png" id="1_32471"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdsxn"]
+size = Vector2(16, 7)
+
+[node name="SimpleSpikeTrap" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_wdsxn")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_32471")

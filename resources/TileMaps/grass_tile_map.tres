@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=6 format=3 uid="uid://dekyy0132kypy"]
 
 [ext_resource type="Texture2D" uid="uid://bak2kusxsm6id" path="res://resources/TileMaps/Placek_tileset_forest_v1.png" id="1_sthjh"]
-[ext_resource type="PackedScene" uid="uid://b20ds3cjgi62c" path="res://content/environment/tiles/spike_strip.tscn" id="2_3ch6p"]
+[ext_resource type="PackedScene" uid="uid://4uox8yjlq07w" path="res://content/environment/entities/simple_spike_trap.tscn" id="2_sthjh"]
 [ext_resource type="PackedScene" uid="uid://br7h4h8l1xclc" path="res://content/environment/entities/breakable_wall_tile.tscn" id="3_p5r32"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yg62b"]
@@ -629,7 +629,7 @@ separation = Vector2i(1, 1)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_pr56r"]
 resource_name = "Objects"
-scenes/1/scene = ExtResource("2_3ch6p")
+scenes/1/scene = ExtResource("2_sthjh")
 scenes/2/scene = ExtResource("3_p5r32")
 
 [resource]

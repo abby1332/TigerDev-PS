@@ -81,22 +81,3 @@ offset_right = 1868.0
 offset_bottom = -43.0
 bbcode_enabled = true
 text = "GOOD FUCKING JOB"
-
-[connection signal="body_entered" from="TileMap/SpikeStrip" to="TileMap/SpikeStrip" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@107547" to="TileMap/@Area2D@107547" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@107548" to="TileMap/@Area2D@107548" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@107549" to="TileMap/@Area2D@107549" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@107581" to="TileMap/@Area2D@107581" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@107582" to="TileMap/@Area2D@107582" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@107583" to="TileMap/@Area2D@107583" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@107584" to="TileMap/@Area2D@107584" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@107585" to="TileMap/@Area2D@107585" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@107586" to="TileMap/@Area2D@107586" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@107587" to="TileMap/@Area2D@107587" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@107588" to="TileMap/@Area2D@107588" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@107589" to="TileMap/@Area2D@107589" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@107590" to="TileMap/@Area2D@107590" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@107591" to="TileMap/@Area2D@107591" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@107592" to="TileMap/@Area2D@107592" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@107593" to="TileMap/@Area2D@107593" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@107594" to="TileMap/@Area2D@107594" method="_on_body_entered"]

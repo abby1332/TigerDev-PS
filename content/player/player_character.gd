@@ -14,7 +14,7 @@ enum MoveState {
 
 #endregion
 
-#region Exports
+#region Exports & Onreadys
 
 @export_category("Level Dependant Items")
 @export var spawn_point: SpawnPoint;
@@ -25,6 +25,8 @@ enum MoveState {
 @export var camera: Camera2D;
 @export var head_raycast: RayCast2D;
 @export var leg_raycast: RayCast2D;
+
+@onready var viewport: Viewport = get_viewport();
 
 #endregion
 
@@ -47,5 +49,25 @@ var can_grasp: bool = false;
 
 ## True when player can launch from a wall.
 var can_launch: bool = false;
+
+#endregion
+
+#region Input Vars
+
+## Stores directional input between physics frames.
+var movement_input: Vector2 = Vector2.ZERO;
+
+## Stores most recent directional input.
+## Currently only used for wall launch.
+var fresh_movement_input: Vector2 = Vector2.ONE;
+
+## Stores card action input as a time buffer.
+var has_card_input: float = 0.0;
+
+## Stores jump input as a time buffer.
+var has_jump_input: float = 0.0;
+
+## Stores card cycle inputs between physics frames.
+var has_cycle_input: float = 0.0;
 
 #endregion

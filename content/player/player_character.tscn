@@ -1,6 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://brainrlu2jkxb"]
+[gd_scene load_steps=5 format=3 uid="uid://brainrlu2jkxb"]
 
 [ext_resource type="Script" uid="uid://ds6dvbaniku0v" path="res://content/player/player_character.gd" id="1_inoe3"]
+[ext_resource type="SpriteFrames" uid="uid://cx2d3ofwvoyf4" path="res://content/player/right.tres" id="2_tcraa"]
+[ext_resource type="Script" uid="uid://c1wpnqk5ltgmb" path="res://content/player/player_sprite.gd" id="3_brn3f"]
 
-[node name="PlayerCharacter" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tqxr"]
+size = Vector2(12, 31)
+
+[node name="PlayerCharacter" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "camera", "head_raycast", "leg_raycast")]
 script = ExtResource("1_inoe3")
+sprite = NodePath("Sprite")
+camera = NodePath("Camera")
+head_raycast = NodePath("HeadRay")
+leg_raycast = NodePath("LegRay")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_7tqxr")
+
+[node name="HeadRay" type="RayCast2D" parent="."]
+
+[node name="LegRay" type="RayCast2D" parent="."]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_tcraa")
+animation = &"idle"
+script = ExtResource("3_brn3f")
+metadata/_custom_type_script = "uid://c1wpnqk5ltgmb"
+
+[node name="Camera" type="Camera2D" parent="."]

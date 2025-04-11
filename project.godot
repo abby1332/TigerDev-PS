@@ -131,6 +131,12 @@ pause={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Terrain"
+2d_physics/layer_3="Enemies"
+
 [physics]
 
 common/physics_jitter_fix=0.0

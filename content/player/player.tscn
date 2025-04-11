@@ -1242,10 +1242,10 @@ process_material = SubResource("ParticleProcessMaterial_qjikp")
 [node name="DeathParticles" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 1500
-process_material = SubResource("ParticleProcessMaterial_v5sav")
 lifetime = 5.0
 one_shot = true
 explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_v5sav")
 
 [node name="DeathLabel" type="RichTextLabel" parent="."]
 visible = false
@@ -1338,9 +1338,9 @@ visible = false
 z_index = -1
 emitting = false
 amount = 32
-process_material = SubResource("ParticleProcessMaterial_qca83")
 texture = ExtResource("14_puffk")
 lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_qca83")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true

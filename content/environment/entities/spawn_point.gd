@@ -1,7 +1,6 @@
-extends Node2D
+## Player Spawn Points
 class_name SpawnPoint
-## Saves a position for teleportation
-
+extends Node2D
 
 ## Teleports something to this location
 func teleport(obj: Node2D) -> void:

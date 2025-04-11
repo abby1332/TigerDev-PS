@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://cp544257x4a4e"]
 
-[ext_resource type="Script" path="res://resources/all spring stuff/spring_vertical.gd" id="1_7vobm"]
+[ext_resource type="Script" uid="uid://bb3d2pkr3hbo0" path="res://resources/all spring stuff/spring_vertical.gd" id="1_7vobm"]
 [ext_resource type="Texture2D" uid="uid://cgeqr5vs0cn0a" path="res://resources/sprites/mushroom_spring.png" id="2_8ssce"]
 [ext_resource type="AudioStream" uid="uid://dpuys3gmgok8i" path="res://resources/audio/Bounce.wav" id="3_appqu"]
 

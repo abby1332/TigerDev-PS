@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="TIGER-DEV-PS"
-run/main_scene="res://content/levels/main.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene="uid://7i3l1l12mbvv"
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -30,6 +30,10 @@ gdscript/warnings/untyped_declaration=1
 [display]
 
 window/stretch/mode="viewport"
+
+[dotnet]
+
+project/assembly_name="TIGER-DEV-PS"
 
 [editor_plugins]
 

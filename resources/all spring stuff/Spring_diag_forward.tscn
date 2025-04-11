@@ -1,13 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://dp73vyrnrifm1"]
 
-[ext_resource type="Script" path="res://spring_diag_forward.gd" id="1_gkj7t"]
-[ext_resource type="Texture2D" uid="uid://x5t260ps3dro" path="res://resources/sprites/Spring_temp_sonic_rush1.png" id="2_tecr8"]
+[ext_resource type="Texture2D" uid="uid://x5t260ps3dro" path="res://resources/all spring stuff/Spring_temp_sonic_rush1.png" id="2_tecr8"]
+
+[sub_resource type="Resource" id="Resource_hjsl8"]
+metadata/__load_path__ = "res://spring_diag_forward.gd"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbksg"]
 size = Vector2(24, 24)
 
 [node name="Area2D" type="Area2D"]
-script = ExtResource("1_gkj7t")
+script = SubResource("Resource_hjsl8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hbksg")

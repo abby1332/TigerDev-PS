@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bjtvsvry3dapy" path="res://content/environment/entities/enemy.tscn" id="4_l6y2u"]
 [ext_resource type="PackedScene" uid="uid://dmijlu5x8oc8w" path="res://content/environment/entities/spawn_point.tscn" id="5_am60y"]
 [ext_resource type="PackedScene" uid="uid://bepyetyir6wh7" path="res://content/ui/pause_menu.tscn" id="6_51610"]
-[ext_resource type="PackedScene" uid="uid://cjytebfkliisk" path="res://content/levels/tlvl23.tscn" id="7_dl7ob"]
+[ext_resource type="PackedScene" uid="uid://cjytebfkliisk" path="res://content/levels/old_stuff/tlvl23.tscn" id="7_dl7ob"]
 [ext_resource type="PackedScene" uid="uid://b6ugxlnqk3o76" path="res://content/environment/entities/respawn_point.tscn" id="8_5veoj"]
 [ext_resource type="PackedScene" uid="uid://fl6siaxv6op2" path="res://content/cards/card_spawner.tscn" id="9_ptfqa"]
 [ext_resource type="PackedScene" uid="uid://c8vh87q0rdp11" path="res://content/cards/slice_card.tscn" id="10_y6rer"]

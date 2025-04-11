@@ -81,6 +81,8 @@ func _ready() -> void:
 	position = spawn_point.position;
 
 func _physics_process(dt: float) -> void:
+	check_input(dt);
+
 	process_move_state();
 
 	apply_motion(dt);
@@ -176,14 +178,14 @@ func check_input(dt: float) -> void:
 	movement_input = Input.get_vector(&"left", &"right", &"up", &"crouch") * dt;
 
 	# Fresh Movement Input
-	if Input.is_action_just_pressed(&"move_up"):
+	if Input.is_action_just_pressed(&"up"):
 		has_jump_input = Mechanics.PLAYER_JUMP_BUFFER;
 		fresh_movement_input.y = -1.0;
-	elif Input.is_action_just_pressed(&"move_down"):
+	elif Input.is_action_just_pressed(&"crouch"):
 		fresh_movement_input.y = 1.0;
-	if Input.is_action_just_pressed(&"move_right"):
+	if Input.is_action_just_pressed(&"right"):
 		fresh_movement_input.x = 1.0;
-	elif Input.is_action_just_pressed(&"move_left"):
+	elif Input.is_action_just_pressed(&"left"):
 		fresh_movement_input.x = -1.0;
 
 	# Takes card input when there isn't any buffered input.
@@ -260,7 +262,7 @@ func get_cursor_position() -> Vector2:
 	# TODO - This needs to be updated to account for camera drift.
 	var mp: Vector2 = viewport.get_mouse_position();
 
-	mp -= Vector2(Mechanics.SCREEN_WIDTH / 2.0, Mechanics.SCREEN_HEIGHT / 2.0);
+	mp -= Vector2(Mechanics.VIEWPORT_WIDTH / 2.0, Mechanics.VIEWPORT_HEIGHT / 2.0);
 
 	return mp.normalized();
 

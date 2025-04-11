@@ -20,7 +20,7 @@ func use(player: Player) -> void:
 
 func _physics_process(_delta: float) -> void:
 	# If the card is still active and the player is on the floor
-	if (active or Player.player.is_stomping) and Player.player.is_on_floor():
+	if (active) and Player.player.is_on_floor():
 		active = false
 		# Deactivates the "kill everything mode"
 		Player.player.kill_everything_mode = false

@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://c8vh87q0rdp11" path="res://content/cards/slice_card.tscn" id="3_h7ogy"]
 [ext_resource type="PackedScene" uid="uid://bb1xdtxvr8q4n" path="res://content/cards/stomp_card.tscn" id="4_us4wh"]
 [ext_resource type="PackedScene" uid="uid://bjtvsvry3dapy" path="res://content/environment/entities/enemy.tscn" id="5_qlcy8"]
-[ext_resource type="PackedScene" uid="uid://oskm0n4w5tpe" path="res://content/player/player.tscn" id="6_tccj4"]
 [ext_resource type="PackedScene" uid="uid://bepyetyir6wh7" path="res://content/ui/pause_menu.tscn" id="8_31lva"]
 [ext_resource type="Script" uid="uid://l85edpkxvsxs" path="res://content/environment/entities/spawn_point.gd" id="8_awvj2"]
 [ext_resource type="PackedScene" uid="uid://c3jc1fp8r73y0" path="res://content/management/music_manager.tscn" id="9_8dlod"]
+[ext_resource type="PackedScene" uid="uid://brainrlu2jkxb" path="res://content/player/player_character.tscn" id="9_b473q"]
 [ext_resource type="PackedScene" uid="uid://dy423abcukasp" path="res://content/effects/explosion_manager.tscn" id="10_e8bmb"]
 
 [node name="TutorialLevel" type="Node2D"]
@@ -57,21 +57,11 @@ position = Vector2(64, -32)
 script = ExtResource("8_awvj2")
 metadata/_custom_type_script = "uid://l85edpkxvsxs"
 
-[node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("6_tccj4")]
-position = Vector2(52, -33)
+[node name="PlayerCharacter" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("9_b473q")]
+position = Vector2(64, -32)
 spawn_point = NodePath("../SpawnPoint")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2.5, 2.5)
-limit_bottom = 50
-position_smoothing_enabled = true
-position_smoothing_speed = 20.0
-drag_horizontal_enabled = true
-drag_horizontal_offset = 0.2
-drag_left_margin = 0.1
-drag_right_margin = 0.1
-
-[node name="PauseMenu" parent="." instance=ExtResource("8_31lva")]
+[node name="PauseMenu" parent="PlayerCharacter" instance=ExtResource("8_31lva")]
 top_level = true
 
 [node name="EndPoint" type="RichTextLabel" parent="."]

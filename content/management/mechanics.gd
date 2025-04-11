@@ -42,6 +42,9 @@ const PLAYER_JUMP_FORCE: float = -300.0;
 ## Initial velocity of wall launch. (px/s)
 const PLAYER_LAUNCH_FORCE: Vector2 = Vector2(300.0, -300.0);
 
+## Stomp ability launch speed. (px/s)
+const PLAYER_STOMP_SPEED: float = PLAYER_TERMINAL_VELOCITY.y;
+
 #endregion
 
 #region Buffers

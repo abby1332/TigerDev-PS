@@ -2,10 +2,9 @@ extends Control
 
 var _is_paused: bool = false:
 	set(value):
-		_is_paused = value
-		get_tree().paused = _is_paused
-		visible = _is_paused
-
+		_is_paused = value;
+		get_tree().paused = value;
+		visible = value;
 
 # Press escape to open and close pause menu
 func _unhandled_input(event: InputEvent) -> void:

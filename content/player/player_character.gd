@@ -10,7 +10,12 @@ enum MoveState {
 	Launching, # Jumped From Wall
 	Slashing, # Slash Card
 	Stomping, # Stomp Card
+	Dead,
 }
+
+signal player_died;
+signal load_checkpoint;
+signal update_checkpoint;
 
 #endregion
 
@@ -81,6 +86,8 @@ func _ready() -> void:
 	position = spawn_point.position;
 
 func _physics_process(dt: float) -> void:
+	if move_state == MoveState.Dead: return;
+
 	check_input(dt);
 
 	process_move_state();
@@ -98,8 +105,12 @@ func _physics_process(dt: float) -> void:
 ## Processes & Manages Current MoveState
 func process_move_state() -> void:
 	match move_state:
+		MoveState.Dead: return;
+
 		MoveState.Grounded:
-			if _can_set_move_state_slashing():
+			if _can_set_move_state_dead():
+				_set_move_state_dead();
+			elif _can_set_move_state_slashing():
 				_set_move_state_slashing();
 			elif _can_set_move_state_jumping():
 				_set_move_state_jumping();
@@ -107,7 +118,9 @@ func process_move_state() -> void:
 				_set_move_state_falling();
 
 		MoveState.Jumping:
-			if _can_set_move_state_slashing():
+			if _can_set_move_state_dead():
+				_set_move_state_dead();
+			elif _can_set_move_state_slashing():
 				_set_move_state_slashing();
 			elif _can_set_move_state_grounded():
 				_set_move_state_grounded();
@@ -115,7 +128,9 @@ func process_move_state() -> void:
 				_set_move_state_grasping();
 
 		MoveState.Falling:
-			if _can_set_move_state_slashing():
+			if _can_set_move_state_dead():
+				_set_move_state_dead();
+			elif _can_set_move_state_slashing():
 				_set_move_state_slashing();
 			elif _can_set_move_state_jumping():
 				_set_move_state_jumping();
@@ -127,7 +142,9 @@ func process_move_state() -> void:
 				_set_move_state_grasping();
 
 		MoveState.Grasping:
-			if _can_set_move_state_slashing():
+			if _can_set_move_state_dead():
+				_set_move_state_dead();
+			elif _can_set_move_state_slashing():
 				_set_move_state_slashing();
 			elif _can_set_move_state_launching():
 				_set_move_state_launching();
@@ -137,7 +154,9 @@ func process_move_state() -> void:
 				_set_move_state_falling();
 
 		MoveState.Launching:
-			if _can_set_move_state_slashing():
+			if _can_set_move_state_dead():
+				_set_move_state_dead();
+			elif _can_set_move_state_slashing():
 				_set_move_state_slashing();
 			elif _can_set_move_state_grasping():
 				_set_move_state_grasping();
@@ -147,7 +166,9 @@ func process_move_state() -> void:
 				_set_move_state_grounded();
 
 		MoveState.Slashing:
-			if _can_set_move_state_grounded():
+			if _can_set_move_state_dead():
+				_set_move_state_dead();
+			elif _can_set_move_state_grounded():
 				_set_move_state_grounded();
 			elif _can_set_move_state_grasping():
 				_set_move_state_grasping();
@@ -160,6 +181,7 @@ func process_move_state() -> void:
 ## Applies Motion To The Player
 func apply_motion(dt: float) -> void:
 	match move_state:
+		MoveState.Dead: return;
 		MoveState.Grounded: _apply_motion_grounded(dt);
 		MoveState.Jumping: _apply_motion_jumping(dt);
 		MoveState.Falling: _apply_motion_falling(dt);
@@ -219,6 +241,9 @@ func check_input(dt: float) -> void:
 	if Input.is_action_just_pressed(&"debug_freeze"):
 		breakpoint
 
+	if Input.is_action_just_pressed(&"debug_die"):
+		_set_move_state_dead();
+
 ## Cleans Up After `_physics_process()` Is Done
 func update_post_process(dt: float) -> void:
 	# Call These Before Clearing Inputs
@@ -263,12 +288,51 @@ func get_cursor_position() -> Vector2:
 	var mp: Vector2 = viewport.get_mouse_position();
 
 	mp -= Vector2(Mechanics.VIEWPORT_WIDTH / 2.0, Mechanics.VIEWPORT_HEIGHT / 2.0);
+	# This adjusts for the camera drag.
+	mp += camera.get_screen_center_position() - camera.get_target_position();
 
 	return mp.normalized();
 
 #endregion
 
 #region MoveState Methods
+
+# Dead
+
+func _can_set_move_state_dead() -> bool:
+	match move_state:
+		MoveState.Dead: return false;
+
+		MoveState.Grounded, MoveState.Jumping, MoveState.Falling, \
+		MoveState.Grasping, MoveState.Launching:
+			for index in get_slide_collision_count():
+				pass
+
+		MoveState.Slashing, MoveState.Stomping:
+			for body: PhysicsBody2D in get_last_slide_collision():
+				# If dashing into environmental hazard
+				if body.get_collision_layer_value(3) && body.get_collision_layer_value(4):
+					return true;
+
+		_: pass
+
+	return false;
+
+func _set_move_state_dead() -> void:
+	player_died.emit();
+
+	velocity = Vector2.ZERO;
+	move_state = MoveState.Dead;
+	move_direction = Vector2.ZERO;
+	hang_time = 0.0;
+	sprite.play_dying();
+
+	await get_tree().create_timer(Mechanics.PLAYER_RESPAWN_TIME).timeout;
+
+	position = spawn_point.position;
+	_set_move_state_falling();
+
+	load_checkpoint.emit();
 
 # Grounded
 

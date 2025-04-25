@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://7i3l1l12mbvv"]
+[gd_scene load_steps=10 format=4 uid="uid://7i3l1l12mbvv"]
 
 [ext_resource type="TileSet" uid="uid://dekyy0132kypy" path="res://resources/TileMaps/grass_tile_map.tres" id="1_b473q"]
 [ext_resource type="PackedScene" uid="uid://fl6siaxv6op2" path="res://content/cards/card_spawner.tscn" id="2_xpawf"]
 [ext_resource type="PackedScene" uid="uid://c8vh87q0rdp11" path="res://content/cards/slice_card.tscn" id="3_h7ogy"]
 [ext_resource type="PackedScene" uid="uid://bb1xdtxvr8q4n" path="res://content/cards/stomp_card.tscn" id="4_us4wh"]
 [ext_resource type="PackedScene" uid="uid://bjtvsvry3dapy" path="res://content/environment/entities/enemy.tscn" id="5_qlcy8"]
-[ext_resource type="PackedScene" uid="uid://bepyetyir6wh7" path="res://content/ui/pause_menu.tscn" id="8_31lva"]
 [ext_resource type="Script" uid="uid://l85edpkxvsxs" path="res://content/environment/entities/spawn_point.gd" id="8_awvj2"]
 [ext_resource type="PackedScene" uid="uid://c3jc1fp8r73y0" path="res://content/management/music_manager.tscn" id="9_8dlod"]
 [ext_resource type="PackedScene" uid="uid://brainrlu2jkxb" path="res://content/player/player_character.tscn" id="9_b473q"]
@@ -60,9 +59,6 @@ metadata/_custom_type_script = "uid://l85edpkxvsxs"
 [node name="PlayerCharacter" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("9_b473q")]
 position = Vector2(64, -32)
 spawn_point = NodePath("../SpawnPoint")
-
-[node name="PauseMenu" parent="PlayerCharacter" instance=ExtResource("8_31lva")]
-top_level = true
 
 [node name="EndPoint" type="RichTextLabel" parent="."]
 offset_left = 1704.0

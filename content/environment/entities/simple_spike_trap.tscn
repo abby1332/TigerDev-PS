@@ -5,9 +5,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdsxn"]
 size = Vector2(16, 7)
 
-[node name="SimpleSpikeTrap" type="StaticBody2D"]
-collision_layer = 8
+[node name="SimpleSpikeTrap" type="Area2D"]
+collision_layer = 12
 collision_mask = 0
+input_pickable = false
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.5)

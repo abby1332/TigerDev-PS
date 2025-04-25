@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://brainrlu2jkxb"]
+[gd_scene load_steps=7 format=3 uid="uid://brainrlu2jkxb"]
 
 [ext_resource type="Script" uid="uid://ds6dvbaniku0v" path="res://content/player/player_character.gd" id="1_inoe3"]
 [ext_resource type="SpriteFrames" uid="uid://cx2d3ofwvoyf4" path="res://content/player/right.tres" id="2_tcraa"]
 [ext_resource type="Script" uid="uid://c1wpnqk5ltgmb" path="res://content/player/player_sprite.gd" id="3_brn3f"]
+[ext_resource type="PackedScene" uid="uid://dvv1weo03dc23" path="res://content/ui/respawn_overlay.tscn" id="4_7tqxr"]
+[ext_resource type="PackedScene" uid="uid://bp4yhqr8702hk" path="res://content/ui/pause_overlay_menu.tscn" id="4_brn3f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7tqxr"]
 size = Vector2(12, 31)
@@ -10,7 +12,7 @@ size = Vector2(12, 31)
 [node name="PlayerCharacter" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "camera", "head_raycast", "leg_raycast")]
 collision_mask = 14
 floor_constant_speed = true
-platform_floor_layers = 4278190082
+platform_floor_layers = 2
 platform_wall_layers = 2
 script = ExtResource("1_inoe3")
 sprite = NodePath("Sprite")
@@ -43,3 +45,10 @@ zoom = Vector2(2, 2)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
+
+[node name="RespawnOverlay" parent="." instance=ExtResource("4_7tqxr")]
+
+[node name="PauseOverlayMenu" parent="." instance=ExtResource("4_brn3f")]
+
+[connection signal="load_checkpoint" from="." to="RespawnOverlay" method="_on_player_character_load_checkpoint"]
+[connection signal="player_died" from="." to="RespawnOverlay" method="_on_player_character_player_died"]

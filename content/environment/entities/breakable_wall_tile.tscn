@@ -32,11 +32,11 @@ shape = SubResource("RectangleShape2D_bfrm1")
 
 [node name="WallBreakParticles" type="GPUParticles2D" parent="."]
 emitting = false
-process_material = SubResource("ParticleProcessMaterial_pxr72")
 texture = ExtResource("3_nkxwe")
 lifetime = 2.0
 explosiveness = 1.0
 randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_pxr72")
 
 [node name="Area2D" type="Area2D" parent="."]
 

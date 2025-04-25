@@ -84,6 +84,8 @@ const PLAYER_LAUNCH_STATE_DURATION: float = 0.1;
 ## Maximum duration of `Slashing` state. (s)
 const PLAYER_SLASH_STATE_DURATION: float = 0.25;
 
+const PLAYER_RESPAWN_TIME: float = 2.0;
+
 #endregion
 
 #region Thresholds & Ratios & Multipliers
